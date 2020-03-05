@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class UserTables extends AbstractMigration
+class CreateUsertable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -23,40 +23,52 @@ class UserTables extends AbstractMigration
             ])
             ->addColumn('name', 'string', [
                 'default' => 'null',
-                'limit' => 100,
+                'limit' => 20,
                 'null' => false,
             ])
             ->addColumn('username', 'string', [
                 'default' => null,
-                'limit' => 100,
+                'limit' => 20,
                 'null' => false,
             ])
             ->addColumn('email', 'string', [
                 'default' => null,
-                'limit' => 100,
+                'limit' => 30,
                 'null' => false,
             ])
             ->addColumn('password', 'string', [
                 'default' => null,
-                'limit' => 100,
+                'limit' => 20,
                 'null' => false,
             ])
-             ->addColumn('adharcard', 'int', [
+             ->addColumn('adharcard', 'integer', [
                 'default' => null,
-                'limit' => 100,
+                'limit' => 20,
                 'null' => false,
             ])
-             ->addColumn('role', 'int', [
+             ->addColumn('role', 'integer', [
                 'default' => null,
-                'limit' => 100,
+                'limit' => 5,
                 'null' => false,
             ])
+             
             ->addColumn('status', 'string', [
                 'comment' => '1:Active, 0:Inactive',
                 'default' => '1',
                 'limit' => null,
                 'null' => false,
             ])
+            ->addColumn('created', 'datetime', [
+                'default' => null,
+                'limit' => null,
+                'null' => false,
+            ])
+             ->addColumn('updated', 'datetime', [
+                'default' => null,
+                'limit' => null,
+                'null' => false,
+            ])
+	    ->addForeignKey('role','user_roles','id')
             ->create();
     }
 }

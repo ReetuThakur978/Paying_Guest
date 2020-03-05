@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class PgDetails extends AbstractMigration
+class CreateUserrole extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,5 +14,14 @@ class PgDetails extends AbstractMigration
      */
     public function change()
     {
+        $table = $this->table('user_roles');
+        $table->addColumn('user_rolename', 'text', [
+            'default' => null,
+            'null' => false,
+            'limit' => 100,
+        ]);
+       
+        $table->create();
+     
     }
 }
