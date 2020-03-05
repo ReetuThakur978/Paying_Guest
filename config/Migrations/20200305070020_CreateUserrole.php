@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class UserRole extends AbstractMigration
+class CreateUserrole extends AbstractMigration
 {
     /**
      * Change Method.
