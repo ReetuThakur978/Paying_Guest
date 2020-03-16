@@ -21,7 +21,7 @@
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= isset($title) ? $title: " ";?> </title>
+   
     
     <?= $this->element('header')?>
     <?= $this->Html->meta('icon') ?>
@@ -82,6 +82,10 @@
             <?= $this->fetch('content') ?>
         </div>
     </main>
+    <br>
    <?= $this->element('footer') ?>
+
+<?= $this->set("title", "Paying_Guest");?>
+<?= $this->set("register", "Registration Page");?>
 </body>
 </html>

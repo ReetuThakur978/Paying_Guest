@@ -47,6 +47,11 @@ label {
   letter-spacing: 0;
   color: #848484;
 }
+ .validation
+    {
+      color: red;
+      margin-bottom: 20px;
+    }
 
 .nav-pills .nav-link {
   font-size: 16px;
