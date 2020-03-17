@@ -1,21 +1,15 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
- */
-?>
+
 <div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('New User'), ['action' => 'register'], ['class' => 'button float-right']) ?>
     <h3><?= __('Users') ?></h3>
     <div class="table-responsive">
-        <table border="2" cellpadding="12">
+        <table border="2" cellpadding="14">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('SrNo') ?></th>
                     <th><?= $this->Paginator->sort('Firstame') ?></th>
                     <th><?= $this->Paginator->sort('Lastname') ?></th>
                     <th><center><?= $this->Paginator->sort('email') ?></center></th>
-                    <th><center><?= $this->Paginator->sort('password') ?></center></th>
                     <th><center><?= $this->Paginator->sort('adharcard') ?><center></th>
                     <th><center><?= $this->Paginator->sort('role') ?><center></th>
                     <th><center><?= $this->Paginator->sort('status') ?><center></th>
@@ -33,7 +27,6 @@
                     <td><center><?= h($user->firstname) ?></center></td>
                     <td><center><?= h($user->lastname) ?></center></td>
                     <td><center><?= h($user->email) ?></center></td>
-                    <td><center><?= h($user->password) ?></center></td>
                     <td><center><?= $this->Number->format($user->adharcard) ?></center></td>
                     <td><center><?= $this->Number->format($user->role) ?></center></td>
                     <td><center><?= h($user->status) ?></center></td>
