@@ -5,76 +5,87 @@
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <SCRIPT type="text/javascript">
-// function validate()
-//       {
-//         var firstname=document.myForm.firstname.value; 
-//  if (firstname==null || firstname=="")
-//         {  
-//              alert("Please enter your firstname");  
-//              return false;  
-//           }
+function validate()
+      {
+        var firstname=document.myForm.firstname.value; 
+        var phone=document.myForm.phone.value;
+        var a =document.getElementById("pass").value;
+        var password=document.myForm.password.value;
+        var emailID = document.myForm.email.value;
+        atpos = emailID.indexOf("@");
+          dotpos = emailID.lastIndexOf("."); 
 
 
-//     }
+ if (firstname==null || firstname=="")
+        {  
+             alert("Please enter your firstname");  
+             return false;  
+          }
 
-// $(document).ready(function(){
-//     $("input[type='submit']").click(function(){
-//         var isValid = true;
-//         var focusInput = null;
-//         var firtName = $("input[name='data[$user][firstname]']");
-//         var lastName = $("input[name='data[$user][lastname]']");
-//         if ($(firtName) == null || $(firtName).val() == null || $(firtName).val() == "") {
-//             if (focusInput == null)
-//                 focusInput = $(firtName);
-//             $(firtName).addClass("error");
+ if( document.myForm.lastname.value == "" )
+         {
+            alert( "Please provide your lastname!" );
+            document.myForm.lastname.focus() ;
+            return false;
+         } 
+  if( document.myForm.adharcard.value == "" )
+         {
+            alert( "Please enter your adharcard number" );
+            document.myForm.adharcard.focus() ;
+            return false;
+         }            
 
-//             isValid = false;
-//         }
-//         else
-//             $(firtName).removeClass("error");
+    if (document.myForm.phone.value=="")
+         { 
+              alert("Please enter your vaild phone number");
+              document.myForm.phone.focus();
+              return false;
+          }
 
-//         if ($(lastName).val() == null || $(lastName).val() == "") {
-//             if (focusInput == null)
-//                 focusInput = $(lastName);
-//             $(lastName).addClass("error");
-//             isValid = false;
-//         }
-//         else
-//             $(lastName).removeClass("error");
-//         if (!isValid)
-//             $(focusInput).focus();
+         
+         else if(!(a.charAt(0)=="9" || a.charAt(0)=="8" || a.charAt(0)=="7" || a.charAt(0)=="6"))
+            {
+                alert("Please enter correct Phone number");
+                return false;
+            }
 
-//         return isValid;
+      if(password.length<6)
+            {  
+               alert("Password must be at least 6 characters long.");  
+               return false; 
+            }         
+            
+          else if(password.length>16) 
+              {
+                alert("Maximum length is 16 characters.");
+                return false;
+              }
+              
 
-//     });     
-// });
+       if (document.myForm.password1.value=="")
+         { 
+              alert("Please confirm your password");
+              document.myForm.password1.focus();
+              return false;
+          }       
 
-// $('form').on('submit', function (e) {
-//     var focusSet = false;
-//     if (!$('firstname').val()) {
-//         if ($("firstname").parent().next(".validation").length == 0) // only add if not added
-//         {
-//             $("firstname").parent().after("<div class='validation' style='color:red;margin-bottom: 20px;'>Please enter firstname</div>");
-//         }
-//         e.preventDefault(); // prevent form from POST to server
-//         $('firstname').focus();
-//         focusSet = true;
-//     } else {
-//         $("firstname").parent().next(".validation").remove(); // remove it
-//     }
-    // if (!$('#password').val()) {
-    //     if ($("#password").parent().next(".validation").length == 0) // only add if not added
-    //     {
-    //         $("#password").parent().after("<div class='validation' style='color:red;margin-bottom: 20px;'>Please enter password</div>");
-    //     }
-    //     e.preventDefault(); // prevent form from POST to server
-    //     if (!focusSet) {
-    //         $("#password").focus();
-    //     }
-    // } else {
-    //     $("#password").parent().next(".validation").remove(); // remove it
-    // }
-// });  
+      if (atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            alert("Please enter correct email ID")
+            document.myForm.email.focus() ;
+            return false;
+         }
+      
+         
+         if( document.myForm.email.value == "" )
+         {
+            alert( "Please provide your Email!" );
+            document.myForm.email.focus() ;
+            return false;
+         }             
+
+
+}
 
 </SCRIPT>
 </head>
@@ -102,9 +113,9 @@
                                 echo $this->Form->text('Lastname', ['name' => 'lastname' , 'placeholder'=>'Enter your lastname', 'class' =>'border p-3 w-100 my-2']);
                                 echo $this->Form->text('Email', ['name' => 'email' , 'placeholder'=>'Enter your email', 'class' =>'border p-3 w-100 my-2']);
                                 echo $this->Form->password('Password', ['name' => 'password' , 'placeholder'=>'Enter your password', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->password('password', ['name' => 'password' , 'placeholder'=>'Confirm Password', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->text('adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->text('phone', ['name' => 'phone' , 'placeholder'=>'Enter your phone number', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->password('Password', ['name' => 'password1' , 'placeholder'=>'Confirm Password', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->text('Adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->text('Phone', ['name' => 'phone' , 'placeholder'=>'Enter your phone number', 'class' =>'border p-3 w-100 my-2' , 'id'=>'pass']);
                                
                                 echo $this->Form->select('role',$roles,['empty' => 'Select Role','class' =>'border p-3 w-100 my-2']);
                         
