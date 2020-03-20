@@ -2,7 +2,7 @@
 <html>
 <head>
     <title></title>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <!--  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
     <SCRIPT type="text/javascript">
 function validate()
@@ -11,6 +11,7 @@ function validate()
         var phone=document.myForm.phone.value;
         var a =document.getElementById("pass").value;
         var password=document.myForm.password.value;
+        var adhar=document.myForm.adharcard.value;
         var emailID = document.myForm.email.value;
         atpos = emailID.indexOf("@");
           dotpos = emailID.lastIndexOf("."); 
@@ -33,7 +34,18 @@ function validate()
             alert( "Please enter your adharcard number" );
             document.myForm.adharcard.focus() ;
             return false;
-         }            
+         } 
+    if(adhar.length<12)  
+    {
+      alert("Please enter correct adher card number");
+       
+      return false;   
+    } 
+    else if(adhar.length>12)
+    {
+        alert("Please enter correct adher card number");  
+        return false; 
+    }             
 
     if (document.myForm.phone.value=="")
          { 
@@ -41,6 +53,7 @@ function validate()
               document.myForm.phone.focus();
               return false;
           }
+
 
          
          else if(!(a.charAt(0)=="9" || a.charAt(0)=="8" || a.charAt(0)=="7" || a.charAt(0)=="6"))
@@ -71,7 +84,7 @@ function validate()
 
       if (atpos < 1 || ( dotpos - atpos < 2 )) 
          {
-            alert("Please enter correct email ID")
+            alert("Please enter correct email ID");
             document.myForm.email.focus() ;
             return false;
          }
@@ -87,7 +100,7 @@ function validate()
 
 }
 
-</SCRIPT>
+</SCRIPT> -->
 </head>
 <body>
 
@@ -109,13 +122,13 @@ function validate()
                
                  <?php
                               
-                                echo $this->Form->text('Firstname', ['name' => 'firstname' , 'placeholder'=>'Enter your firstname', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->text('Lastname', ['name' => 'lastname' , 'placeholder'=>'Enter your lastname', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->text('Email', ['name' => 'email' , 'placeholder'=>'Enter your email', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->password('Password', ['name' => 'password' , 'placeholder'=>'Enter your password', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->password('Password', ['name' => 'password1' , 'placeholder'=>'Confirm Password', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->text('Adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->text('Phone', ['name' => 'phone' , 'placeholder'=>'Enter your phone number', 'class' =>'border p-3 w-100 my-2' , 'id'=>'pass']);
+                                echo $this->Form->text('firstname', ['name' => 'firstname' , 'placeholder'=>'Enter your firstname', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->text('lastname', ['name' => 'lastname' , 'placeholder'=>'Enter your lastname', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->text('email', ['name' => 'email' , 'placeholder'=>'Enter your email', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->password('password', ['name' => 'password' , 'placeholder'=>'Enter your password', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->password('confirm_password', ['name' => 'password1' , 'placeholder'=>'Confirm Password', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->text('adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->text('phone', ['name' => 'phone' , 'placeholder'=>'Enter your phone number', 'class' =>'border p-3 w-100 my-2' , 'id'=>'pass']);
                                
                                 echo $this->Form->select('role',$roles,['empty' => 'Select Role','class' =>'border p-3 w-100 my-2']);
                         

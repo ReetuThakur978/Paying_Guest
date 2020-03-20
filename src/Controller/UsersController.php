@@ -38,24 +38,13 @@ class UsersController extends AppController
     	$this->loadModel('Userroles');
         $user = $this->Users->newEmptyEntity();
 
-        // $validator = new Validator();
-
-        // $validator->notEmpty('firstname', 'Please fill your firstname');
-
-
-
-        // $errors = $validator->errors($this->request->getData());
-        // if (empty($errors)) 
-        // {
-        //     print_r($errors);
-        // }
-
-
 
         	if ($this->request->is('post')) 
         	{
         	
             	$user = $this->Users->newEntity($this->request->getData());
+            	
+
             		if ($this->Users->save($user)) 
             		{
                 		$this->Flash->success(__('Thanks for registration'));
