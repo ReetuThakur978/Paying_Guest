@@ -14,7 +14,7 @@ function validate()
         var adhar=document.myForm.adharcard.value;
         var emailID = document.myForm.email.value;
         atpos = emailID.indexOf("@");
-          dotpos = emailID.lastIndexOf("."); 
+          dotpos = emailID.lastIndexOf(".");                          
 
 
  if (firstname==null || firstname=="")
