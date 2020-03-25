@@ -13,7 +13,8 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
 							<li class="nav-item active">
-								<a class="nav-link" href="index.html">Home</a>
+								<!-- <a class="nav-link" href="index.html">Home</a> -->
+								<?= $this->Html->link(__('Home'), ['controller'=>'Users','action' => 'index'], ['class' => 'nav-link']) ?>
 							</li>
 							<li class="nav-item dropdown dropdown-slide">
 								<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="">Available for<span><i class="fa fa-angle-down"></i></span>

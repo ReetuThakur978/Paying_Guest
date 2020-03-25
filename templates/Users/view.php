@@ -8,12 +8,8 @@
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
-  <!-- <section class="login py-5 border-top-1">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-5 col-md-8 align-item-center">
-                    <div class="border border"> -->
+    </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  
     <div class="column-responsive column-80">
         <div class="users view content">
        <!--  <div class="col-lg-5 col-md-8 align-item-center"> -->

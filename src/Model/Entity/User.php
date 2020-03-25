@@ -20,7 +20,7 @@ class User extends Entity
         'created' => true,
         'updated' => true,
         'phone' => true,
-        'confirm_password' => true,
+        // 'confirm_password' => true,
     ];
 
     protected $_hidden = [

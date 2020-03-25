@@ -5,6 +5,18 @@
 </head>
 <body>
 
+<div class="row">
+    <aside class="column">
+        <div class="side-nav">
+            <h4 class="heading"><?= __('Menu : ') ?></h4>
+
+            <?= $this->Html->link(__('PG owner'), ['controller'=>'Pgdetails','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
+            <!--  -->
+            <?= $this->Html->link(__('Rooms available'), ['action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Rooms booked'), ['action' => 'add'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('New PG request'), ['action' => ''], ['class' => 'side-nav-item']) ?>
+        </div>
+    </aside>&nbsp
 
 <div class="users index content">
     <?= $this->Html->link(__('New User'), ['action' => 'register'], ['class' => 'button float-right']) ?><br>
@@ -19,9 +31,7 @@
                     <th><?= $this->Paginator->sort('Lastname') ?></th>
                     <th><center><?= $this->Paginator->sort('email') ?></center></th>
                     <th><center><?= $this->Paginator->sort('adharcard') ?><center></th>
-                    <th><center><?= $this->Paginator->sort('role') ?><center></th>
-                    <th><center><?= $this->Paginator->sort('status') ?><center></th>
-                   
+                    <th><center><?= $this->Paginator->sort('role') ?><center></th>   
                     <th><center><?= $this->Paginator->sort('updated') ?><center></th>
                 
                     <th class="actions"><?= __('Actions') ?></th>
@@ -37,8 +47,6 @@
                     <td><center><?= h($user->email) ?></center></td>
                     <td><center><?= $this->Number->format($user->adharcard) ?></center></td>
                     <td><center><?= $this->Number->format($user->role) ?></center></td>
-                    <td><center><?= h($user->status) ?></center></td>
-                    
                     <td><center><?= h($user->updated) ?></center></td>
                     
                     <td class="actions">
