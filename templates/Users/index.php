@@ -1,6 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?= isset($title)?$title:""; ?></title>
+</head>
+<body>
+
 
 <div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'register'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('New User'), ['action' => 'register'], ['class' => 'button float-right']) ?><br>
+    <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'button float-right']) ?>
     <h3><?= __('Users') ?></h3>
     <div class="table-responsive">
         <table border="2" cellpadding="14">
@@ -54,3 +62,5 @@
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
+</body>
+</html>

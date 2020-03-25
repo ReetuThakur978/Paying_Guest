@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?= isset($title)?$title:""; ?></title>
+</head>
+<body>
+
 
 <div class="row">
     <aside class="column">
@@ -47,3 +54,5 @@
 </div>
 </div>
 </section>
+</body>
+</html>

@@ -37,8 +37,7 @@ class UsersTable extends Table
 
         $validator
             ->scalar('lastname')
-            ->maxLength('lastname', 20)
-           
+            ->maxLength('lastname', 20)           
             ->notEmptyString('lastname');
 
         $validator
@@ -71,6 +70,21 @@ class UsersTable extends Table
             ->integer('phone')
             ->requirePresence('phone', 'create')
             ->notEmptyString('phone');
+
+        // $validator 
+        //     ->scalar('confirm_password')
+        //     ->maxLength('confirm_password', 20)
+        //     ->requirePresence('confirm_password', 'create')  
+        //     ->notEmptyString('confirm_password');
+        //     ->add('confirm_password',[
+        //         'password_mismatch'=>[
+        //                 'rule'=>['compareWith','password'],
+        //                 'message'=>'Password didnot match'
+        //         ]
+
+        //     ]) ;
+    
+    
 
         return $validator;
     }

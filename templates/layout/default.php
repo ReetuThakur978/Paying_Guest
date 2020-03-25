@@ -71,7 +71,5 @@
     <br>
    <?= $this->element('footer') ?>
 
-<?= $this->set("title", "Paying_Guest");?>
-<?= $this->set("register", "Registration Page");?>
 </body>
 </html>
