@@ -8,35 +8,10 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Pgdetails Model
- *
- * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
- *
- * @method \App\Model\Entity\Pgdetail newEmptyEntity()
- * @method \App\Model\Entity\Pgdetail newEntity(array $data, array $options = [])
- * @method \App\Model\Entity\Pgdetail[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Pgdetail get($primaryKey, $options = [])
- * @method \App\Model\Entity\Pgdetail findOrCreate($search, ?callable $callback = null, $options = [])
- * @method \App\Model\Entity\Pgdetail patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Pgdetail[] patchEntities(iterable $entities, array $data, array $options = [])
- * @method \App\Model\Entity\Pgdetail|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Pgdetail saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Pgdetail[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\Pgdetail[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
- * @method \App\Model\Entity\Pgdetail[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\Pgdetail[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
- */
+
 class PgdetailsTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
+    
     public function initialize(array $config): void
     {
         parent::initialize($config);
@@ -53,12 +28,7 @@ class PgdetailsTable extends Table
         ]);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
+   
     public function validationDefault(Validator $validator): Validator
     {
         $validator
