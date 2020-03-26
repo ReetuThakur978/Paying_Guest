@@ -35,7 +35,23 @@ class RoomsController extends AppController
         $this->set("title", "Add Room available");
         $room = $this->Rooms->newEmptyEntity();
         if ($this->request->is('post')) {
-            $room = $this->Rooms->patchEntity($room, $this->request->getData());
+            // $room = $this->Rooms->patchEntity($room, $this->request->getData());
+            $imgdata= $this->request->getData('image');
+            $tem= $imgdata->getStream()->getMetadata('uri');
+            $img=file_get_contents($tem);
+            $num['pg_id']=$this->request->getData('pg_id');
+            $num['ac_noac']=$this->request->getData('ac_noac');
+            $num['seater']=$this->request->getData('seater');
+            $num['rent']=$this->request->getData('rent');
+            $num['with_or_without_food']=$this->request->getData('with_or_without_food');
+            $num['security_charge']=$this->request->getData('security_charge');
+            $num['notic_period']=$this->request->getData('notic_period');
+            $num['seates_available']=$this->request->getData('seates_available');
+            $num['status']=$this->request->getData('status'); 
+            $num['image']=$img;
+
+                $room = $this->Rooms->newEntity($num);
+
             if ($this->Rooms->save($room)) {
                 $this->Flash->success(__('The room has been saved.'));
 

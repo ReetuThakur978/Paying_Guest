@@ -8,35 +8,10 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
-/**
- * Rooms Model
- *
- * @property \App\Model\Table\PgdetailsTable&\Cake\ORM\Association\BelongsTo $Pgdetails
- *
- * @method \App\Model\Entity\Room newEmptyEntity()
- * @method \App\Model\Entity\Room newEntity(array $data, array $options = [])
- * @method \App\Model\Entity\Room[] newEntities(array $data, array $options = [])
- * @method \App\Model\Entity\Room get($primaryKey, $options = [])
- * @method \App\Model\Entity\Room findOrCreate($search, ?callable $callback = null, $options = [])
- * @method \App\Model\Entity\Room patchEntity(\Cake\Datasource\EntityInterface $entity, array $data, array $options = [])
- * @method \App\Model\Entity\Room[] patchEntities(iterable $entities, array $data, array $options = [])
- * @method \App\Model\Entity\Room|false save(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Room saveOrFail(\Cake\Datasource\EntityInterface $entity, $options = [])
- * @method \App\Model\Entity\Room[]|\Cake\Datasource\ResultSetInterface|false saveMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\Room[]|\Cake\Datasource\ResultSetInterface saveManyOrFail(iterable $entities, $options = [])
- * @method \App\Model\Entity\Room[]|\Cake\Datasource\ResultSetInterface|false deleteMany(iterable $entities, $options = [])
- * @method \App\Model\Entity\Room[]|\Cake\Datasource\ResultSetInterface deleteManyOrFail(iterable $entities, $options = [])
- *
- * @mixin \Cake\ORM\Behavior\TimestampBehavior
- */
+
 class RoomsTable extends Table
 {
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
+    
     public function initialize(array $config): void
     {
         parent::initialize($config);
@@ -53,12 +28,7 @@ class RoomsTable extends Table
         ]);
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
+    
     public function validationDefault(Validator $validator): Validator
     {
         $validator
@@ -83,9 +53,8 @@ class RoomsTable extends Table
             ->notEmptyString('rent');
 
         $validator
-            ->scalar('image')
-            ->maxLength('image', 255)
-            ->allowEmptyFile('image');
+            ->requirePresence('image', 'create')
+            ->notEmptyString('image');
 
         $validator
             ->scalar('with_or_without_food')
@@ -116,13 +85,7 @@ class RoomsTable extends Table
         return $validator;
     }
 
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
+    
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->existsIn(['pg_id'], 'Pgdetails'));

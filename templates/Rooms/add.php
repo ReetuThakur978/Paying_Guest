@@ -12,7 +12,7 @@
             <?= $this->Html->link(__('PG owner'), ['controller'=>'Pgdetails','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <!--  -->
             <?= $this->Html->link(__('Rooms available'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Rooms booked'), ['action' => 'add'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <?= $this->Html->link(__('New PG request'), ['action' => ''], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
@@ -24,7 +24,7 @@
 <div class="border border">
     <div class="column-responsive column-80">
         <div class="rooms form content">
-            <?= $this->Form->create($room) ?>
+            <?= $this->Form->create($room,['type'=>'file', 'id'=>'form']) ?>
             <fieldset>
                 <legend><?= __('Add Room') ?></legend>
                 <?php
@@ -32,7 +32,7 @@
                     echo $this->Form->control('ac_noac',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seater',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('rent',['class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('image',['class' =>'border p-3 w-100 my-2']);
+                    echo $this->Form->input('image',['class' =>'border p-3 w-100 my-2' ,'type'=>'file']);
                     echo $this->Form->control('with_or_without_food',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('security_charge',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('notic_period',['class' =>'border p-3 w-100 my-2']);
@@ -43,6 +43,16 @@
             <?= $this->Form->button('Submit',['class'=>'d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold']); ?>
              </fieldset>
             <?= $this->Form->end() ?>
+            <script> 
+$("#form").submit(function(){
+  $("#form").submit(function(){
+    return false;
+});
+    return true;
+
+
+});
+</script>
         </div>
     </div>
 </div>

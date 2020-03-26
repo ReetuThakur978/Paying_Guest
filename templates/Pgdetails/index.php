@@ -12,7 +12,7 @@
             <?= $this->Html->link(__('PG owner'), ['controller'=>'Pgdetails','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <!--  -->
             <?= $this->Html->link(__('Rooms available'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Rooms booked'), ['action' => 'add'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <?= $this->Html->link(__('New PG request'), ['action' => ''], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -51,7 +51,7 @@
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $pgdetail->pg_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pgdetail->pg_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $pgdetail->pg_id], ['confirm' => __('Are you sure you want to delete # {0}?', $pgdetail->pg_id)]) ?>
+                        <?= $this->Form->postLink(__('Block'), ['action' => 'delete', $pgdetail->pg_id], ['confirm' => __('Are you sure you want to delete # {0}?', $pgdetail->pg_id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

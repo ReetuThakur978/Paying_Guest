@@ -12,7 +12,7 @@
             <?= $this->Html->link(__('PG owner'), ['controller'=>'Pgdetails','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <!--  -->
             <?= $this->Html->link(__('Rooms available'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Rooms booked'), ['action' => 'add'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <?= $this->Html->link(__('New PG request'), ['action' => ''], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
@@ -21,7 +21,7 @@
     <?= $this->Html->link(__('New Room'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Results for : Rooms available') ?></h3>
     <div class="table-responsive">
-        <table border="2" cellpadding="10">
+        <table border="2" cellpadding="14">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('SrNo') ?></th>
@@ -29,7 +29,6 @@
                     <th><?= $this->Paginator->sort('Seater') ?></th>
                     <th><?= $this->Paginator->sort('Rent') ?></th>
                     <th><?= $this->Paginator->sort('Security Charge') ?></th>
-                    <th><?= $this->Paginator->sort('Image') ?></th>
                     <th><?= $this->Paginator->sort('Seates_available') ?></th>
                     <th><?= $this->Paginator->sort('Status') ?></th>
                     
@@ -44,14 +43,14 @@
                     <td><?= $room->has('pgdetail') ? $this->Html->link($room->pgdetail->pg_id, ['controller' => 'Pgdetails', 'action' => 'view', $room->pgdetail->pg_id]) : '' ?></td>
                     <td><center><?= h($room->seater) ?></center></td>
                     <td><center><?= $this->Number->format($room->rent) ?></center></td>
-                     <td><center><?= $this->Number->format($room->security_charge) ?></center></td>
-                    <td><center><?= h($room->image) ?></center></td>
+                    <td><center><?= $this->Number->format($room->security_charge) ?></center></td>
+                    
                     <td><center><?= $this->Number->format($room->seates_available) ?></center></td>
                     <td><center><?= h($room->status) ?></center></td>
                                         <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $room->room_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $room->room_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $room->room_id], ['confirm' => __('Are you sure you want to delete # {0}?', $room->room_id)]) ?>
+                        <?= $this->Form->postLink(__('Block'), ['action' => 'delete', $room->room_id], ['confirm' => __('Are you sure you want to delete # {0}?', $room->room_id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

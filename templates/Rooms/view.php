@@ -12,13 +12,19 @@
             <?= $this->Html->link(__('PG owner'), ['controller'=>'Pgdetails','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <!--  -->
             <?= $this->Html->link(__('Rooms available'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Rooms booked'), ['action' => 'add'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <?= $this->Html->link(__('New PG request'), ['action' => ''], ['class' => 'side-nav-item']) ?>        </div>
     </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <?php
+$image= base64_encode (stream_get_contents($room->image));
+?>
     <div class="column-responsive column-80">
         <div class="rooms view content">
-            <h3><?= __('View : Rooms available') ?></h3>
-            <h3><?= h($room->room_id) ?></h3>
+            <center>  <h3><?= __('View : Rooms available') ?></h3><br><br>
+          <tr>
+                    <td><?='<img src="data:image/jpeg;base64,'.$image.'"/>'?></td>
+                </tr>
+            <h3><?= h($room->pgdetail->address) ?></h3></center><br>
             <table border="3" cellpadding="5">
                 <tr>
                     <th><?= __('Pgdetail') ?></th>
@@ -32,10 +38,7 @@
                     <th><?= __('Seater') ?></th>
                     <td><?= h($room->seater) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Image') ?></th>
-                    <td><?= h($room->image) ?></td>
-                </tr>
+                
                 <tr>
                     <th><?= __('With Or Without Food') ?></th>
                     <td><?= h($room->with_or_without_food) ?></td>

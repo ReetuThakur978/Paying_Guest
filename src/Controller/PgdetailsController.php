@@ -68,16 +68,16 @@ class PgdetailsController extends AppController
     }
 
     
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $pgdetail = $this->Pgdetails->get($id);
-        if ($this->Pgdetails->delete($pgdetail)) {
-            $this->Flash->success(__('The pgdetail has been deleted.'));
-        } else {
-            $this->Flash->error(__('The pgdetail could not be deleted. Please, try again.'));
-        }
+    // public function delete($id = null)
+    // {
+    //     $this->request->allowMethod(['post', 'delete']);
+    //     $pgdetail = $this->Pgdetails->get($id);
+    //     if ($this->Pgdetails->delete($pgdetail)) {
+    //         $this->Flash->success(__('The pgdetail has been deleted.'));
+    //     } else {
+    //         $this->Flash->error(__('The pgdetail could not be deleted. Please, try again.'));
+    //     }
 
-        return $this->redirect(['action' => 'index']);
-    }
+    //     return $this->redirect(['action' => 'index']);
+    // }
 }

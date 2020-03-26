@@ -15,19 +15,17 @@
             <div class="col-md-12">
                 <!-- Header Contetnt -->
                 <div class="content-block">
-                    <h1>Buy & Sell Near You </h1>
-                    <p>Join the millions who buy and sell from each other <br> everyday in local communities around the world</p>
+                    <h1>House You Like </h1>
+                    <p><dfn title="Paying Guest">Transient Guest <br> Out-of-Towner</dfn></p>
                     <div class="short-popular-category-list text-center">
-                        <h2>Popular Category</h2>
+                        <h2>Near by you...</h2>
                         <ul class="list-inline">
                             <li class="list-inline-item">
                                 <a href="category.html"><i class="fa fa-bed"></i> Hotel</a></li>
                             <li class="list-inline-item">
                                 <a href="category.html"><i class="fa fa-grav"></i> Fitness</a>
                             </li>
-                            <li class="list-inline-item">
-                                <a href="category.html"><i class="fa fa-car"></i> Cars</a>
-                            </li>
+                            
                             <li class="list-inline-item">
                                 <a href="category.html"><i class="fa fa-cutlery"></i> Restaurants</a>
                             </li>
@@ -253,19 +251,19 @@
 =            All Category Section            =
 ===========================================-->
 
-<section class=" section">
-    <!-- Container Start -->
+<!-- <section class=" section">
+    
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <!-- Section title -->
+               
                 <div class="section-title">
                     <h2>All Categories</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
                 </div>
-                <div class="row">
+                <div class="row"> -->
                     <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                    <!-- <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             <div class="header">
                                 <i class="fa fa-laptop icon-bg-1"></i> 
@@ -278,8 +276,7 @@
                                 <li><a href="category.html">Monitors <span>343</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
+                    </div> 
                     <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             <div class="header">
@@ -293,8 +290,7 @@
                                 <li><a href="category.html">Food Track<span>43</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
-                    <!-- Category list -->
+                    </div> 
                     <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             <div class="header">
@@ -308,9 +304,9 @@
                                 <li><a href="category.html">Parolurs <span>33</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
+                    </div> --> <!-- /Category List -->
                     <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                    <!-- <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             <div class="header">
                                 <i class="fa fa-shopping-basket icon-bg-4"></i> 
@@ -323,9 +319,9 @@
                                 <li><a href="category.html">It & Software <span>143</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
+                    </div> --> <!-- /Category List -->
                     <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                    <!-- <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             <div class="header">
                                 <i class="fa fa-briefcase icon-bg-5"></i> 
@@ -338,9 +334,9 @@
                                 <li><a href="category.html">Voluntary Works <span>343</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
+                    </div> --> <!-- /Category List -->
                     <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                    <!-- <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             <div class="header">
                                 <i class="fa fa-car icon-bg-6"></i> 
@@ -353,9 +349,9 @@
                                 <li><a href="category.html">Rent a car <span>73</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
+                    </div> --> <!-- /Category List -->
                     <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                    <!-- <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             <div class="header">
                                 <i class="fa fa-paw icon-bg-7"></i> 
@@ -368,9 +364,9 @@
                                 <li><a href="category.html">Others <span>43</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
+                    </div> --> <!-- /Category List -->
                     <!-- Category list -->
-                    <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
+                   <!--  <div class="col-lg-3 offset-lg-0 col-md-5 offset-md-1 col-sm-6 col-6">
                         <div class="category-block">
                             
                             <div class="header">
@@ -384,15 +380,15 @@
                                 <li><a href="category.html">Business <span>343</span></a></li>
                             </ul>
                         </div>
-                    </div> <!-- /Category List -->
+                    </div> --> <!-- /Category List -->
                     
                     
-                </div>
+               <!--  </div>
             </div>
         </div>
     </div>
-    <!-- Container End -->
-</section>
+    
+</section> -->
 
 
 <!--====================================
