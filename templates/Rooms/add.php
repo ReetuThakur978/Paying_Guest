@@ -29,15 +29,28 @@
                 <legend><?= __('Add Room') ?></legend>
                 <?php
                     echo $this->Form->control('pg_id', ['options' => $pgdetails ,'class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('ac_noac',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seater',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('rent',['class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->input('image',['class' =>'border p-3 w-100 my-2' ,'type'=>'file']);
-                    echo $this->Form->control('with_or_without_food',['class' =>'border p-3 w-100 my-2']);
+                    echo 'Choose Image:- '.'<br>';
+                    echo $this->Form->input('image',['class' =>'border p-3 w-100 my-2' ,'type'=>'file']); 
                     echo $this->Form->control('security_charge',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('notic_period',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seates_available',['class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('status',['class' =>'border p-3 w-100 my-2']);
+                    echo 'AC:- '.'<br>';
+                         $options = array('Yes' => 'Yes','No' => 'No');
+                         $attributes = array('legend' => false);
+                   echo $this->Form->radio('ac', $options,$attributes).'<br>';
+                    echo 'Food Availability:- '.'<br>';
+                        $options = array('Yes' => 'Yes', 'No' => 'No');
+                        // $attributes = array('legend' => false);
+                    echo $this->Form->select('food_availability', $options).'<br>';
+
+                    echo ' Choose Status :- '.'<br>';
+                    echo $this->Form->radio(
+    'status',
+    [0, 1]
+);
+
                 ?>
            
             <?= $this->Form->button('Submit',['class'=>'d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold']); ?>

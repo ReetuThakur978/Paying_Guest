@@ -44,13 +44,25 @@
                     <td><center><?= h($room->seater) ?></center></td>
                     <td><center><?= $this->Number->format($room->rent) ?></center></td>
                     <td><center><?= $this->Number->format($room->security_charge) ?></center></td>
-                    
                     <td><center><?= $this->Number->format($room->seates_available) ?></center></td>
-                    <td><center><?= h($room->status) ?></center></td>
+                    <!-- <td><center><?= h($room->status) ?></center></td> -->
+                <td><center>    <?php
+if(h($room->status)==1)
+{
+    echo "Active";
+}
+else
+{
+    echo "Disactive";
+}
+
+?></center></td>
+
+
                                         <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $room->room_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $room->room_id]) ?>
-                        <?= $this->Form->postLink(__('Block'), ['action' => 'delete', $room->room_id], ['confirm' => __('Are you sure you want to delete # {0}?', $room->room_id)]) ?>
+                       <?= $this->Html->link(__('Block'), ['action' => 'block', $room->room_id]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

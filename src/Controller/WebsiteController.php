@@ -7,9 +7,14 @@ namespace App\Controller;
 
 class WebsiteController extends AppController
 {
-	public function home()
+	public function guest()
 	{
 		$this->set("title", "Paying_Guest");
+
+	}
+	public function home()
+	{
+		$this->set("title", "PG website");
 
 	}
 

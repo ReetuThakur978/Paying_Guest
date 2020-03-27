@@ -60,10 +60,10 @@ class PgdetailsTable extends Table
             ->notEmptyString('area');
 
         $validator
-            ->scalar('which_gender')
-            ->maxLength('which_gender', 10)
-            ->requirePresence('which_gender', 'create')
-            ->notEmptyString('which_gender');
+            ->scalar('gender')
+            ->maxLength('gender', 10)
+            ->requirePresence('gender', 'create')
+            ->notEmptyString('gender');
 
         $validator
             ->scalar('availability')
@@ -71,10 +71,10 @@ class PgdetailsTable extends Table
             ->requirePresence('availability', 'create')
             ->notEmptyString('availability');
 
-        $validator
-            ->integer('no_of_room')
-            ->requirePresence('no_of_room', 'create')
-            ->notEmptyString('no_of_room');
+        // $validator
+        //     ->integer('no_of_room')
+        //     ->requirePresence('no_of_room', 'create')
+        //     ->notEmptyString('no_of_room');
 
         $validator
             ->scalar('status')

@@ -15,6 +15,7 @@ class RoomsController extends AppController
         ];
         $rooms = $this->paginate($this->Rooms);
 
+
         $this->set(compact('rooms'));
     }
 
@@ -40,10 +41,10 @@ class RoomsController extends AppController
             $tem= $imgdata->getStream()->getMetadata('uri');
             $img=file_get_contents($tem);
             $num['pg_id']=$this->request->getData('pg_id');
-            $num['ac_noac']=$this->request->getData('ac_noac');
+            $num['ac']=$this->request->getData('ac');
             $num['seater']=$this->request->getData('seater');
             $num['rent']=$this->request->getData('rent');
-            $num['with_or_without_food']=$this->request->getData('with_or_without_food');
+            $num['food_availability']=$this->request->getData('food_availability');
             $num['security_charge']=$this->request->getData('security_charge');
             $num['notic_period']=$this->request->getData('notic_period');
             $num['seates_available']=$this->request->getData('seates_available');
@@ -96,4 +97,18 @@ class RoomsController extends AppController
 
     //     return $this->redirect(['action' => 'index']);
     // }
+
+    public function block($id = null)
+     {
+         $room = $this->Rooms->get($status);
+         if($room==1)
+         {
+            echo"block";
+         }
+         else
+         {
+            echo "unblock";
+         }
+     }
+
 }

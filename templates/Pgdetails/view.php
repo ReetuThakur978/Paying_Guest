@@ -44,8 +44,8 @@
                     <td><?= h($pgdetail->area) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Which Gender') ?></th>
-                    <td><?= h($pgdetail->which_gender) ?></td>
+                    <th><?= __('Gender') ?></th>
+                    <td><?= h($pgdetail->gender) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Availability') ?></th>
@@ -53,16 +53,23 @@
                 </tr>
                 <tr>
                     <th><?= __('Status') ?></th>
-                    <td><?= h($pgdetail->status) ?></td>
+                    <td><?php
+if(h($pgdetail->status)==1)
+{
+    echo "Active";
+}
+else
+{
+    echo "Disactive";
+}
+
+?></td>
                 </tr>
                 <tr>
                     <th><?= __('Pg Id') ?></th>
                     <td><?= $this->Number->format($pgdetail->pg_id) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('No Of Room') ?></th>
-                    <td><?= $this->Number->format($pgdetail->no_of_room) ?></td>
-                </tr>
+            
                 <tr>
                     <th><?= __('Phone') ?></th>
                     <td><?= $this->Number->format($pgdetail->phone) ?></td>

@@ -36,7 +36,17 @@
                 </tr>
                 <tr>
                     <th><?= __('Status') ?></th>
-                    <td><?= h($user->status) ?></td>
+                    <td><?php
+if(h($user->status)==1)
+{
+    echo "Active";
+}
+else
+{
+    echo "Disactive";
+}
+
+?></td>
                 </tr>
                 <tr>
                     <th><?= __('User Id') ?></th>

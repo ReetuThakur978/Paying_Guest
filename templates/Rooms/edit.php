@@ -33,11 +33,11 @@
                 <legend><?= __('Edit Room available') ?></legend>
                 <?php
                     echo $this->Form->control('pg_id', ['options' => $pgdetails ,'class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('ac_noac',['class' =>'border p-3 w-100 my-2']);
+                    echo $this->Form->control('ac',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seater',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('rent',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('image',['class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('with_or_without_food',['class' =>'border p-3 w-100 my-2']);
+                    echo $this->Form->control('food_availability',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('security_charge',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('notic_period',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seates_available',['class' =>'border p-3 w-100 my-2']);

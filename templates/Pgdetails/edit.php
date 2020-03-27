@@ -37,9 +37,9 @@
                     echo $this->Form->control('location',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('address',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('area',['class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('which_gender',['class' =>'border p-3 w-100 my-2']);
+                    echo $this->Form->control('gender',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('availability',['class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('no_of_room',['class' =>'border p-3 w-100 my-2']);
+                    // echo $this->Form->control('no_of_room',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('status',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('phone',['class' =>'border p-3 w-100 my-2']);
                 ?>

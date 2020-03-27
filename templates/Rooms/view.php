@@ -31,8 +31,8 @@ $image= base64_encode (stream_get_contents($room->image));
                     <td><?= $room->has('pgdetail') ? $this->Html->link($room->pgdetail->pg_id, ['controller' => 'Pgdetails', 'action' => 'view', $room->pgdetail->pg_id]) : '' ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Ac Noac') ?></th>
-                    <td><?= h($room->ac_noac) ?></td>
+                    <th><?= __('Ac') ?></th>
+                    <td><?= h($room->ac) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Seater') ?></th>
@@ -40,12 +40,22 @@ $image= base64_encode (stream_get_contents($room->image));
                 </tr>
                 
                 <tr>
-                    <th><?= __('With Or Without Food') ?></th>
-                    <td><?= h($room->with_or_without_food) ?></td>
+                    <th><?= __('Food Availability') ?></th>
+                    <td><?= h($room->food_availability) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Status') ?></th>
-                    <td><?= h($room->status) ?></td>
+                    <td><?php
+if(h($room->status)==1)
+{
+    echo "Active";
+}
+else
+{
+    echo "Disactive";
+}
+
+?></td>
                 </tr>
                 <tr>
                     <th><?= __('Room Id') ?></th>

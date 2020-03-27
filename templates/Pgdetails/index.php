@@ -28,10 +28,10 @@
                     <th><?= $this->Paginator->sort('SrNo') ?></th>
                     <th><center><?= $this->Paginator->sort('Name') ?></center></th>
                     <th><center><?= $this->Paginator->sort('Location') ?></center></th>
-                    <th><?= $this->Paginator->sort('which_gender') ?></th>
+                    <th><?= $this->Paginator->sort('Gender') ?></th>
                     <th><?= $this->Paginator->sort('Availability') ?></th>
-                    <th><?= $this->Paginator->sort('No_of_room') ?></th>
-                     <th><?= $this->Paginator->sort('Phone') ?></th>
+                    <th><?= $this->Paginator->sort('Phone') ?></th>
+                    <th><?= $this->Paginator->sort('Status') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -44,10 +44,22 @@
                     <td><center><?= ++$counter; ?></center></td>
                     <td><center><?= $pgdetail->has('user') ? $this->Html->link($pgdetail->user->firstname, ['controller' => 'Users', 'action' => 'view', $pgdetail->user->user_id]) : '' ?></center></td>
                     <td><center><?= h($pgdetail->location) ?></center></td>
-                    <td><center><?= h($pgdetail->which_gender) ?></center></td>
+                    <td><center><?= h($pgdetail->gender) ?></center></td>
                     <td><center><?= h($pgdetail->availability) ?></center></td>
-                    <td><center><?= $this->Number->format($pgdetail->no_of_room) ?></center></td>
                     <td><?= $this->Number->format($pgdetail->phone) ?></td>
+                    <td><center>    <?php
+if(h($pgdetail->status)==1)
+{
+    echo "Active";
+}
+else
+{
+    echo "Disactive";
+}
+
+?></center></td>
+
+
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $pgdetail->pg_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pgdetail->pg_id]) ?>
