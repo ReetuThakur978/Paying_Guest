@@ -405,7 +405,8 @@
                     grow your business</h2>
                     <ul class="list-inline mt-30">
                         <li class="list-inline-item"><a class="btn btn-main" href="ad-listing.html">Add Listing</a></li>
-                        <li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Browser Listing</a></li>
+                        <?= $this->Html->link(__('Login'), ['controller'=>'Website','action' => 'login','class' => 'btn btn-secondary']) ?>
+                       <!--  <li class="list-inline-item"><a class="btn btn-secondary" href="category.html">Login</a></li> -->
                     </ul>
                 </div>
             </div>

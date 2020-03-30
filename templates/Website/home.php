@@ -7,35 +7,36 @@
 
 <body class="body-wrapper">
 
-
-<section class="page-search">
+<h3><?= h($user->firstname) ?></h3>
+<!-- <section class="page-search"> -->
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<!-- Advance Search -->
-				<div class="advance-search">
+				<!-- <div class="advance-search"> -->
 					<form>
 						<div class="form-row">
-							<div class="form-group col-md-4">
+							<!-- <div class="form-group col-md-4">
 								<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for">
 							</div>
 							<div class="form-group col-md-3">
 								<input type="text" class="form-control my-2 my-lg-0" id="inputCategory4" placeholder="Category">
-							</div>
+							</div> -->
 							<div class="form-group col-md-3">
-								<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4" placeholder="Location">
+								<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4" placeholder="Enter your Location">
 							</div>
 							<div class="form-group col-md-2">
 								
 								<button type="submit" class="btn btn-primary">Search Now</button>
 							</div>
+							<?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'button float-right']) ?>
 						</div>
 					</form>
-				</div>
+				<!-- </div> -->
 			</div>
 		</div>
 	</div>
-</section>
+<!-- </section> -->
 <section class="section-sm">
 	<div class="container">
 		<!-- <div class="row">
@@ -155,7 +156,8 @@
 				<div class="category-search-filter">
 					<div class="row">
 						<div class="col-md-6">
-							<strong>Short</strong>
+							<h3>Results :</h3><br>
+							<strong>Short by:</strong>
 							<select>
 								<option>Most Recent</option>
 								<option value="1">Most Popular</option>
@@ -191,14 +193,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 3121</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	<!-- <li class="list-inline-item">
+		    		<a href="#"><i class="fa fa-calendar"></i>About us</a>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -215,9 +217,8 @@
 </div>
 
 
-
-						</div>
-						<div class="col-sm-12 col-lg-4 col-md-6">
+	</div>
+	<div class="col-sm-12 col-lg-4 col-md-6">
 							<!-- product card -->
 <div class="product-item bg-light">
 	<div class="card">
@@ -228,14 +229,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Study Table Combo</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 3456</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
+		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -265,7 +266,7 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 1234</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
@@ -302,14 +303,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 2314</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
+		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -339,14 +340,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Study Table Combo</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 5431</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
+		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -376,14 +377,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 3245</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
+		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -413,14 +414,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 3267</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
+		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -450,14 +451,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">Study Table Combo</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 2398</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Furnitures</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
+		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -487,14 +488,14 @@
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">11inch Macbook Air</a></h4>
+		    <h4 class="card-title"><a href="single.html">House no. 1572</a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Electronics</a>
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<li class="list-inline-item">
+		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li>
+		    	</li> -->
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
