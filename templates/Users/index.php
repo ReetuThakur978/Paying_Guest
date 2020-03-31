@@ -33,7 +33,6 @@
                     <th><center><?= $this->Paginator->sort('adharcard') ?><center></th>
                     <th><center><?= $this->Paginator->sort('role') ?><center></th>   
                     <th><center><?= $this->Paginator->sort('updated') ?><center></th>
-                
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>

@@ -21,6 +21,11 @@ class UsersTable extends Table
         $this->setPrimaryKey('user_id');
 
         $this->addBehavior('Timestamp');
+
+        // $this->belongsTo('userroles', [
+        //     'foreignKey' => 'role',
+        //     'joinType' => 'INNER',
+        // ]);
     }
 
     
@@ -94,6 +99,8 @@ class UsersTable extends Table
     {
         // $rules->add($rules->isUnique(['username']));
         $rules->add($rules->isUnique(['email']));
+        // $rules->add($rules->existsIn(['role'], 'userroles'));
+
 
         return $rules;
     }

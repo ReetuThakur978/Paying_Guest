@@ -24,37 +24,40 @@ class WebsiteController extends AppController
 	}
 	public function userprofile()
 	{
-		
+
 	}
 	public function login()
 	{
 		 $this->set("title", "Login Page");
+		 $this->loadmodel('Users');
+        $user = $this->Users->find('all');
+    // $this->request->allowMethod(['get', 'post']);
+    // $result = $this->Authentication->getResult();
+    // //regardless of POST or GET, redirect if user is logged in
+    // if ($result->isValid()) {
+    //     // redirect to /articles after login success
+    //     $redirect = $this->request->getQuery('redirect', [
+    //         'controller' => 'Website',
+    //         'action' => 'home',
+    //     ]);
 
-    $this->request->allowMethod(['get', 'post']);
-    $result = $this->Authentication->getResult();
-    // regardless of POST or GET, redirect if user is logged in
-    if ($result->isValid()) {
-        // redirect to /articles after login success
-        $redirect = $this->request->getQuery('redirect', [
-            'controller' => 'Website',
-            'action' => 'home',
-        ]);
-
-        return $this->redirect($redirect);
-    }
-     $user = $this->paginate($this->Users);
+    //     return $this->redirect($redirect);
+    // }
+     
 
         $this->set(compact('user'));
 
 	}
+	   
 	   public function logout()
-{
-    $result = $this->Authentication->getResult();
-    // regardless of POST or GET, redirect if user is logged in
-    if ($result->isValid()) {
-        $this->Authentication->logout();
-        return $this->redirect(['controller' => 'Website', 'action' => 'login']);
-    }
-}
+		{
+    		$result = $this->Authentication->getResult();
+   			 // regardless of POST or GET, redirect if user is logged in
+    		if ($result->isValid()) 
+    		{
+        		$this->Authentication->logout();
+        		return $this->redirect(['controller' => 'Website', 'action' => 'login']);
+    		}
+		}
 
 }
