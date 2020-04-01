@@ -4,8 +4,21 @@
     <title><?= isset($title)?$title:""; ?></title>
 </head>
 <body>
-
-<div class="row">
+    <!-- <div class ='col-md-6'>
+        <from action="<?php echo $this->Url->build(['action'=>'search']) ?>" method="get">
+            <div class="input-group">
+                <input type="search" name="q" class="form-control"/>
+                    <div class= "input-group-prepend">
+                        <button class="btn btn-primary input-group-text" type="submit">Search</button>
+                    </div>
+                </div>
+            </from>
+        </div> -->
+       
+                    <?php
+                    echo $this->Form->control('search');
+                    ?>
+<div class="row"> 
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Menu : ') ?></h4>
@@ -22,6 +35,8 @@
     <?= $this->Html->link(__('New User'), ['action' => 'register'], ['class' => 'button float-right']) ?><br>
     <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'button float-right']) ?>
     <h3><?= __('Users') ?></h3>
+
+    <div class="table-content">
     <div class="table-responsive">
         <table border="2" cellpadding="14">
             <thead>
@@ -30,9 +45,9 @@
                     <th><?= $this->Paginator->sort('Firstame') ?></th>
                     <th><?= $this->Paginator->sort('Lastname') ?></th>
                     <th><center><?= $this->Paginator->sort('email') ?></center></th>
-                    <th><center><?= $this->Paginator->sort('adharcard') ?><center></th>
-                    <th><center><?= $this->Paginator->sort('role') ?><center></th>   
-                    <th><center><?= $this->Paginator->sort('updated') ?><center></th>
+                    <th><center><?= $this->Paginator->sort('adharcard') ?></center></th>
+                    <th><center><?= $this->Paginator->sort('role') ?></center></th>   
+                    <th><center><?= $this->Paginator->sort('updated') ?></center></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -69,5 +84,29 @@
         <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
     </div>
 </div>
+</div>
+
+<script>
+    $('document').ready(function(){
+         $('#search').keyup(function(){
+            var searchkey = $(this).val();
+            searchTags( searchkey );
+         });
+
+        function searchTags( keyword ){
+        var data = keyword;
+        $.ajax({
+                    method: 'get',
+                    url : "<?php echo $this->Url->build( [ 'controller' => 'Users', 'action' => 'search' ] ); ?>",
+                    data: {keyword:data},
+
+                    success: function( response )
+                    {       
+                       $( '.table-content' ).html(response);
+                    }
+                });
+        };
+    });
+</script>
 </body>
 </html>

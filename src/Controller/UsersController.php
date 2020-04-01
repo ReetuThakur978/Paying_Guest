@@ -23,6 +23,18 @@ class UsersController extends AppController
         $this->set(compact('users'));
     }
 
+    // public function search()
+    // {
+    //   $search=$this->request->getQuery('q'); 
+    //   $users = $this->paginate($this->Users->find()->where(function($exp,$query)use($search)
+    //     {
+    //         return $exp->like('lastname','%'.$search.'%');
+    //     }));
+
+    //     $this->set(compact('users')); 
+    // }
+
+
     
     public function view($id = null)
     {
@@ -141,4 +153,24 @@ public function login() {
         $this->Flash->error(__('Invalid username or password'));
     }
 }
+
+    public function search()
+    {
+
+        $this->request->allowMethod('ajax');
+   
+        $keyword = $this->request->query('keyword');
+
+        $query = $this->Users->find('all',[
+              'conditions' => ['lastname LIKE'=>'%'.$keyword.'%'],
+              // 'order' => ['Tags.id'=>'DESC'],
+              'limit' => 10
+        ]);
+
+        $this->set('users', $this->paginate($query));
+        $this->set('_serialize', ['users']);
+
+    }
+
+
 }

@@ -10,11 +10,18 @@
    
     
     <?= $this->element('header')?>
+    <script
+              src="https://code.jquery.com/jquery-3.3.1.js"
+              integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+              crossorigin="anonymous">
+    </script>
     <?= $this->Html->meta('icon') ?>
     <!-- link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css"> -->
     
     <?= $this->Html->css('style.css') ?>
+
+    
 
 
   <?= $this->Html->css('plugins/bootstrap/css/bootstrap.min.css') ?>
