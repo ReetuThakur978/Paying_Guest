@@ -163,7 +163,7 @@ public function login() {
 
         $query = $this->Users->find('all',[
               'conditions' => ['lastname LIKE'=>'%'.$keyword.'%'],
-              // 'order' => ['Tags.id'=>'DESC'],
+              'order' => ['Users.user_id'=>'DESC'],
               'limit' => 10
         ]);
 

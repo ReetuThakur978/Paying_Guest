@@ -6,9 +6,6 @@
 </head>
 
 <body class="body-wrapper">
-
-<h3><?= h($user->firstname) ?></h3>
-<!-- <section class="page-search"> -->
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">

@@ -15,11 +15,11 @@ class WebsiteController extends AppController
 	public function home($id = null)
 	{
 		$this->set("title", "PG website");
-		// $user = $this->Users->get($id, [
-  //           'contain' => [],
-  //       ]);
+		// $users = $this->paginate($this->Users);
 
-  //       $this->set('user', $user);
+  //       $this->set(compact('users'));
+        // $this->set('users_session', $this->getRequest->getSession()->read('Auth.User'));
+
 
 	}
 	public function userprofile()
@@ -28,26 +28,31 @@ class WebsiteController extends AppController
 	}
 	public function login()
 	{
-		 $this->set("title", "Login Page");
-		 $this->loadmodel('Users');
-        $user = $this->Users->find('all');
-    // $this->request->allowMethod(['get', 'post']);
-    // $result = $this->Authentication->getResult();
-    // //regardless of POST or GET, redirect if user is logged in
-    // if ($result->isValid()) {
-    //     // redirect to /articles after login success
-    //     $redirect = $this->request->getQuery('redirect', [
-    //         'controller' => 'Website',
-    //         'action' => 'home',
-    //     ]);
+		  $this->set("title", "Login Page");
+		 // $this->loadmodel('Users');
+                 //      $user = $this->Users->find('all');
+        $this->request->allowMethod(['get', 'post']);
+        $result = $this->Authentication->getResult();
+            //regardless of POST or GET, redirect if user is logged in
+        if ($result->isValid()) 
+        {
+        // redirect to /articles after login success
+            $redirect = $this->request->getQuery('redirect', [
+            'controller' => 'Website',
+            'action' => 'home',
+        ]);
 
-    //     return $this->redirect($redirect);
-    // }
-     
+             return $this->redirect($redirect);
+        }
+         // display error if user submitted and authentication failed
+        if ($this->request->is('post') && !$result->isValid()) {
+        $this->Flash->error(__('Invalid username or password'));
+        }
 
-        $this->set(compact('user'));
+    }
+    
 
-	}
+	
 	   
 	   public function logout()
 		{
