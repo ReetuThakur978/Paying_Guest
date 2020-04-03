@@ -21,20 +21,19 @@ class UsersController extends AppController
         $users = $this->paginate($this->Users);
 
         $this->set(compact('users'));
+// $session = $this->request->getSession();
+// $session = $this->request->getAttribute('session');
+// $userName = $session->read('Auth.Users.user_id');
+// $this->set('user_session',$userName);
+
+
+//         $this->set('user_session', 
+// $session = $this->request->getSession()
+// $session = $this->request->getAttribute('session')
+// $userName = $session->read('Auth.Users.firstname'));
+        
+
     }
-
-    // public function search()
-    // {
-    //   $search=$this->request->getQuery('q'); 
-    //   $users = $this->paginate($this->Users->find()->where(function($exp,$query)use($search)
-    //     {
-    //         return $exp->like('lastname','%'.$search.'%');
-    //     }));
-
-    //     $this->set(compact('users')); 
-    // }
-
-
     
     public function view($id = null)
     {
@@ -162,7 +161,7 @@ public function login() {
         $keyword = $this->request->query('keyword');
 
         $query = $this->Users->find('all',[
-              'conditions' => ['lastname LIKE'=>'%'.$keyword.'%'],
+              'conditions' => ['firstname LIKE'=>'%'.$keyword.'%'],
               'order' => ['Users.user_id'=>'DESC'],
               'limit' => 10
         ]);

@@ -4,6 +4,9 @@
     <title><?= isset($title)?$title:""; ?></title>
 </head>
 <body>
+
+
+ 
     <!-- <div class ='col-md-6'>
         <from action="<?php echo $this->Url->build(['action'=>'search']) ?>" method="get">
             <div class="input-group">
@@ -97,7 +100,7 @@
         var data = keyword;
         $.ajax({
                     method: 'get',
-                    url : "<?php echo $this->Url->build( [ 'controller' => 'Users', 'action' => 'search' ] ); ?>",
+                    url : "<?php echo $this->Url->build( [ 'controller' => 'Users', 'action' => 'Search' ] ); ?>",
                     data: {keyword:data},
 
                     success: function( response )

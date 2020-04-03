@@ -19,11 +19,26 @@ class WebsiteController extends AppController
 
   //       $this->set(compact('users'));
         // $this->set('users_session', $this->getRequest->getSession()->read('Auth.User'));
-
+        // 
+       
 
 	}
 	public function userprofile()
 	{
+        $this->set("title", "Edit Profile");
+        // $user = $this->Users->newEntity();
+        // if ($this->request->is('post')) {
+        //     // $room = $this->Rooms->patchEntity($room, $this->request->getData());
+        //     $myname= $this->request->getData()['file']['image'];
+        //     $mytmp= $this->request->getData()['file']['tmp_name'];
+        //     $file=$this->Users->newEntity();
+        //     $file->image=$myname;
+        //     if(move_uploaded_file($mytmp, $myname)){
+        //         $this->Users->save($file);
+        //         return $this->redirect(['action'=>'userprofile']);
+        //     }
+        // }
+            
 
 	}
 	public function login()

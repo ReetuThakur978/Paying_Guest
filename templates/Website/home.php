@@ -3,14 +3,20 @@
 <head> 
 	<?= $this->Html->charset() ?>
  <title><?= isset($title)?$title:""; ?></title>
+ <style type="text/css">
+ 	.right{dislpay:inline; float:right}
+.right button{margin-right:50px}
+ </style>
 </head>
-
+<h3>Welcome:-
+<?php
+$name = $this->getRequest()->getSession()->read('Auth.firstname');
+echo $name;
+?></h3> 
 <body class="body-wrapper">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<!-- Advance Search -->
-				<!-- <div class="advance-search"> -->
 					<form>
 						<div class="form-row">
 							<!-- <div class="form-group col-md-4">
@@ -24,15 +30,23 @@
 							</div>
 							<div class="form-group col-md-2">
 								
-								<button type="submit" class="btn btn-primary">Search Now</button>
-							</div>
-							<?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'button float-right']) ?>
+								<button type="submit" class="btn btn-primary">Search Now</button><br><br>
+
+									</div>
+                                 <div class="right"> 
+			 	                      <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'btn btn-primary']) ?>
+							          <?= $this->html->link(__('Edit Profile') ,['action'=>'userprofile'],['class'=>'btn btn-primary']); ?>
+                                 </div>		
 						</div>
+
 					</form>
 				<!-- </div> -->
 			</div>
+
 		</div>
 	</div>
+	
+			 	
 <!-- </section> -->
 <section class="section-sm">
 	<div class="container">
