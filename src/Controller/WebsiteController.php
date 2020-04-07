@@ -38,9 +38,15 @@ class WebsiteController extends AppController
         //         return $this->redirect(['action'=>'userprofile']);
         //     }
         // }
-            
-
+         
 	}
+    public function contactus()
+    {
+        $this->set("title", "Contact us");
+
+    }
+
+
 	public function login()
 	{
 		  $this->set("title", "Login Page");

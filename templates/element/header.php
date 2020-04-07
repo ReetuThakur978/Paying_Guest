@@ -48,22 +48,27 @@
 								</div>
 							</li>
 							<li class="nav-item dropdown dropdown-slide">
-								<a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Contact us <!-- <span><i class="fa fa-angle-down"></i></span> -->
-								</a>
-								<!-- Dropdown list -->
-								<!-- <div class="dropdown-menu">
-									<a class="dropdown-item" href="category.html">Ad-Gird View</a>
-									<a class="dropdown-item" href="ad-listing-list.html">Ad-List View</a>
-								</div> -->
+								<?= $this->Html->link(__('Contact us'), ['controller'=>'Website','action' => 'contactus'], ['class' => 'nav-link']) ?>
 							</li>
 						</ul>
 						<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
-								<a class="nav-link login-button" href="login.php">Login</a>
+								<!-- <a class="nav-link login-button" href="login.php">Login</a> -->
+								<?php if(!$email): ?>
+								<?= $this->Html->link(__('Login'), ['controller'=>'Users','action' => 'login'], ['class' => 'nav-link login-button']) ?>
+							<?php endif; ?>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="register.php">Registeration Page</a>
+								<!-- <a class="nav-link text-white add-button" href="register.php">Registeration Page</a> -->
+								<?php if(!$email): ?>
+								<?= $this->Html->link(__('Registeration Page'), ['controller'=>'Users','action' => 'register'], ['class' => 'nav-link text-white add-button']) ?>
+							<?php endif; ?>	
+							</li>
+							<li class="nav-item">
+								<!-- <a class="nav-link text-white add-button" href="register.php">Registeration Page</a> -->
+								<?php if($email): ?>
+								<?= $this->Html->link(__('Logout'), ['controller'=>'Users','action' => 'logout'], ['class' => 'nav-link text-white add-button']) ?>
+							<?php endif; ?>	
 							</li>
 						</ul>
 					</div>

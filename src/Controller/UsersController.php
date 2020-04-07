@@ -17,9 +17,9 @@ class UsersController extends AppController
     
     public function index()
     {
+        
         $this->set("title", "Users List");
         $users = $this->paginate($this->Users);
-
         $this->set(compact('users'));
 // $session = $this->request->getSession();
 // $session = $this->request->getAttribute('session');
@@ -56,6 +56,21 @@ class UsersController extends AppController
         	
             	$user = $this->Users->newEntity($this->request->getData());
             	
+                if(!$user->getErrors){
+                    $image = $this->request->getData('image_file');
+
+                    $name  = $image->getClientFilename();
+
+                    // if( !is_dir(WWW_ROOT.'img'.DS.'user-img') )
+                    // mkdir(WWW_ROOT.'img'.DS.'user-img',0775);
+                
+                     $targetPath = WWW_ROOT.'img'.DS.$name;
+
+                    if($name)
+                    $image->moveTo($targetPath);
+                
+                    $user->image = $name;
+                }
 
             		if ($this->Users->save($user)) 
             		{
@@ -70,7 +85,7 @@ class UsersController extends AppController
            		'valueField' => 'user_rolename'
         		]);
         	$this->set('roles', $roles);
-
+        
         	$this->set(compact('user'));
             $this->set("register", "Registration Page");
 
@@ -171,5 +186,22 @@ public function login() {
 
     }
 
+ public function userStatus($id=null,$status)
+{
+    $this->request->allowMethod(['post']);
+    $user=$this->Users->get($id);
 
+    if($status == 1)
+        $user->status = 0;
+    else
+       $user->status = 1; 
+
+   if($this->Users->save($user))
+   {
+    // $this->Flash->success(__('The status has been changed'));
+    return $this->redirect(['action'=>'index']);
+   }
+   // return $this->redirect(['action'=>'index']);
+    
+}
 }

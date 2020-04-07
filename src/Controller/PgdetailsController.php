@@ -10,12 +10,21 @@ class PgdetailsController extends AppController
     public function index()
     {
         $this->set("title", "PG owner");
+        $key = $this->request->getQuery('key');
+        if($key){
+            $query = $this->Pgdetails->findByLocation($key);
+        }else{
+            $query = $this->Pgdetails;
+        }
+
         $this->paginate = [
             'contain' => ['Users'],
         ];
-        $pgdetails = $this->paginate($this->Pgdetails);
+        $pgdetails = $this->paginate($query);
 
         $this->set(compact('pgdetails'));
+
+
     }
 
     
@@ -80,4 +89,22 @@ class PgdetailsController extends AppController
 
     //     return $this->redirect(['action' => 'index']);
     // }
+
+    public function userStatus($id=null,$status)
+{
+    $this->request->allowMethod(['post']);
+    $pgdetail=$this->Pgdetails->get($id);
+
+    if($status == 1)
+        $pgdetail->status = 0;
+    else
+       $pgdetail->status = 1; 
+
+   if($this->Pgdetails->save($pgdetail))
+   {
+    // $this->Flash->success(__('The status has been changed'));
+    return $this->redirect(['action'=>'index']);
+   }
+  
+}
 }

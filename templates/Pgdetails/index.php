@@ -2,8 +2,16 @@
 <html>
 <head>
     <title><?= isset($title)?$title:""; ?></title>
+     
 </head>
 <body>
+
+ <?= $this->Form->create(null,['type'=>'get']) ?>
+ <div class="form-group col-md-3">
+    <?= $this->Form->input('key',['label'=>'Search','placeholder'=>'Enter your Location','class'=>'form-control my-2 my-lg-0','value'=>$this->request->getQuery('key')]) ?></div>
+    <div class="form-group col-md-2">
+    <?= $this->Form->button('Search',['class'=>'btn btn-primary input-group-text']) ?></div>
+    <?= $this->Form->end() ?>
     <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -63,7 +71,11 @@ else
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $pgdetail->pg_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pgdetail->pg_id]) ?>
-                        <?= $this->Form->postLink(__('Block'), ['action' => 'delete', $pgdetail->pg_id], ['confirm' => __('Are you sure you want to delete # {0}?', $pgdetail->pg_id)]) ?>
+                         <?php if($pgdetail->status==1): ?>
+                        <?= $this->Form->postLink(__('Block'), ['action' => 'userStatus', $pgdetail->pg_id,$pgdetail->status], ['confirm' => __('Are you sure you want to block # {0}?', $pgdetail->pg_id)]) ?>
+                        <?php else : ?>
+                        <?= $this->Form->postLink(__('Unblock'), ['action' => 'userStatus', $pgdetail->pg_id,$pgdetail->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $pgdetail->pg_id)]) ?>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

@@ -20,6 +20,7 @@ class User extends Entity
         'created' => true,
         'updated' => true,
         'phone' => true,
+        'image'=>true,
         // 'confirm_password' => true,
     ];
 

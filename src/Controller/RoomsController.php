@@ -10,12 +10,17 @@ class RoomsController extends AppController
     public function index()
     {
         $this->set("title", "Room available");
+        $key = $this->request->getQuery('key');
+        if($key){
+            $query = $this->Rooms->findByRentOrSeater($key,$key);
+        }else{
+            $query = $this->Rooms;
+        }
         $this->paginate = [
             'contain' => ['Pgdetails'],
         ];
-        $rooms = $this->paginate($this->Rooms);
-
-
+       
+        $rooms = $this->paginate($query);
         $this->set(compact('rooms'));
     }
 
@@ -98,17 +103,22 @@ class RoomsController extends AppController
     //     return $this->redirect(['action' => 'index']);
     // }
 
-    public function block($id = null)
-     {
-         $room = $this->Rooms->get($status);
-         if($room==1)
-         {
-            echo"block";
-         }
-         else
-         {
-            echo "unblock";
-         }
-     }
+    public function userStatus($id=null,$status)
+{
+    $this->request->allowMethod(['post']);
+    $room=$this->Rooms->get($id);
+
+    if($status == 1)
+        $room->status = 0;
+    else
+       $room->status = 1; 
+
+   if($this->Rooms->save($room))
+   {
+    // $this->Flash->success(__('The status has been changed'));
+    return $this->redirect(['action'=>'index']);
+   }
+  
+}
 
 }

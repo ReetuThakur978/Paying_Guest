@@ -3,6 +3,13 @@
 <head>
     <title><?= isset($title)?$title:""; ?></title>
 </head>
+ <?= $this->Form->create(null,['type'=>'get']) ?>
+ <div class="form-group col-md-3">
+    <?= $this->Form->input('key',['label'=>'Search','placeholder'=>'Enter Rent or Seaters','class'=>'form-control my-2 my-lg-0','value'=>$this->request->getQuery('key')]) ?></div>
+    <div class="form-group col-md-2">
+    <?= $this->Form->button('Search',['class'=>'btn btn-primary input-group-text']) ?></div>
+    <?= $this->Form->end() ?>
+
 <body>
   <div class="row">
     <aside class="column">
@@ -59,10 +66,14 @@ else
 ?></center></td>
 
 
-                                        <td class="actions">
+                        <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $room->room_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $room->room_id]) ?>
-                       <?= $this->Html->link(__('Block'), ['action' => 'block', $room->room_id]) ?>
+                      <?php if($room->status==1): ?>
+                        <?= $this->Form->postLink(__('Block'), ['action' => 'userStatus', $room->room_id,$room->status], ['confirm' => __('Are you sure you want to block # {0}?', $room->room_id)]) ?>
+                        <?php else : ?>
+                        <?= $this->Form->postLink(__('Unblock'), ['action' => 'userStatus', $room->room_id,$room->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $room->room_id)]) ?>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

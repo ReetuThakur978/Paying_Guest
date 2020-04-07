@@ -7,6 +7,7 @@ $name = $this->getRequest()->getSession()->read('Auth.firstname');
 $email= $this->getRequest()->getSession()->read('Auth.email');
 $phone= $this->getRequest()->getSession()->read('Auth.phone');
 $lastname = $this->getRequest()->getSession()->read('Auth.lastname');
+$image = $this->getRequest()->getSession()->read('Auth.image');
 // echo $name;
 ?>
 <section class="user-profile section">
@@ -18,12 +19,12 @@ $lastname = $this->getRequest()->getSession()->read('Auth.lastname');
                     <div class="widget user">
                         <!-- User Image -->
                         <div class="image d-flex justify-content-center">
-                            <img src="images/user/blank.jpg" alt="" class="">
+                            <?= $image; ?>
                         </div>
                         <!-- User Name -->
                         <h5 class="text-center"><?php echo $name .' '. $lastname; ?></h5>
-                       <!-- <?= $this->Form->create($user,['type'=>'file', 'id'=>'form']); ?> -->
-                        <?=$this->Form->input('image',['class' =>'' ,'type'=>'file']); ?>
+                       <!--  -->
+                        <?=$this->Form->input('image',['type'=>'file']); ?>
                         <?= $this->Form->button('Upload image',['class'=>'']); ?>
                          <?= $this->Form->end() ?>
                     </div>

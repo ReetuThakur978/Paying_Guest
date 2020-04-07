@@ -115,9 +115,7 @@ function validate()
     </aside>
     <div class="column-responsive column-80">
         <div class="users form content">
-            <?= $this->Form->create($user, array('name' => 'myForm', 
-            'onsubmit'=>' return validate()',
-        )) ?>
+            <?= $this->Form->create($user, array('name' => 'myForm','type'=>'file' ,'onsubmit'=>' return validate()', )) ?>
             <fieldset> 
                
                  <?php
@@ -131,11 +129,8 @@ function validate()
                                 echo $this->Form->text('phone', ['name' => 'phone' , 'placeholder'=>'Enter your phone number', 'class' =>'border p-3 w-100 my-2' , 'id'=>'pass']);
                                
                                 echo $this->Form->select('role',$roles,['empty' => 'Select Role','class' =>'border p-3 w-100 my-2']);
-                                 echo $this->Form->input('upload', array('type'=>'file','class' =>'border p-3 w-100 my-2'));
-
-                        
+                                 echo $this->Form->control('image_file', array('type'=>'file','class' =>'border p-3 w-100 my-2'));
                                 ?>
-
 
                                 <div class="loggedin-forgot d-inline-flex my-3">
                                         <input type="checkbox" id="registering" class="mt-1">
@@ -144,10 +139,8 @@ function validate()
                                <center> <?= $this->Form->button('Submit' ,['name'=>'submit','class'=>'d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold']); ?></center>
 
                             </fieldset>
-
            
                                       <?= $this->Form->end() ?>
-        
                          </div>
                    </div>
                 </div>
