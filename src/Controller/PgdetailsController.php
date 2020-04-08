@@ -52,7 +52,11 @@ class PgdetailsController extends AppController
             }
             $this->Flash->error(__('The pgdetail could not be saved. Please, try again.'));
         }
-        $users = $this->Pgdetails->Users->find('list', ['limit' => 200]);
+        // $users = $this->Pgdetails->Users->find('list', ['limit' => 200]);
+        $users = $this->Pgdetails->Users->find('list', [ 
+                'keyField' => 'user_id',
+                'valueField' => 'firstname'
+                ]);
         $this->set(compact('pgdetail', 'users'));
     }
 

@@ -4,8 +4,11 @@
     <title><?= isset($title)?$title:""; ?></title>
 </head>
 <body>
+<?php
+$id = $this->getRequest()->getSession()->read('Auth.user_id');
 
- <h3><?= $this->Html->link(__('View Profile'), ['controller'=>'Pgowner','action' => 'viewprofile'], ['class' => 'side-nav-item']) ?><br><br></h3>
+?>
+
 <div class="row"> 
     <aside class="column">
         <div class="side-nav">
@@ -20,7 +23,7 @@
     </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
     
 <div class="rooms index content">
-<h3><?= __('Results for : All transient guest') ?></h3>
+
      <div class="table-responsive">
         <table border="2" cellpadding="10">
             <thead>
@@ -40,7 +43,7 @@
                <tr>
                
                  <?php foreach ($users as $user): ?>
- <?php if($user->role==2): ?>
+ <?php if($user->role==1 && $user->user_id == $id): ?>
                 <td><center><?= ++$counter; ?></center></td>
                 <td><center><?= h($user->firstname) ?></center></td>
 <td><?= @$this->Html->image($user->image,['style'=>'max-width:50px;height:50px;border-radius:50%;']) ?></td>
@@ -49,13 +52,9 @@
 
                 <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
-                       
+                        <?= $this->Html->link(__('Edit'), ['action' => 'pgedit', $user->user_id]) ?>
 
-                         <?php if($user->status==1): ?>
-                        <?= $this->Form->postLink(__('Block'), ['action' => 'transientStatus', $user->user_id,$user->status], ['confirm' => __('Are you sure you want to block # {0}?', $user->user_id)]) ?>
-                        <?php else : ?>
-                        <?= $this->Form->postLink(__('Unblock'), ['action' => 'transientStatus', $user->user_id,$user->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $user->user_id)]) ?>
-                        <?php endif; ?>
+                        
                     </td>
  <?php endif; ?>
 </tr>

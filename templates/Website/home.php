@@ -34,7 +34,7 @@ echo $name;
 
 									</div>
                                  <div class="right"> 
-			 	                      <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'btn btn-primary']) ?>
+			 	                      <!-- <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'btn btn-primary']) ?> -->
 							          <?= $this->html->link(__('Edit Profile') ,['action'=>'userprofile'],['class'=>'btn btn-primary']); ?>
                                  </div>		
 						</div>

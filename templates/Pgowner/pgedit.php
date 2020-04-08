@@ -5,7 +5,7 @@
 </head>
 <body>
 
-
+<h3><?= $this->Html->link(__('View Profile'), ['controller'=>'Pgowner','action' => 'viewprofile'], ['class' => 'side-nav-item']) ?><br><br></h3>
 <div class="row">
     <aside class="column">
         <div class="side-nav">
@@ -14,8 +14,8 @@
             <?= $this->Html->link(__('My PGs'), ['controller'=>'Pgowner','action' => 'mypg'], ['class' => 'side-nav-item']) ?><br><br>
             <!--  -->
             <?= $this->Html->link(__('All transient guest'), ['controller'=>'Pgowner','action' => 'transient'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Add new PG'), ['action' => ''], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Room available'), ['action' => ''], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Add new PG'), ['controller'=>'Pgowner','action' => 'addnewpg'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Room available'), ['controller'=>'Pgowner','action' => 'roomavailable'], ['class' => 'side-nav-item']) ?>
                     </div>
 </aside>
 </div>

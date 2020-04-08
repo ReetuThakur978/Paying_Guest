@@ -34,7 +34,7 @@ $role = $this->getRequest()->getSession()->read('Auth.role');
 
 <div class="pgdetails index content">
     
-    <h3><?= __('Results for : My PGs') ?></h3>    
+    <h3><?= __('Results for : Room available ') ?></h3>    
     <div class="table-responsive">
         <table border="2" cellpadding="10">
             <thead>
@@ -52,7 +52,7 @@ $role = $this->getRequest()->getSession()->read('Auth.role');
             <tbody>
                 <?php $counter = 0;?>
                 <?php foreach ($pgdetails as $pgdetail): ?>
-                    <?php if($role == 1 && $pgdetail->owner_id == $id): ?>
+                    <?php if($pgdetail->availability > 0 && $role==1 && $pgdetail->owner_id == $id): ?>
                 <tr>
                     <!-- <td><?= $this->Number->format($pgdetail->pg_id) ?></td>
                     <td><?= $pgdetail->has('user') ? $this->Html->link($pgdetail->user->name, ['controller' => 'Users', 'action' => 'view', $pgdetail->user->user_id]) : '' ?></td> -->
@@ -76,14 +76,11 @@ else
 
 
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'mypgview', $pgdetail->pg_id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'mypgedit', $pgdetail->pg_id]) ?>
-                         <?php if($pgdetail->status==1): ?>
-                        <?= $this->Form->postLink(__('Block'), ['action' => 'userStatus', $pgdetail->pg_id,$pgdetail->status], ['confirm' => __('Are you sure you want to block # {0}?', $pgdetail->pg_id)]) ?>
-                        <?php else : ?>
-                        <?= $this->Form->postLink(__('Unblock'), ['action' => 'userStatus', $pgdetail->pg_id,$pgdetail->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $pgdetail->pg_id)]) ?>
-                        <?php endif; ?>
+                        <?= $this->Html->link(__('View'), ['action' => 'viewroom', $pgdetail->pg_id]) ?>
+                     
+                        
                     </td>
+                    
                      <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
