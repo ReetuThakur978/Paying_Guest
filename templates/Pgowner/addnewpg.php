@@ -43,7 +43,7 @@
                     echo $this->Form->control('phone',['class' =>'border p-3 w-100 my-2']);
                 ?>
            
-            <center><?= $this->Form->button(__('Submit',['class'=>'btn btn-primary input-group-text'])) ;?></center>
+            <center><?= $this->Form->button('Submit',['class'=>'btn btn-primary']) ;?></center>
              </fieldset>
             <?= $this->Form->end() ?>
         </div>

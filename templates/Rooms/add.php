@@ -31,8 +31,8 @@
                     echo $this->Form->control('pg_id', ['options' => $pgdetails ,'class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seater',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('rent',['class' =>'border p-3 w-100 my-2']);
-                    echo 'Choose Image:- '.'<br>';
-                    echo $this->Form->input('image',['class' =>'border p-3 w-100 my-2' ,'type'=>'file']); 
+                    // echo 'Choose Image:- '.'<br>';
+                     echo $this->Form->control('image_file', array('type'=>'file','class' =>'border p-3 w-100 my-2'));
                     echo $this->Form->control('security_charge',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('notic_period',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seates_available',['class' =>'border p-3 w-100 my-2']);

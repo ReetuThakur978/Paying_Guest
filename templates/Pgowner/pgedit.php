@@ -28,14 +28,14 @@
     
     <div class="column-responsive column-80">
         <div class="users form content">
-            <?= $this->Form->create($user) ?>
+            <?= $this->Form->create($user,['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Edit Profile') ?></legend>
                 <?php
                     echo $this->Form->control('firstname', ['name' => 'firstname' , 'placeholder'=>'Enter your name', 'class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('lastname',['name' => 'lastname' , 'placeholder'=>'Enter your Username', 'class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('email', ['name' => 'email' , 'placeholder'=>'Enter your email', 'class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('password', ['name' => 'password' , 'placeholder'=>'Enter your password', 'class' =>'border p-3 w-100 my-2']);
+                    echo $this->Form->control('change_image',['type'=>'file' , 'class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter you adhar card number', 'class' =>'border p-3 w-100 my-2']);
                     // ?echo $this->Form->control('role');
                     //echo $this->Form->control('status');

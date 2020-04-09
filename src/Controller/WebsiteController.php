@@ -15,11 +15,21 @@ class WebsiteController extends AppController
 	public function home($id = null)
 	{
 		$this->set("title", "PG website");
-		// $users = $this->paginate($this->Users);
+        $this->loadModel('Pgdetails');
+        $this->loadModel('Rooms');
 
-  //       $this->set(compact('users'));
-        // $this->set('users_session', $this->getRequest->getSession()->read('Auth.User'));
-        // 
+		$room = $this->Rooms->find('all');
+        
+
+        // $room = $this->paginate($this->Rooms);
+        // print_r($room) ;
+        // exit;
+        // // $room = $this->Rooms->get([
+        // //     'contain' => ['Pgdetails'],
+        // ]);
+
+
+        $this->set('rooms', $room);
        
 
 	}

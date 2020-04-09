@@ -61,15 +61,15 @@ class UsersController extends AppController
 
                     $name  = $image->getClientFilename();
 
-                    // if( !is_dir(WWW_ROOT.'img'.DS.'user-img') )
-                    // mkdir(WWW_ROOT.'img'.DS.'user-img',0775);
+                    if( !is_dir(WWW_ROOT.'img'.DS.'user-img') )
+                    mkdir(WWW_ROOT.'img'.DS.'user-img',0775);
                 
                      $targetPath = WWW_ROOT.'img'.DS.$name;
 
                     if($name)
                     $image->moveTo($targetPath);
                 
-                    $user->image = $name;
+                    $user->image = 'user-img/'.$name;
                 }
 
             		if ($this->Users->save($user)) 

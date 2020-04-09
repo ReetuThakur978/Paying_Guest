@@ -19,6 +19,9 @@ echo $name;
 			<div class="col-md-12">
 					<form>
 						<div class="form-row">
+
+ 
+
 							<!-- <div class="form-group col-md-4">
 								<input type="text" class="form-control my-2 my-lg-0" id="inputtext4" placeholder="What are you looking for">
 							</div>
@@ -191,6 +194,15 @@ echo $name;
 						</div>
 					</div>
 				</div>
+
+
+
+<?php foreach ($rooms as $room): ?>
+	
+	
+				
+
+
 				<div class="product-grid-list">
 					<div class="row mt-30">
 						<div class="col-sm-12 col-lg-4 col-md-6">
@@ -200,7 +212,9 @@ echo $name;
 		<div class="thumb-content">
 			<!-- <div class="price">$200</div> -->
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+				<!-- <img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap"> -->
+				<td><?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?></td>
+				
 			</a>
 		</div>
 		<div class="card-body">
@@ -226,17 +240,17 @@ echo $name;
 		</div>
 	</div>
 </div>
-
-
 	</div>
+	<?php endforeach; ?>
+<!-- 
 	<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
+				
 			</a>
 		</div>
 		<div class="card-body">
@@ -245,9 +259,7 @@ echo $name;
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li> -->
+		    	
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -267,13 +279,13 @@ echo $name;
 
 						</div>
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
+				
 			</a>
 		</div>
 		<div class="card-body">
@@ -304,13 +316,13 @@ echo $name;
 
 						</div>
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+				
 			</a>
 		</div>
 		<div class="card-body">
@@ -319,9 +331,7 @@ echo $name;
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li> -->
+		    	
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -341,14 +351,13 @@ echo $name;
 
 						</div>
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
-			</a>
+							</a>
 		</div>
 		<div class="card-body">
 		    <h4 class="card-title"><a href="single.html">House no. 5431</a></h4>
@@ -356,9 +365,7 @@ echo $name;
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li> -->
+		    	
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -378,13 +385,13 @@ echo $name;
 
 						</div>
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
+				
 			</a>
 		</div>
 		<div class="card-body">
@@ -393,9 +400,7 @@ echo $name;
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li> -->
+		    	
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -410,16 +415,18 @@ echo $name;
 		</div>
 	</div>
 </div>
+</div> -->
+	
+					
 
 
-
-						</div>
+<!-- 
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
 				<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
 			</a>
@@ -430,9 +437,7 @@ echo $name;
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li> -->
+		    	
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -452,11 +457,11 @@ echo $name;
 
 						</div>
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
 				<img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
 			</a>
@@ -467,9 +472,9 @@ echo $name;
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
+		    	<li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li> -->
+		    	</li>
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -489,11 +494,11 @@ echo $name;
 
 						</div>
 						<div class="col-sm-12 col-lg-4 col-md-6">
-							<!-- product card -->
+							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			
 			<a href="single.html">
 				<img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
 			</a>
@@ -504,9 +509,7 @@ echo $name;
 		    	<li class="list-inline-item">
 		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>26th December</a>
-		    	</li> -->
+		    	
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -520,7 +523,7 @@ echo $name;
 		    </div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 

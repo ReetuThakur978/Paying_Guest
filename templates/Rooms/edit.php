@@ -28,7 +28,7 @@
 
     <div class="column-responsive column-80">
         <div class="rooms form content">
-            <?= $this->Form->create($room) ?>
+            <?= $this->Form->create($room,['type' => 'file']) ?>
             <fieldset>
                 <legend><?= __('Edit Room available') ?></legend>
                 <?php
@@ -36,7 +36,7 @@
                     echo $this->Form->control('ac',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('seater',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('rent',['class' =>'border p-3 w-100 my-2']);
-                    echo $this->Form->control('image',['class' =>'border p-3 w-100 my-2']);
+                    echo $this->Form->control('change_image',['type'=>'file','class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('food_availability',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('security_charge',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('notic_period',['class' =>'border p-3 w-100 my-2']);

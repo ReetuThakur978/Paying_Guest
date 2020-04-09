@@ -15,14 +15,15 @@
             <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <?= $this->Html->link(__('New PG request'), ['action' => ''], ['class' => 'side-nav-item']) ?>        </div>
     </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <?php
+    <!-- <?php
 $image= base64_encode (stream_get_contents($room->image));
-?>
+?> -->
     <div class="column-responsive column-80">
         <div class="rooms view content">
             <center>  <h3><?= __('View : Rooms available') ?></h3><br><br>
           <tr>
-                    <td><?='<img src="data:image/jpeg;base64,'.$image.'"/>'?></td>
+                    <!-- <td><?='<img src="data:image/jpeg;base64,'.$image.'"/>'?></td> -->
+                    <td><?= $this->Html->image($room->image) ?></td>
                 </tr>
             <h3><?= h($room->pgdetail->address) ?></h3></center><br>
             <table border="3" cellpadding="5">

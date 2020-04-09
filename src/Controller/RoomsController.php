@@ -42,21 +42,39 @@ class RoomsController extends AppController
         $room = $this->Rooms->newEmptyEntity();
         if ($this->request->is('post')) {
             // $room = $this->Rooms->patchEntity($room, $this->request->getData());
-            $imgdata= $this->request->getData('image');
-            $tem= $imgdata->getStream()->getMetadata('uri');
-            $img=file_get_contents($tem);
-            $num['pg_id']=$this->request->getData('pg_id');
-            $num['ac']=$this->request->getData('ac');
-            $num['seater']=$this->request->getData('seater');
-            $num['rent']=$this->request->getData('rent');
-            $num['food_availability']=$this->request->getData('food_availability');
-            $num['security_charge']=$this->request->getData('security_charge');
-            $num['notic_period']=$this->request->getData('notic_period');
-            $num['seates_available']=$this->request->getData('seates_available');
-            $num['status']=$this->request->getData('status'); 
-            $num['image']=$img;
+            // $imgdata= $this->request->getData('image');
+            // $tem= $imgdata->getStream()->getMetadata('uri');
+            // $img=file_get_contents($tem);
+            // $num['pg_id']=$this->request->getData('pg_id');
+            // $num['ac']=$this->request->getData('ac');
+            // $num['seater']=$this->request->getData('seater');
+            // $num['rent']=$this->request->getData('rent');
+            // $num['food_availability']=$this->request->getData('food_availability');
+            // $num['security_charge']=$this->request->getData('security_charge');
+            // $num['notic_period']=$this->request->getData('notic_period');
+            // $num['seates_available']=$this->request->getData('seates_available');
+            // $num['status']=$this->request->getData('status'); 
+            // $num['image']=$img;
 
-                $room = $this->Rooms->newEntity($num);
+            //     $room = $this->Rooms->newEntity($num);
+
+            $room = $this->Rooms->patchEntity($room, $this->request->getData());
+
+            if(!$room->getErrors){
+                    $image = $this->request->getData('image_file');
+
+                    $name  = $image->getClientFilename();
+
+                    if( !is_dir(WWW_ROOT.'img'.DS.'pg-img') )
+                mkdir(WWW_ROOT.'img'.DS.'pg-img',0775);
+                
+                $targetPath = WWW_ROOT.'img'.DS.'pg-img'.DS.$name;
+
+                    if($name)
+                    $image->moveTo($targetPath);
+                
+                    $room->image = 'pg-img/'.$name;
+                }
 
             if ($this->Rooms->save($room)) {
                 $this->Flash->success(__('The room has been saved.'));
@@ -73,11 +91,37 @@ class RoomsController extends AppController
     public function edit($id = null)
     {
         $this->set("title", "Edit Room available");
-        $room = $this->Rooms->get($id, [
-            'contain' => [],
-        ]);
+        $room = $this->Rooms->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $room = $this->Rooms->patchEntity($room, $this->request->getData());
+
+
+            if (!$room->getErrors) {
+                $image = $this->request->getData('change_image');
+  
+                $name  = $image->getClientFilename();
+                
+                if ($name){
+                    if (!is_dir(WWW_ROOT . 'img' . DS . 'pg-img'))
+                        mkdir(WWW_ROOT . 'img' . DS . 'pg-img', 0775);
+
+                    $targetPath = WWW_ROOT . 'img' . DS . 'pg-img' . DS . $name;
+
+
+                    $image->moveTo($targetPath);
+
+                    $imgpath = WWW_ROOT . 'img' . DS . $room->image;
+                    if (file_exists($imgpath)) {
+                        unlink($imgpath);
+                    }
+                    
+                    $room->image = 'pg-img/' . $name;
+                }
+
+                
+            }
+
+
             if ($this->Rooms->save($room)) {
                 $this->Flash->success(__('The room has been saved.'));
 

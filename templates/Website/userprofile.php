@@ -8,7 +8,7 @@ $email= $this->getRequest()->getSession()->read('Auth.email');
 $phone= $this->getRequest()->getSession()->read('Auth.phone');
 $lastname = $this->getRequest()->getSession()->read('Auth.lastname');
 $image = $this->getRequest()->getSession()->read('Auth.image');
-// echo $name;
+// echo $image;
 ?>
 <section class="user-profile section">
     <div class="container">
@@ -19,7 +19,8 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                     <div class="widget user">
                         <!-- User Image -->
                         <div class="image d-flex justify-content-center">
-                            <?= $image; ?>
+                            
+                            <?= $this->Html->image($image) ?>
                         </div>
                         <!-- User Name -->
                         <h5 class="text-center"><?php echo $name .' '. $lastname; ?></h5>
@@ -35,7 +36,7 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                 <!-- Edit Profile Welcome Text -->
                 <div class="widget welcome-message">
                     <h2>Edit profile</h2>
-                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p> -->
+                    
                 </div>
                 <!-- Edit Personal Info -->
                 <div class="row">
