@@ -179,7 +179,7 @@ echo $name;
 								<option value="4">Highest Price</option>
 							</select>
 						</div>
-						<div class="col-md-6">
+						<!-- <div class="col-md-6">
 							<div class="view">
 								<strong>Views</strong>
 								<ul class="list-inline view-switcher">
@@ -191,37 +191,36 @@ echo $name;
 									</li>
 								</ul>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 
 
 
-<?php foreach ($rooms as $room): ?>
-	
-	
-				
-
-
 				<div class="product-grid-list">
 					<div class="row mt-30">
+						
+						<?php foreach ($rooms as $room): ?>
+                        <?php if($room->image <= 8): ?>
+						
 						<div class="col-sm-12 col-lg-4 col-md-6">
+
+
 							<!-- product card -->
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+			<div class="price">Rs: <?= $this->Number->format($room->rent) ?></div> 
 			<a href="single.html">
-				<!-- <img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap"> -->
-				<td><?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?></td>
-				
+				<?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?>
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><a href="single.html">House no. 3121</a></h4>
+		    <h4 class="card-title"><?= h($room->pgdetails->$details) ?> </a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
+		    		<!-- <a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a> -->
+		    		<?= $this->Html->link(__('About PG'), ['controller'=>'Rooms','action' => 'view'], ['class' => 'side-nav-item']) ?> 
 		    	</li>
 		    	<!-- <li class="list-inline-item">
 		    		<a href="#"><i class="fa fa-calendar"></i>About us</a>
@@ -240,9 +239,13 @@ echo $name;
 		</div>
 	</div>
 </div>
-	</div>
-	<?php endforeach; ?>
-<!-- 
+</div>
+<?php endif; ?>	
+<?php endforeach; ?>
+
+	<!-- 
+					
+
 	<div class="col-sm-12 col-lg-4 col-md-6">
 							
 <div class="product-item bg-light">
@@ -250,7 +253,8 @@ echo $name;
 		<div class="thumb-content">
 			
 			<a href="single.html">
-				
+				<?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?>
+			<?= $this->Number->format($room->rent) ?>
 			</a>
 		</div>
 		<div class="card-body">
@@ -274,18 +278,17 @@ echo $name;
 		</div>
 	</div>
 </div>
+</div>
 
-
-
-						</div>
-						<div class="col-sm-12 col-lg-4 col-md-6">
+	     <div class="col-sm-12 col-lg-4 col-md-6">
 							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			
 			<a href="single.html">
-				
+			 <?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?>
+			<?= $this->Number->format($room->rent) ?>
 			</a>
 		</div>
 		<div class="card-body">
@@ -311,10 +314,11 @@ echo $name;
 		</div>
 	</div>
 </div>
+</div> -->
 
+						
 
-
-						</div>
+<!-- 
 						<div class="col-sm-12 col-lg-4 col-md-6">
 							
 <div class="product-item bg-light">
@@ -322,7 +326,7 @@ echo $name;
 		<div class="thumb-content">
 			
 			<a href="single.html">
-				
+			<?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?>
 			</a>
 		</div>
 		<div class="card-body">
@@ -346,17 +350,19 @@ echo $name;
 		</div>
 	</div>
 </div>
+</div>  -->
+						
 
 
 
-						</div>
-						<div class="col-sm-12 col-lg-4 col-md-6">
+						<!-- <div class="col-sm-12 col-lg-4 col-md-6">
 							
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
 			
 			<a href="single.html">
+				<td><?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?></td>
 							</a>
 		</div>
 		<div class="card-body">
@@ -391,7 +397,7 @@ echo $name;
 		<div class="thumb-content">
 			
 			<a href="single.html">
-				
+			<td><?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?></td>	
 			</a>
 		</div>
 		<div class="card-body">
@@ -415,12 +421,13 @@ echo $name;
 		</div>
 	</div>
 </div>
-</div> -->
+</div> 
 	
-					
+		
+			
 
 
-<!-- 
+
 						<div class="col-sm-12 col-lg-4 col-md-6">
 							
 <div class="product-item bg-light">
@@ -428,7 +435,7 @@ echo $name;
 		<div class="thumb-content">
 			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-1.jpg" alt="Card image cap">
+				<td><?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?></td>
 			</a>
 		</div>
 		<div class="card-body">
@@ -463,7 +470,7 @@ echo $name;
 		<div class="thumb-content">
 			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-2.jpg" alt="Card image cap">
+				<td><?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?></td>
 			</a>
 		</div>
 		<div class="card-body">
@@ -500,7 +507,7 @@ echo $name;
 		<div class="thumb-content">
 			
 			<a href="single.html">
-				<img class="card-img-top img-fluid" src="images/products/products-3.jpg" alt="Card image cap">
+				<td><?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?></td>
 			</a>
 		</div>
 		<div class="card-body">
@@ -523,13 +530,13 @@ echo $name;
 		    </div>
 		</div>
 	</div>
-</div> -->
-
-
-
-						</div>
+</div>
+</div>
 					</div>
-				</div>
+				</div> -->
+
+
+
 				<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">

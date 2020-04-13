@@ -21,7 +21,7 @@
             <!--  -->
             <?= $this->Html->link(__('Rooms available'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('New PG request'), ['action' => ''], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('New PG request'), ['controller'=>'users','action' => 'newpg'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
@@ -46,6 +46,7 @@
             <tbody>
                 <?php $counter = 0;?>
                 <?php foreach ($pgdetails as $pgdetail): ?>
+                    
                 <tr>
                     <!-- <td><?= $this->Number->format($pgdetail->pg_id) ?></td>
                     <td><?= $pgdetail->has('user') ? $this->Html->link($pgdetail->user->name, ['controller' => 'Users', 'action' => 'view', $pgdetail->user->user_id]) : '' ?></td> -->

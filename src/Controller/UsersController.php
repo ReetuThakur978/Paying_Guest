@@ -34,6 +34,16 @@ class UsersController extends AppController
         
 
     }
+
+    public function newpg()
+    {
+        
+        $this->set("title", "Users List");
+        $users = $this->paginate($this->Users);
+        $this->set(compact('users'));
+    }
+
+
     
     public function view($id = null)
     {
@@ -85,6 +95,9 @@ class UsersController extends AppController
            		'valueField' => 'user_rolename'
         		]);
         	$this->set('roles', $roles);
+
+            // echo $roles;
+            // exit;
         
         	$this->set(compact('user'));
             $this->set("register", "Registration Page");
@@ -173,11 +186,11 @@ public function login() {
 
         $this->request->allowMethod('ajax');
    
-        $keyword = $this->request->query('keyword');
+        $keyword = $this->request->getQueryParams('keyword');
 
         $query = $this->Users->find('all',[
-              'conditions' => ['firstname LIKE'=>'%'.$keyword.'%'],
-              'order' => ['Users.user_id'=>'DESC'],
+              'conditions' => ['firstname LIKE'=>'%'.$keyword['keyword'].'%'],
+              // 'order' => ['Users.user_id'=>'DESC'],
               'limit' => 10
         ]);
 
@@ -200,6 +213,25 @@ public function login() {
    {
     // $this->Flash->success(__('The status has been changed'));
     return $this->redirect(['action'=>'index']);
+   }
+   // return $this->redirect(['action'=>'index']);
+    
+}
+
+    public function usersStatus($id=null,$status)
+{
+    $this->request->allowMethod(['post']);
+    $user=$this->Users->get($id);
+
+    if($status == 1)
+        $user->status = 0;
+    else
+       $user->status = 1; 
+
+   if($this->Users->save($user))
+   {
+    // $this->Flash->success(__('The status has been changed'));
+    return $this->redirect(['action'=>'newpg']);
    }
    // return $this->redirect(['action'=>'index']);
     

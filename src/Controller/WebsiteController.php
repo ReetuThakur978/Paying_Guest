@@ -20,17 +20,14 @@ class WebsiteController extends AppController
 
 		$room = $this->Rooms->find('all');
         
+        $details = $this->Pgdetails->find('list', [ 
+                'keyField' => 'pg_id',
+                'valueField' => 'location'
+                ]);
 
-        // $room = $this->paginate($this->Rooms);
-        // print_r($room) ;
-        // exit;
-        // // $room = $this->Rooms->get([
-        // //     'contain' => ['Pgdetails'],
-        // ]);
-
+            $this->set('details', $details);
 
         $this->set('rooms', $room);
-       
 
 	}
 	public function userprofile()

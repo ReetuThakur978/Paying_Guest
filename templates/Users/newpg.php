@@ -5,9 +5,9 @@
 </head>
 <body>
 
-                    <?php
+                    <!-- <?php
                     echo $this->Form->control('search');
-                    ?>
+                    ?> -->
 <div class="row"> 
     <aside class="column">
         <div class="side-nav">
@@ -23,7 +23,7 @@
 
 <div class="users index content">
     <?= $this->Html->link(__('New User'), ['action' => 'register'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Users') ?></h3>
+    <h3><?= __('Results for: New PG Request') ?></h3>
 
     <div class="table-content">
     <div class="table-responsive">
@@ -43,6 +43,7 @@
             <tbody>
                <?php $counter = 0;?>
                 <?php foreach ($users as $user): ?>
+                     <?php if($user->role==1): ?>
                 <tr>
                     <td><center><?= ++$counter; ?></center></td>
                     <td><center><?= h($user->firstname) ?></center></td>
@@ -67,12 +68,13 @@ else
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
 
                         <?php if($user->status==1): ?>
-                        <?= $this->Form->postLink(__('Block'), ['action' => 'userStatus', $user->user_id,$user->status], ['confirm' => __('Are you sure you want to block # {0}?', $user->user_id)]) ?>
+                        <?= $this->Form->postLink(__('Block'), ['action' => 'usersStatus', $user->user_id,$user->status], ['confirm' => __('Are you sure you want to block # {0}?', $user->user_id)]) ?>
                         <?php else : ?>
-                        <?= $this->Form->postLink(__('Unblock'), ['action' => 'userStatus', $user->user_id,$user->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $user->user_id)]) ?>
+                        <?= $this->Form->postLink(__('Unblock'), ['action' => 'usersStatus', $user->user_id,$user->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $user->user_id)]) ?>
                         <?php endif; ?>
 
                     </td>
+                     <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -91,27 +93,6 @@ else
 </div>
 </div>
 
-<script>
-    $('document').ready(function(){
-         $('#search').keyup(function(){
-            var searchkey = $(this).val();
-            searchTags( searchkey );
-         });
 
-        function searchTags( keyword ){
-        var data = keyword;
-        $.ajax({
-                    method: 'get',
-                    url : "<?php echo $this->Url->build( [ 'controller' => 'Users', 'action' => 'Search' ] ); ?>",
-                    data: {keyword:data},
-
-                    success: function( response )
-                    {       
-                       $( '.table-content' ).html(response);
-                    }
-                });
-        };
-    });
-</script>
 </body>
 </html>

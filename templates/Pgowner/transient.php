@@ -40,10 +40,10 @@
                <tr>
                
                  <?php foreach ($users as $user): ?>
- <?php if($user->role==2): ?>
+                 <?php if($user->role==2): ?>
                 <td><center><?= ++$counter; ?></center></td>
                 <td><center><?= h($user->firstname) ?></center></td>
-<td><?= @$this->Html->image($user->image,['style'=>'max-width:50px;height:50px;border-radius:50%;']) ?></td>
+                <td><?= @$this->Html->image($user->image,['style'=>'max-width:50px;height:50px;border-radius:50%;']) ?></td>
                 <td><center><?= h($user->email) ?></center></td>
                 <td><center><?= h($user->created) ?></center></td>
 
