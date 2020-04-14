@@ -8,7 +8,8 @@ $email= $this->getRequest()->getSession()->read('Auth.email');
 $phone= $this->getRequest()->getSession()->read('Auth.phone');
 $lastname = $this->getRequest()->getSession()->read('Auth.lastname');
 $image = $this->getRequest()->getSession()->read('Auth.image');
-// echo $image;
+$id = $this->getRequest()->getSession()->read('Auth.user_id');
+// echo $id;
 ?>
 <section class="user-profile section">
     <div class="container">
@@ -43,10 +44,8 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                     <div class="col-lg-6 col-md-6">
                         <div class="widget personal-info">
                             <h3 class="widget-header user">Edit Name</h3>
-                            <!-- <?= $this->Form->create($user) ?> -->
-                            <form name="myForm" method="Post" onsubmit=" return validate()">
-                                <!-- First Name -->
-                              
+                            <?= $this->Form->create($user) ?>
+                           
                                 <div class="form-group">
 
                                     <label for="first-name">Name</label>
@@ -54,16 +53,18 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                                 </div>
                                 
                                 <!-- Last Name -->
+                                
                                 <div class="form-group">
                                     <label for="last-name">New Name</label>
-                                    
-                                    <input type="text" class="form-control" id="last-name" name="firstname">
+                                    <?php
+                    echo $this->Form->control(' ' ,['name' =>'firstname','class' =>'form-control']);
+                                    ?>
                                 
                                 </div>
                                 
                                 <!-- Submit button -->
                                 <center><?= $this->Form->button('Save my changes' ,['class'=>'btn btn-transparent']); ?></center>
-                            </form>
+                           <?= $this->Form->end() ?>
 
                         </div>
                     </div>
@@ -91,7 +92,7 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                         <!-- Change Email Address -->
                     <div class="widget change-email mb-0">
                         <h3 class="widget-header user">Edit Email Address</h3>
-                        <form method="post">
+                        <?= $this->Form->create($user) ?>
                             <!-- Current Password -->
                             <div class="form-group">
                                 <label for="current-email">Current Email</label>
@@ -100,11 +101,13 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                             <!-- New email -->
                             <div class="form-group">
                                 <label for="new-email">New email</label>
-                                <input type="email" class="form-control" id="new-email" name="email">
+                                 <?php
+                    echo $this->Form->control(' ' ,['name' =>'email','class' =>'form-control']);
+                                    ?>
                             </div>
                             <!-- Submit Button -->
                             <center><?= $this->Form->button('Save Email' ,['class'=>'btn btn-transparent']); ?></center>
-                        </form>
+                       <?= $this->Form->end() ?>
                     </div>
                     </div>
 
@@ -112,7 +115,7 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                         <!-- Change Password -->
                     <div class="widget change-password">
                         <h3 class="widget-header user">Edit Phone Number</h3>
-                        <form name="myForm" method="POST" onsubmit=" return validate()">
+                       <?= $this->Form->create($user) ?>
                             <!-- Current Password -->
                             <div class="form-group">
                                 <label for="current-password">Current Number</label>
@@ -121,7 +124,9 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                             <!-- New Password -->
                             <div class="form-group">
                                 <label for="new-password">New Number</label>
-                                <input type="text" class="form-control" id="new-password" name="number">
+                                <?php
+                    echo $this->Form->control(' ' ,['name' =>'phone','class' =>'form-control']);
+                                    ?>
                             </div>
                             <!-- Confirm New Password 
                             <div class="form-group">
@@ -130,7 +135,7 @@ $image = $this->getRequest()->getSession()->read('Auth.image');
                             </div>
                             <!-- Submit Button -->
                             <center><?= $this->Form->button('Change Number' ,['class'=>'btn btn-transparent']); ?></center>
-                        </form>
+                        <?= $this->Form->end() ?>
                     </div>
                     </div>
                 </div>

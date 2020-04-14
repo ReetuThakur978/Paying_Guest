@@ -6,7 +6,7 @@ namespace App\Controller;
 
 
 class WebsiteController extends AppController
-{
+{  
 	public function guest()
 	{
 		$this->set("title", "Paying_Guest");
@@ -17,34 +17,61 @@ class WebsiteController extends AppController
 		$this->set("title", "PG website");
         $this->loadModel('Pgdetails');
         $this->loadModel('Rooms');
+        $this->loadModel('Users');
 
 		$room = $this->Rooms->find('all');
         
-        $details = $this->Pgdetails->find('list', [ 
-                'keyField' => 'pg_id',
-                'valueField' => 'location'
-                ]);
+        // $details = $this->Pgdetails->find('list', [ 
+        //         'keyField' => 'pg_id',
+        //         'valueField' => 'location'
+        //         ]);
 
-            $this->set('details', $details);
+// echo $room;
+//         exit;
+
+            // $this->set('details', $details);
+        $details = $this->Pgdetails->find('all');
+
+        $this->set('details', $details);
+
 
         $this->set('rooms', $room);
 
 	}
-	public function userprofile()
+
+         public function about($id = null)
+        {
+             $this->set("title", "About PG");
+             $this->loadModel('Pgdetails');
+             $this->loadModel('Rooms');
+
+                $room = $this->Rooms->get($id, [
+                'contain' => ['Pgdetails'],
+                ]);
+
+            $this->set('room', $room);
+        }
+
+
+	public function userprofile($id=null)
 	{
         $this->set("title", "Edit Profile");
-        // $user = $this->Users->newEntity();
-        // if ($this->request->is('post')) {
-        //     // $room = $this->Rooms->patchEntity($room, $this->request->getData());
-        //     $myname= $this->request->getData()['file']['image'];
-        //     $mytmp= $this->request->getData()['file']['tmp_name'];
-        //     $file=$this->Users->newEntity();
-        //     $file->image=$myname;
-        //     if(move_uploaded_file($mytmp, $myname)){
-        //         $this->Users->save($file);
-        //         return $this->redirect(['action'=>'userprofile']);
-        //     }
-        // }
+        $this->loadModel('Users');
+
+         $user = $this->Users->get($this->getRequest()->getSession()->read('Auth.user_id'));
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+           // $this->getRequest()->getSession()->write('Auth.firstname', $user['firstname']);
+
+// return $this->redirect(['action' => 'userprofile']);
+                $this->Flash->success(__('updated'));
+
+                return $this->redirect(['action' => 'userprofile']);
+            }
+            $this->Flash->error(__('Not update. Please, try again.'));
+        }
+        $this->set(compact('user'));
          
 	}
     public function contactus()

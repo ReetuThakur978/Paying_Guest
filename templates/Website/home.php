@@ -201,7 +201,7 @@ echo $name;
 					<div class="row mt-30">
 						
 						<?php foreach ($rooms as $room): ?>
-                        <?php if($room->image <= 8): ?>
+                        <!-- <?php if($room->image <= 8): ?> -->
 						
 						<div class="col-sm-12 col-lg-4 col-md-6">
 
@@ -216,15 +216,16 @@ echo $name;
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><?= h($room->pgdetails->$details) ?> </a></h4>
+		    <h4 class="card-title"><?= h($details->location) ?></a></h4>
 		    <ul class="list-inline product-meta">
 		    	<li class="list-inline-item">
 		    		<!-- <a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a> -->
-		    		<?= $this->Html->link(__('About PG'), ['controller'=>'Rooms','action' => 'view'], ['class' => 'side-nav-item']) ?> 
+		    		Food availability : <?= h($room->food_availability) ?>
 		    	</li>
-		    	<!-- <li class="list-inline-item">
-		    		<a href="#"><i class="fa fa-calendar"></i>About us</a>
-		    	</li> -->
+		    	<li class="list-inline-item">
+		    		<!-- <a href="#"><i class="fa fa-calendar"></i>About us</a> -->
+		    		<?= $this->Html->link(__('About PG'), ['controller'=>'Website','action' => 'about'], ['class' => 'fa fa-calendar']) ?> 
+		    	</li>
 		    </ul>
 		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
 		    <div class="product-ratings">
@@ -240,7 +241,7 @@ echo $name;
 	</div>
 </div>
 </div>
-<?php endif; ?>	
+<!-- <?php endif; ?>	 -->
 <?php endforeach; ?>
 
 	<!-- 
