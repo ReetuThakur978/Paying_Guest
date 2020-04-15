@@ -14,7 +14,7 @@
   
     <div class="column-responsive column-80">
         <div class="users view content">
-       <!--  <div class="col-lg-5 col-md-8 align-item-center"> -->
+       
         
             <h3><?= h($user->firstname) ?></h3>
 

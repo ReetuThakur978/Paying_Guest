@@ -62,9 +62,7 @@ class WebsiteController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-           // $this->getRequest()->getSession()->write('Auth.firstname', $user['firstname']);
-
-// return $this->redirect(['action' => 'userprofile']);
+           
                 $this->Flash->success(__('updated'));
 
                 return $this->redirect(['action' => 'userprofile']);
@@ -84,8 +82,7 @@ class WebsiteController extends AppController
 	public function login()
 	{
 		  $this->set("title", "Login Page");
-		 // $this->loadmodel('Users');
-                 //      $user = $this->Users->find('all');
+		 
         $this->request->allowMethod(['get', 'post']);
         $result = $this->Authentication->getResult();
             //regardless of POST or GET, redirect if user is logged in

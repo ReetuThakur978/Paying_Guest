@@ -135,11 +135,7 @@ class PgownerController extends AppController
             }
             $this->Flash->error(__('Not Update. Please, try again.'));
         }
-        // $roles = $this->Userroles->find('list', [ 
-        //     'keyField' => 'id',
-        //     'valueField' => 'user_rolename'
-        // ]);
-        // $this->set('roles', $roles);
+        
         $this->set(compact('user'));
     } 
   public function transient()

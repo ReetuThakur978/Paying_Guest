@@ -10,11 +10,7 @@
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Actions') ?></h4>
-            <!-- <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $user->user_id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->user_id), 'class' => 'side-nav-item']
-            ) ?> --><br><br>
+            <br><br>
             <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
 </aside>
@@ -37,8 +33,7 @@
                     echo $this->Form->control('email', ['name' => 'email' , 'placeholder'=>'Enter your email', 'class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('password', ['name' => 'password' , 'placeholder'=>'Enter your password', 'class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter you adhar card number', 'class' =>'border p-3 w-100 my-2']);
-                    // ?echo $this->Form->control('role');
-                    //echo $this->Form->control('status');
+                    
                     echo $this->Form->select('role', $roles, ['empty' => 'Select Role', 'id' => 'user_rolename' ,'class' =>'border p-3 w-100 my-2']);
 
                     echo $this->Form->control('phone', ['name' => 'phone' , 'placeholder'=>'Enter your phone number', 'class' =>'border p-3 w-100 my-2']);

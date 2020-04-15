@@ -48,8 +48,11 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                            
                                 <div class="form-group">
 
-                                    <label for="first-name">Name</label>
-                                    <input type="text" class="form-control" id="last-name" value="<?= $name; ?>" readonly>
+                                   <!--  <label for="first-name">Name</label> -->
+                                    <!-- <input type="text" class="form-control" id="last-name" value="<?= $name; ?>" readonly> -->
+                                    <?php
+                    echo $this->Form->control('firstname' ,['name' =>'firstname','readonly','class' =>'form-control']);
+                                    ?>
                                 </div>
                                 
                                 <!-- Last Name -->
@@ -95,8 +98,11 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                         <?= $this->Form->create($user) ?>
                             <!-- Current Password -->
                             <div class="form-group">
-                                <label for="current-email">Current Email</label>
-                                <input type="email" class="form-control" id="current-email" value="<?= $email;?> " readonly>
+                                <!-- <label for="current-email">Current Email</label>
+                                <input type="email" class="form-control" id="current-email" value="<?= $email;?> " readonly> -->
+                                <?php
+                    echo $this->Form->control('email' ,['name' =>'email','readonly','class' =>'form-control']);
+                                    ?>
                             </div>
                             <!-- New email -->
                             <div class="form-group">
@@ -118,8 +124,11 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                        <?= $this->Form->create($user) ?>
                             <!-- Current Password -->
                             <div class="form-group">
-                                <label for="current-password">Current Number</label>
-                                <input type="text" class="form-control" id="current-password"  value="<?= $phone;?>" readonly>
+                                <!-- <label for="current-password">Current Number</label>
+                                <input type="text" class="form-control" id="current-password"  value="<?= $phone;?>" readonly> -->
+                                <?php
+                    echo $this->Form->control('phone' ,['name' =>'phone','readonly','class' =>'form-control']);
+                                    ?>
                             </div>
                             <!-- New Password -->
                             <div class="form-group">

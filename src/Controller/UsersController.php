@@ -21,18 +21,6 @@ class UsersController extends AppController
         $this->set("title", "Users List");
         $users = $this->paginate($this->Users);
         $this->set(compact('users'));
-// $session = $this->request->getSession();
-// $session = $this->request->getAttribute('session');
-// $userName = $session->read('Auth.Users.user_id');
-// $this->set('user_session',$userName);
-
-
-//         $this->set('user_session', 
-// $session = $this->request->getSession()
-// $session = $this->request->getAttribute('session')
-// $userName = $session->read('Auth.Users.firstname'));
-        
-
     }
 
     public function newpg()
