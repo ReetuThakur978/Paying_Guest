@@ -3,10 +3,18 @@ declare(strict_types=1);
 
 namespace App\Controller;
 // use Cake\Validation\Validator;
-
+// use App\Controller\AppController;
 
 class WebsiteController extends AppController
 {  
+   public function initialize() : void
+   {
+
+    parent::initialize();
+    $this->viewBuilder()->setLayout('guestlayout');
+
+   }
+
 	public function guest()
 	{
 		$this->set("title", "Paying_Guest");
@@ -19,25 +27,48 @@ class WebsiteController extends AppController
         $this->loadModel('Rooms');
         $this->loadModel('Users');
 
-		$room = $this->Rooms->find('all');
-        
-        // $details = $this->Pgdetails->find('list', [ 
-        //         'keyField' => 'pg_id',
-        //         'valueField' => 'location'
-        //         ]);
-
-// echo $room;
-//         exit;
-
-            // $this->set('details', $details);
-        $details = $this->Pgdetails->find('all');
-
-        $this->set('details', $details);
-
-
+		$room = $this->Rooms->find('all' ,[
+            'contain' => ['Pgdetails'],
+        ]);
+    
         $this->set('rooms', $room);
-
 	}
+
+    public function search()
+    {
+        $this->loadModel('Pgdetails');
+        $this->loadModel('Rooms');
+        $this->loadModel('Users');
+
+        $this->request->allowMethod('ajax');
+   
+        $keyword = $this->request->getQueryParams('keyword');
+
+        $query = $this->Rooms->find('all',[
+              'contain' => ['Pgdetails'],
+              'conditions' => ['ac LIKE'=>'%'.$keyword['keyword'].'%']
+              // 'order' => ['Users.user_id'=>'DESC'],
+              // 'limit' => 10
+        ]);
+
+        $this->set('users', $this->paginate($query));
+        $this->set('_serialize', ['users']);
+
+    }
+
+     public function viewpg($id = null)
+    {
+        $this->set("title", "View PG Rooms");
+        $this->loadModel('Pgdetails');
+        $this->loadModel('Rooms');
+        $this->loadModel('Users');
+
+        $room = $this->Rooms->get($id,[
+            'contain' => ['Pgdetails'],
+        ]);
+        $this->set('room', $room);
+    }
+
 
          public function about($id = null)
         {

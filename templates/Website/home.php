@@ -8,11 +8,6 @@
 .right button{margin-right:50px}
  </style>
 </head>
-<h3>Welcome:-
-<?php
-$name = $this->getRequest()->getSession()->read('Auth.firstname');
-echo $name;
-?></h3> 
 <body class="body-wrapper">
 	<div class="container">
 		<div class="row">
@@ -21,27 +16,16 @@ echo $name;
 						<div class="form-row">
 
 							<div class="form-group col-md-3">
-								<input type="text" class="form-control my-2 my-lg-0" id="inputLocation4" placeholder="Enter your Location">
+								<div class="right">
+								<?php
+                    echo $this->Form->control('search',['class'=>'form-control my-2 my-lg-0','placeholder'=>'Enter your location']);
+                    ?>
 							</div>
-							<div class="form-group col-md-2">
-								
-								<button type="submit" class="btn btn-primary">Search Now</button><br><br>
-
-									</div>
-                                 <div class="right"> 
-			 	                      <!-- <?= $this->Html->link(__('Logout'), ['action' => 'logout'], ['class' => 'btn btn-primary']) ?> -->
-							          <?= $this->html->link(__('Edit Profile') ,['action'=>'userprofile'],['class'=>'btn btn-primary']); ?>
-                                 </div>		
 						</div>
-
 					</form>
-				<!-- </div> -->
 			</div>
-
 		</div>
-	</div>
-	
-			 	
+	</div>			 	
 <!-- </section> -->
 <section class="section-sm">
 	<div class="container">
@@ -104,34 +88,6 @@ echo $name;
 	</div>
 </div>
 
-<!-- <div class="widget product-shorting">
-	<h4 class="widget-header">By Condition</h4>
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Brand New
-	  </label>
-	</div>
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Almost New
-	  </label>
-	</div>
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Gently New
-	  </label>
-	</div>
-	<div class="form-check">
-	  <label class="form-check-label">
-	    <input class="form-check-input" type="checkbox" value="">
-	    Havely New
-	  </label>
-	</div>
-</div> -->
-
 				</div>
 			</div>
 
@@ -148,33 +104,13 @@ echo $name;
 								<option value="4">Highest Price</option>
 							</select>
 						</div>
-						<!-- <div class="col-md-6">
-							<div class="view">
-								<strong>Views</strong>
-								<ul class="list-inline view-switcher">
-									<li class="list-inline-item">
-										<a href="#" onclick="event.preventDefault();" class="text-info"><i class="fa fa-th-large"></i></a>
-									</li>
-									<li class="list-inline-item">
-										<a href="ad-list-view.html"><i class="fa fa-reorder"></i></a>
-									</li>
-								</ul>
-							</div>
-						</div> -->
+						
 					</div>
 				</div>
-
-
-
 				<div class="product-grid-list">
-					<div class="row mt-30">
-						
-						<?php foreach ($rooms as $room): ?>
-                        <!-- <?php if($room->image <= 8): ?> -->
-						
+					<div class="row mt-30">				
+				  <?php foreach ($rooms as $room ): ?> 
 						<div class="col-sm-12 col-lg-4 col-md-6">
-
-
 							<!-- product card -->
 <div class="product-item bg-light">
 	<div class="card">
@@ -185,18 +121,41 @@ echo $name;
 			</a>
 		</div>
 		<div class="card-body">
-		    <h4 class="card-title"><?= h($details->location) ?></a></h4>
+
+		    <h4 class="card-title"><?= $room->has('pgdetail') ? $this->Html->link($room->pgdetail->location, ['controller' => 'Website', 'action' => 'viewpg', $room->room_id]) : '' ?></a></h4>
 		    <ul class="list-inline product-meta">
-		    	<li class="list-inline-item">
-		    		<!-- <a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a> -->
+		    	<!-- <li class="list-inline-item">
+		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
 		    		Food availability : <?= h($room->food_availability) ?>
-		    	</li>
+		    	</li> -->
 		    	<li class="list-inline-item">
-		    		<!-- <a href="#"><i class="fa fa-calendar"></i>About us</a> -->
-		    		<?= $this->Html->link(__('About PG'), ['controller'=>'Website','action' => 'about'], ['class' => 'fa fa-calendar']) ?> 
+		    		Only For: <?= $room->has('pgdetail') ? h($room->pgdetail->gender) : '' ?>
+		    		<ul class="list-inline justify-content-center">
+                      <li class="list-inline-item">
+                      	<i class="fa fa-eye"></i>
+		    		<?= $this->Html->link(__('View'), ['controller'=>'Website','action' => 'viewpg', $room->room_id], ['class' => 'view']) ?> 
+		    		 
+		    		
+		    		<strong>Status:</strong><?php
+if(h($room->status)==1)
+{
+    // echo "Active".'color:green;';
+   echo  '<span style="color:green;">Active</span>';
+}
+else
+{
+    echo  '<span style="color:red;">Disactive</span>';
+}
+
+?></li>
+		    	</ul>
+
 		    	</li>
 		    </ul>
-		    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, aliquam!</p>
+		    <p class="card-text">
+		    	<strong>Booked</strong>
+		    	<!-- <span class="status active"><strong>Status</strong>Active</span> -->
+		    </p>
 		    <div class="product-ratings">
 		    	<ul class="list-inline">
 		    		<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
@@ -207,15 +166,14 @@ echo $name;
 		    	</ul>
 		    </div>
 		</div>
+
 	</div>
+
 </div>
 </div>
-<!-- <?php endif; ?>	 -->
 <?php endforeach; ?>
-
 	
-
-				<div class="pagination justify-content-center">
+			<div class="pagination justify-content-center">
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
 							<li class="page-item">
@@ -240,6 +198,29 @@ echo $name;
 		</div>
 	</div>
 </section>
+
+<script>
+    $('document').ready(function(){
+         $('#search').keyup(function(){
+            var searchkey = $(this).val();
+            searchTags( searchkey );
+         });
+
+        function searchTags( keyword ){
+        var data = keyword;
+        $.ajax({
+                    method: 'get',
+                    url : "<?php echo $this->Url->build( [ 'controller' => 'Website', 'action' => 'Search' ] ); ?>",
+                    data: {keyword:data},
+
+                    success: function( response )
+                    {       
+                       $( '.table-content' ).html(response);
+                    }
+                });
+        };
+    });
+</script>
 
 </body>
 

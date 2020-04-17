@@ -4,10 +4,10 @@
     <title><?= isset($title)?$title:""; ?></title>
 </head>
 <body>
-
+<div class="form-group col-md-3">
                     <?php
-                    echo $this->Form->control('search');
-                    ?>
+                    echo $this->Form->control('search',['class'=>'form-control my-2 my-lg-0','placeholder'=>'Search by name']);
+                    ?></div>
 <div class="row"> 
     <aside class="column">
         <div class="side-nav">
