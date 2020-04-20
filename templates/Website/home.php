@@ -153,7 +153,7 @@ else
 		    	</li>
 		    </ul>
 		    <p class="card-text">
-		    	<strong>Booked</strong>
+		    <?= $this->Html->link(__('Book PG now'), ['controller'=>'Website','action' => 'bookpg', $room->room_id]) ?> 
 		    	<!-- <span class="status active"><strong>Status</strong>Active</span> -->
 		    </p>
 		    <div class="product-ratings">

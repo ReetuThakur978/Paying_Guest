@@ -4,13 +4,17 @@ declare(strict_types=1);
 namespace App\Controller;
 // use Cake\Validation\Validator;
 // use App\Controller\AppController;
+use cake\Routing\Router
 
 class WebsiteController extends AppController
 {  
+    public $base_url;
+
    public function initialize() : void
    {
 
     parent::initialize();
+    $this->base_url= Router::url("/",true);
     $this->viewBuilder()->setLayout('guestlayout');
 
    }
@@ -109,6 +113,12 @@ class WebsiteController extends AppController
 
     }
 
+     public function bookpg()
+    {
+        $this->set("title", "Book PG");
+
+    }
+
 
 	public function login()
 	{
@@ -134,8 +144,6 @@ class WebsiteController extends AppController
 
     }
     
-
-	
 	   
 	   public function logout()
 		{

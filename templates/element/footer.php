@@ -68,7 +68,7 @@
           <div class="col-lg-2 col-md-3 offset-md-1 offset-lg-0">
        <div class="block">
           <h4>Newsletter Subscription</h4>
-          <input type="text" placeholder="Subscribe to our newsletter"><br><br>
+          <input type="text"  placeholder="Subscribe to our newsletter"><br><br>
           
          <!--  <a href="user-profile.html" class="btn btn-main-sm">Login</a> -->
         </div>
