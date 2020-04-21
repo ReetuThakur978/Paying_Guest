@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace App\Controller;
 // use Cake\Validation\Validator;
 // use App\Controller\AppController;
-use cake\Routing\Router
+// use cake\Routing\Router;
 
 class WebsiteController extends AppController
 {  
-    public $base_url;
+    // public $base_url;
 
    public function initialize() : void
    {
 
     parent::initialize();
-    $this->base_url= Router::url("/",true);
+    // $this->base_url= Router::url("bookpg",true);
     $this->viewBuilder()->setLayout('guestlayout');
 
    }
@@ -30,7 +30,7 @@ class WebsiteController extends AppController
         $this->loadModel('Pgdetails');
         $this->loadModel('Rooms');
         $this->loadModel('Users');
-
+    
 		$room = $this->Rooms->find('all' ,[
             'contain' => ['Pgdetails'],
         ]);
@@ -116,6 +116,33 @@ class WebsiteController extends AppController
      public function bookpg()
     {
         $this->set("title", "Book PG");
+        // $this->loadModel('Pgdetails');
+        // $this->loadModel('Rooms');
+        $this->loadModel('Users');
+        $this->loadModel('Bookings');
+
+        $book = $this->Bookings->newEmptyEntity();
+            if ($this->request->is('post')) {
+            $book = $this->Bookings->newEntity($this->request->getData());
+
+            if ($this->Bookings->save($booking)) {
+                $this->Flash->success(__('PG Booked.'));
+
+                return $this->redirect(['action' => 'payment']);
+            }
+            $this->Flash->error(__('Not booked. Please, try again.'));
+
+            // echo "hello";
+            // exit;
+
+            $this->set('book',$book);
+        }
+
+    }
+
+    public function payment()
+    {
+        $this->set("title", "Payment");
 
     }
 

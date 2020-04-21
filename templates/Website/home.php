@@ -116,9 +116,9 @@
 	<div class="card">
 		<div class="thumb-content">
 			<div class="price">Rs: <?= $this->Number->format($room->rent) ?></div> 
-			<a href="single.html">
-				<?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid']) ?>
-			</a>
+			
+				<?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid','controller' => 'Website', 'action' => 'viewpg']) ?>
+			
 		</div>
 		<div class="card-body">
 

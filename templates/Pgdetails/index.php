@@ -46,10 +46,8 @@
             <tbody>
                 <?php $counter = 0;?>
                 <?php foreach ($pgdetails as $pgdetail): ?>
-                    
+                 <?php if($pgdetail->user->role ==1): ?>   
                 <tr>
-                    <!-- <td><?= $this->Number->format($pgdetail->pg_id) ?></td>
-                    <td><?= $pgdetail->has('user') ? $this->Html->link($pgdetail->user->name, ['controller' => 'Users', 'action' => 'view', $pgdetail->user->user_id]) : '' ?></td> -->
                     <td><center><?= ++$counter; ?></center></td>
                     <td><center><?= $pgdetail->has('user') ? $this->Html->link($pgdetail->user->firstname, ['controller' => 'Users', 'action' => 'view', $pgdetail->user->user_id]) : '' ?></center></td>
                     <td><center><?= h($pgdetail->location) ?></center></td>
@@ -78,6 +76,7 @@ else
                         <?= $this->Form->postLink(__('Unblock'), ['action' => 'userStatus', $pgdetail->pg_id,$pgdetail->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $pgdetail->pg_id)]) ?>
                         <?php endif; ?>
                     </td>
+                    <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
