@@ -5,8 +5,8 @@
 <?php
 $name = $this->getRequest()->getSession()->read('Auth.firstname');
 $email= $this->getRequest()->getSession()->read('Auth.email');
-$phone= $this->getRequest()->getSession()->read('Auth.phone');
-$lastname = $this->getRequest()->getSession()->read('Auth.lastname');
+$lastname= $this->getRequest()->getSession()->read('Auth.lastname');
+$adharcard = $this->getRequest()->getSession()->read('Auth.adharcard');
 $image = $this->getRequest()->getSession()->read('Auth.image');
 $id = $this->getRequest()->getSession()->read('Auth.user_id');
 // echo $id;
@@ -40,12 +40,14 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
             <fieldset>   
                                 <input type="text" class="border p-3 w-100 my-2'"  value="<?= $name; ?>" readonly><br><br>
                                 <input type="text" class="border p-3 w-100 my-2'"  value="<?= $email; ?>" readonly>
-                              <?= $this->Form->create($book) ?>
+                              <?= $this->Form->create($books) ?>
                                <?php 
+                               echo $this->Form->text('transient_id',['value' => $id,'class' =>'border p-3 w-100 my-2']);
+                               
                                echo $this->Form->text('days',['name' => 'lastname' , 'placeholder'=>'Enter how many days you stay', 'class' =>'border p-3 w-100 my-2']);
                                echo $this->Form->text('person', ['name' => 'email' , 'placeholder'=>'Enter how many person you shift', 'class' =>'border p-3 w-100 my-2']);
-                               echo $this->Form->text('adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
-                               echo $this->Form->text('requirement', array('type' => 'textarea','class' =>'border p-3 w-100 my-2','placeholder'=>'Any Requirements....'));
+                               echo $this->Form->text('adharcard', ['value' => $adharcard , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
+                               echo $this->Form->control('requirement', array('type' => 'textarea','class' =>'border p-3 w-100 my-2','placeholder'=>'Any Requirements....'));
                                 ?>
 
                                <center><a href="" data-toggle="modal" data-target="#deleteaccount"><strong>Submit detail</strong></a>

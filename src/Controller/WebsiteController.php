@@ -113,30 +113,29 @@ class WebsiteController extends AppController
 
     }
 
-     public function bookpg()
+     public function bookpg($id = null)
     {
         $this->set("title", "Book PG");
-        // $this->loadModel('Pgdetails');
-        // $this->loadModel('Rooms');
         $this->loadModel('Users');
         $this->loadModel('Bookings');
 
         $book = $this->Bookings->newEmptyEntity();
             if ($this->request->is('post')) {
             $book = $this->Bookings->newEntity($this->request->getData());
-
-            if ($this->Bookings->save($booking)) {
+            if ($this->Bookings->save($book)) {
                 $this->Flash->success(__('PG Booked.'));
 
                 return $this->redirect(['action' => 'payment']);
             }
             $this->Flash->error(__('Not booked. Please, try again.'));
-
-            // echo "hello";
-            // exit;
-
-            $this->set('book',$book);
         }
+        // $transient = $this->Users->find('list', [ 
+        //         'keyField' => 'user_id',
+        //         'valueField' => 'user_id'
+        //         ]);
+        //     $this->set('transient', $transient);
+            
+        $this->set('books',$book);
 
     }
 
