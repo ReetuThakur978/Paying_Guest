@@ -153,7 +153,17 @@ else
 		    	</li>
 		    </ul>
 		    <p class="card-text">
-		    <?= $this->Html->link(__('Book PG now'), ['controller'=>'Website','action' => 'bookpg', $room->room_id]) ?> 
+		    	<?php $seates= $room->has('pgdetail') ? h($room->pgdetail->availability) : '' ?>
+
+		    	<?php
+		    	if($seates>0)
+		    	{
+		           echo $this->Html->link(__('Book PG now'), ['controller'=>'Website','action' => 'bookpg', $room->room_id]) ; 
+		        }
+               else{
+	                  echo '<span style="color:black;">Booked</span>';
+                   }
+		    ?>
 		    	<!-- <span class="status active"><strong>Status</strong>Active</span> -->
 		    </p>
 		    <div class="product-ratings">

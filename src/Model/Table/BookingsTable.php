@@ -26,6 +26,11 @@ class BookingsTable extends Table
             'foreignKey' => 'transient_id',
             'joinType' => 'INNER',
         ]);
+
+        // $this->belongsTo('Rooms', [
+        //     'foreignKey' => 'room_id',
+        //     'joinType' => 'INNER',
+        // ]);
     }
 
    
@@ -50,15 +55,16 @@ class BookingsTable extends Table
         $validator
             ->scalar('requirement')
             ->maxLength('requirement', 60)
-            ->requirePresence('requirement', 'create')
+            // ->requirePresence('requirement', 'create')
             ->notEmptyString('requirement');
 
         return $validator;
     }
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn(['transient_id'], 'Users'));
+    // public function buildRules(RulesChecker $rules): RulesChecker
+    // {
+    //     $rules->add($rules->existsIn(['transient_id'], 'Users'));
+    //     $rules->add($rules->existsIn(['room_id'], 'Rooms'));
 
-        return $rules;
-    }
+    //     return $rules;
+    // }
 }

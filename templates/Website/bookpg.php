@@ -41,13 +41,17 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                                 <input type="text" class="border p-3 w-100 my-2'"  value="<?= $name; ?>" readonly><br><br>
                                 <input type="text" class="border p-3 w-100 my-2'"  value="<?= $email; ?>" readonly>
                               <?= $this->Form->create($books) ?>
+<!-- <?php $get=$room->has('pgdetail') ? h($room->pgdetail->pg_id) : '' ?>
+ --><?php $get=h($room->room_id) ?>
+
                                <?php 
-                               echo $this->Form->text('transient_id',['value' => $id,'class' =>'border p-3 w-100 my-2']);
-                               
-                               echo $this->Form->text('days',['name' => 'lastname' , 'placeholder'=>'Enter how many days you stay', 'class' =>'border p-3 w-100 my-2']);
-                               echo $this->Form->text('person', ['name' => 'email' , 'placeholder'=>'Enter how many person you shift', 'class' =>'border p-3 w-100 my-2']);
-                               echo $this->Form->text('adharcard', ['value' => $adharcard , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
-                               echo $this->Form->control('requirement', array('type' => 'textarea','class' =>'border p-3 w-100 my-2','placeholder'=>'Any Requirements....'));
+                               echo $this->Form->text('transient_id',['name'=>'transient_id','value' => $id,'class' =>'border p-3 w-100 my-2','readonly']);
+
+                              echo $this->Form->text('room_id',['name'=>'room_id','value' => $get,'class' =>'border p-3 w-100 my-2','readonly']);
+
+                               echo $this->Form->text('days',['name' => 'days' , 'placeholder'=>'Enter how many days you stay', 'class' =>'border p-3 w-100 my-2']);
+                               echo $this->Form->text('personshift', ['name' => 'personshift' , 'placeholder'=>'Enter how many person you shift', 'class' =>'border p-3 w-100 my-2']);
+                               echo $this->Form->control('requirement', array('name'=>'requirement','type' => 'textarea','class' =>'border p-3 w-100 my-2','placeholder'=>'Any Requirements....'));
                                 ?>
 
                                <center><a href="" data-toggle="modal" data-target="#deleteaccount"><strong>Submit detail</strong></a>
@@ -63,14 +67,14 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                         </button>
                       </div>
                       <div class="modal-body text-center">
-                        <img src="<?= $baseurl ?> webroot/img/account/Account1.png" class="img-fluid mb-2" />
+                       <!--  <img src="<?= $baseurl ?> webroot/img/account/Account1.png" class="img-fluid mb-2" /> -->
                         <h6 class="py-2">Are you sure you want to Book this PG?</h6>
                         <p>Please check the filling details onces again.</p>
                         
                       </div>
                       <div class="modal-footer border-top-0 mb-3 mx-5 justify-content-lg-between justify-content-center">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-                        <?= $this->Form->button('Submit', ['controller'=>'Website','action' => 'payment','class'=>'btn btn-primary']); ?> 
+                        <?= $this->Form->button('Yes', ['controller'=>'Website','action' => 'payment','class'=>'btn btn-primary']); ?> 
 
                       </div>
                     </div>

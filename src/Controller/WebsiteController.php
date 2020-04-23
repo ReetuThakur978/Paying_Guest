@@ -118,6 +118,9 @@ class WebsiteController extends AppController
         $this->set("title", "Book PG");
         $this->loadModel('Users');
         $this->loadModel('Bookings');
+        $this->loadModel('Pgdetails');
+        $this->loadModel('Rooms');
+
 
         $book = $this->Bookings->newEmptyEntity();
             if ($this->request->is('post')) {
@@ -134,7 +137,12 @@ class WebsiteController extends AppController
         //         'valueField' => 'user_id'
         //         ]);
         //     $this->set('transient', $transient);
-            
+       $room = $this->Rooms->get($id, [
+            'contain' => ['Pgdetails'],
+        ]);
+        // $pgdetails = $this->Bookings->Rooms->find('list', ['limit' => 200]);
+       $this->set(compact('room'));
+
         $this->set('books',$book);
 
     }

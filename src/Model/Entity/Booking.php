@@ -15,6 +15,6 @@ class Booking extends Entity
         'personshift' => true,
         'requirement' => true,
         'created' => true,
-        'user' => true,
+        'room_id'=>true,
     ];
 }
