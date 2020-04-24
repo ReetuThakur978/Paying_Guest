@@ -127,7 +127,6 @@ class PgownerController extends AppController
             }
 
 
-
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('Your profile is updated'));
 

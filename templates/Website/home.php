@@ -104,7 +104,6 @@
 								<option value="4">Highest Price</option>
 							</select>
 						</div>
-						
 					</div>
 				</div>
 				<div class="product-grid-list">
@@ -124,10 +123,6 @@
 
 		    <h4 class="card-title"><?= $room->has('pgdetail') ? $this->Html->link($room->pgdetail->location, ['controller' => 'Website', 'action' => 'viewpg', $room->room_id]) : '' ?></a></h4>
 		    <ul class="list-inline product-meta">
-		    	<!-- <li class="list-inline-item">
-		    		<a href="single.html"><i class="fa fa-folder-open-o"></i>Discription about PG</a>
-		    		Food availability : <?= h($room->food_availability) ?>
-		    	</li> -->
 		    	<li class="list-inline-item">
 		    		Only For: <?= $room->has('pgdetail') ? h($room->pgdetail->gender) : '' ?>
 		    		<ul class="list-inline justify-content-center">
@@ -139,7 +134,6 @@
 		    		<strong>Status:</strong><?php
 if(h($room->status)==1)
 {
-    // echo "Active".'color:green;';
    echo  '<span style="color:green;">Active</span>';
 }
 else
@@ -187,19 +181,23 @@ else
 					<nav aria-label="Page navigation example">
 						<ul class="pagination">
 							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-									<span class="sr-only">Previous</span>
-								</a>
+								<!-- <a class="page-link" href="#" aria-label="Previous"> -->
+									<!-- <span aria-hidden="true">&laquo;</span> -->
+								<span class="sr-only" aria-hidden="true"><a class="page-link"><?= $this->Paginator->prev('< ' . __('previous')) ?></a></span>
+									
+								<!-- </a> -->
 							</li>
-							<li class="page-item"><a class="page-link" href="#">1</a></li>
-							<li class="page-item active"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
 							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-									<span class="sr-only">Next</span>
-								</a>
+								<!-- <a class="page-link"> -->
+									<?= $this->Paginator->numbers() ?></li>
+							<!-- <li class="page-item active"><a class="page-link" href="#">2</a></li>
+							<li class="page-item"><a class="page-link" href="#">3</a></li> -->
+							<li class="page-item">
+								<!-- <a class="page-link"> -->
+									<!-- <span aria-hidden="true">&raquo;</span> -->
+								<span class="sr-only"><?= $this->Paginator->next(__('next') . ' >') ?></span>
+									<!-- <span class="sr-only">Next</span> -->
+								<!-- </a> -->
 							</li>
 						</ul>
 					</nav>
@@ -225,7 +223,7 @@ else
 
                     success: function( response )
                     {       
-                       $( '.table-content' ).html(response);
+                       $( '.product-grid-list' ).html(response);
                     }
                 });
         };

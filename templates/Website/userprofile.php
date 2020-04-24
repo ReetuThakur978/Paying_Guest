@@ -25,8 +25,8 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                         </div>
                         <!-- User Name -->
                         <h5 class="text-center"><?php echo $name .' '. $lastname; ?></h5>
-                       <!--  -->
-                        <?=$this->Form->input('image',['type'=>'file']); ?>
+                      <?= $this->Form->create($user,['type' => 'file']) ?>
+                        <?=$this->Form->control('image',['type'=>'file']); ?><br>
                         <?= $this->Form->button('Upload image',['class'=>'']); ?>
                          <?= $this->Form->end() ?>
                     </div>

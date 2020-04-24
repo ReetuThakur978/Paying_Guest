@@ -9,6 +9,8 @@ namespace App\Controller;
 class WebsiteController extends AppController
 {  
     // public $base_url;
+    public $paginate = [
+        'limit' => 6,];
 
    public function initialize() : void
    {
@@ -16,6 +18,7 @@ class WebsiteController extends AppController
     parent::initialize();
     // $this->base_url= Router::url("bookpg",true);
     $this->viewBuilder()->setLayout('guestlayout');
+    $this->loadComponent('Paginator');
 
    }
 
@@ -31,9 +34,9 @@ class WebsiteController extends AppController
         $this->loadModel('Rooms');
         $this->loadModel('Users');
     
-		$room = $this->Rooms->find('all' ,[
+		$room =$this->paginate( $this->Rooms->find('all' ,[
             'contain' => ['Pgdetails'],
-        ]);
+        ]));
     
         $this->set('rooms', $room);
 	}
@@ -55,8 +58,8 @@ class WebsiteController extends AppController
               // 'limit' => 10
         ]);
 
-        $this->set('users', $this->paginate($query));
-        $this->set('_serialize', ['users']);
+        $this->set('rooms', $this->paginate($query));
+        $this->set('_serialize', ['rooms']);
 
     }
 
@@ -92,10 +95,34 @@ class WebsiteController extends AppController
 	{
         $this->set("title", "Edit Profile");
         $this->loadModel('Users');
-
+        $this->loadModel('Userroles');
          $user = $this->Users->get($this->getRequest()->getSession()->read('Auth.user_id'));
         if ($this->request->is(['patch', 'post', 'put'])) {
             $user = $this->Users->patchEntity($user, $this->request->getData());
+
+            //  if (!$user->getErrors) {
+            //     $image = $this->request->getData('image');
+  
+            //     $name  = $image->getClientFilename();
+                
+            //     if ($name){
+            //         if (!is_dir(WWW_ROOT . 'img' . DS . 'user-img'))
+            //             mkdir(WWW_ROOT . 'img' . DS . 'user-img', 0775);
+
+            //         $targetPath = WWW_ROOT . 'img' . DS . 'user-img' . DS . $name;
+
+
+            //         $image->moveTo($targetPath);
+
+            //         $imgpath = WWW_ROOT . 'img' . DS . $user->image;
+            //         if (file_exists($imgpath)) {
+            //             unlink($imgpath);
+            //         }
+                    
+            //         $user->image = 'user-img/' . $name;
+            //     }        
+            // }
+
             if ($this->Users->save($user)) {
            
                 $this->Flash->success(__('updated'));
@@ -132,15 +159,11 @@ class WebsiteController extends AppController
             }
             $this->Flash->error(__('Not booked. Please, try again.'));
         }
-        // $transient = $this->Users->find('list', [ 
-        //         'keyField' => 'user_id',
-        //         'valueField' => 'user_id'
-        //         ]);
-        //     $this->set('transient', $transient);
+        
        $room = $this->Rooms->get($id, [
             'contain' => ['Pgdetails'],
         ]);
-        // $pgdetails = $this->Bookings->Rooms->find('list', ['limit' => 200]);
+        
        $this->set(compact('room'));
 
         $this->set('books',$book);
