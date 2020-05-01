@@ -3,7 +3,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 // use Cake\Validation\Validator;
-
+  use Ckae\Mailer\Email;
+  use Cake\Authentication\DefaultPasswordHasher;
+  use Cake\Utility\Security;
+  use Cake\ORM\TableRegistry;
+  use Cake\Mailer\TransportFactory;
 
 class UsersController extends AppController
 {
@@ -146,7 +150,7 @@ class UsersController extends AppController
     parent::beforeFilter($event);
     // Configure the login action to not require authentication, preventing
     // the infinite redirect loop issue
-    $this->Authentication->addUnauthenticatedActions(['login','register']);
+    $this->Authentication->addUnauthenticatedActions(['login','register','forgotpassword','resetpassword']);
 }
 
 public function login() {
@@ -168,7 +172,58 @@ public function login() {
         $this->Flash->error(__('Invalid username or password'));
     }
 }
+    public function forgotpassword()
+    {
+        if($this->request->is('post'))
+        {
+            $myemail = $this->request->getData('email');
+            $mytoken = Security::hash(Security::randomString(25));
 
+            $userTable= TableRegistry::get('Users');
+            $user =$userTable->find('all')->where(['email'=>$myemail])->first();
+            $user->password = ' ';
+            $user->token =$mytoken;
+            if($userTable->save($user))
+            {
+                 $this->Flash->success('Reset password link has been sent to your ('.$myemail.').please check your email');
+
+                    TransportFactory::setConfig('mailtrap', [
+                       'host' => 'smtp.mailtrap.io',
+                       'port' => 2525,
+                       'username' => '9c96b66d9b7729',
+                       'password' => '6ed0e32cd3de74',
+                       'className' => 'Smtp'
+                    ]);
+
+                    $email = new TransportFactory('default');
+                    // $email->transport('mailtrap');
+                    $email
+                    // ->transport('mailtrap')
+                    ->emailFormat('html')
+                    ->from('reetuthakur.zapbuild@gmail.com','zapbuild2020')
+                    ->subject('Please confirm your password')
+                    ->to($myemail)
+                    ->send('Hello' .$myemail. '<br>Please click link below to reset your password<br><br><br><a href="http://localhost:8888/users/resetpassword/'.$mytoken.'">Reset Password </a>');
+            }   
+        }
+    }
+
+    public function resetpassword($token)
+    {
+        if($this->request->is('post'))
+        {
+            $hasher= new DefaultPasswordHasher();
+            $mypass = $hasher->hash($this->request->getData('password'));
+
+            $userTable = TableRegistry::get('Users');
+            $user = $userTable->find('all')->where(['token'=>$token])->first();
+            $user->password =$mypass;
+            if($userTable->save($user)){
+                return $this->redirect(['action'=>'login']);
+            }
+        }
+       
+    }
     public function search()
     {
 

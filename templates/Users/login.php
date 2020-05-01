@@ -26,10 +26,12 @@
                                     <input type="checkbox" id="keep-me-logged-in">
                                     <label for="keep-me-logged-in" class="pt-3 pb-2">Keep me logged in</label>
                             </div>
-                            <?= $this->Form->button('Log in' ,['name'=>'submit','class'=>'d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3']); ?>
+                            <?= $this->Form->button('Log in' ,['name'=>'submit','class'=>'d-block py-3 px-5 bg-primary text-white border-0 rounded font-weight-bold mt-3']); ?><br>
                            
-                            <a class="mt-3 d-block  text-primary" href="#">Forget Password?</a>
-  <?= $this->Html->link(__('Register Now'), ['action' => 'register', 'class' => 'mt-3 d-block text-primary']) ?>
+                            <!-- <a class="mt-3 d-block  text-primary" href="#">Forget Password?</a> -->
+
+  <?= $this->Html->link(__('Forget Password?'), ['action' => 'forgotpassword', 'class' => 'mt-3 d-block text-primary']) ?><br>
+  <?= $this->Html->link(__('Register Yourself'), ['action' => 'register', 'class' => 'mt-3 d-block text-primary']) ?>
                         </fieldset>
                     </form>
                 </div>
