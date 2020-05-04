@@ -123,8 +123,8 @@ function validate()
                                 echo $this->Form->text('firstname', ['name' => 'firstname' , 'placeholder'=>'Enter your firstname', 'class' =>'border p-3 w-100 my-2']);
                                 echo $this->Form->text('lastname', ['name' => 'lastname' , 'placeholder'=>'Enter your lastname', 'class' =>'border p-3 w-100 my-2']);
                                 echo $this->Form->text('email', ['name' => 'email' , 'placeholder'=>'Enter your email', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->password('password', ['name' => 'password' , 'placeholder'=>'Enter your password', 'class' =>'border p-3 w-100 my-2']);
-                                echo $this->Form->password('password', ['name' => 'password1' , 'placeholder'=>'Confirm Password', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->input('password', ['name' => 'password' , 'placeholder'=>'Enter your password', 'class' =>'border p-3 w-100 my-2']);
+                                echo $this->Form->input('password_match', ['type'=>'password' , 'placeholder'=>'Confirm Password', 'class' =>'border p-3 w-100 my-2']);
                                 echo $this->Form->text('adharcard', ['name' => 'adharcard' , 'placeholder'=>'Enter your adhar card number', 'class' =>'border p-3 w-100 my-2']);
                                 echo $this->Form->text('phone', ['name' => 'phone' , 'placeholder'=>'Enter your phone number', 'class' =>'border p-3 w-100 my-2' , 'id'=>'pass']);
                                

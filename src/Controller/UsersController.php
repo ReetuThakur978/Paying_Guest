@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 // use Cake\Validation\Validator;
-  use Ckae\Mailer\Email;
+  use Cake\Mailer\Email;
   use Cake\Authentication\DefaultPasswordHasher;
   use Cake\Utility\Security;
   use Cake\ORM\TableRegistry;

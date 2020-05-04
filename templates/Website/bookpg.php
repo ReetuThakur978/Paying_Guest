@@ -33,7 +33,8 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
             <div class="col-md-10 offset-md-1 col-lg-9 offset-lg-0">
                 <!-- Edit Profile Welcome Text -->
                 <div class="widget welcome-message">
-                    <h2>Fill your detail for PG Booking</h2>   
+                    <h2>Fill your detail for PG Booking</h2> 
+                    <p>Fill only blank fields</p>  
                 </div>
                 
            
@@ -45,9 +46,9 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
  --><?php $get=h($room->room_id) ?>
 
                                <?php 
-                               echo $this->Form->text('transient_id',['name'=>'transient_id','value' => $id,'class' =>'border p-3 w-100 my-2','readonly']);
+                               echo $this->Form->text('transient_id',['name'=>'transient_id','value' => $id,'class' =>'border p-3 w-100 my-2','hidden']);
 
-                              echo $this->Form->text('room_id',['name'=>'room_id','value' => $get,'class' =>'border p-3 w-100 my-2','readonly']);
+                              echo $this->Form->text('room_id',['name'=>'room_id','value' => $get,'class' =>'border p-3 w-100 my-2','hidden']);
 
                                echo $this->Form->text('days',['name' => 'days' , 'placeholder'=>'Enter how many days you stay', 'class' =>'border p-3 w-100 my-2']);
                                echo $this->Form->text('personshift', ['name' => 'personshift' , 'placeholder'=>'Enter how many person you shift', 'class' =>'border p-3 w-100 my-2']);

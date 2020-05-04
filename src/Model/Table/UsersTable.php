@@ -57,6 +57,9 @@ class UsersTable extends Table
             ->notEmptyString('password');
 
         $validator
+            ->sameAs('password_match','password','Password Match failed');    
+
+        $validator
             ->integer('adharcard')
             ->requirePresence('adharcard', 'create')
             ->notEmptyString('adharcard');

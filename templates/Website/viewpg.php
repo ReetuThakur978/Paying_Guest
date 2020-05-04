@@ -32,18 +32,7 @@
 						<div class="product-slider-item my-4" data-image="images/products/products-1.jpg">
 							<center><?= $this->Html->image($room->image) ?></center>
 						</div>
-						<!-- <div class="product-slider-item my-4" data-image="images/products/products-2.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-2.jpg" alt="Second slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-3.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-3.jpg" alt="Third slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-1.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-1.jpg" alt="Third slide">
-						</div>
-						<div class="product-slider-item my-4" data-image="images/products/products-2.jpg">
-							<img class="d-block img-fluid w-100" src="images/products/products-2.jpg" alt="Third slide">
-						</div> -->
+						
 					</div>
 					<!-- product slider -->
 
@@ -63,18 +52,8 @@
 							</li>
 						</ul>
 						<div class="tab-content" id="pills-tabContent">
-							<!-- <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-								<h3 class="tab-title">Product Description</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laudantium beatae quod perspiciatis, neque
-									dolores eos rerum, ipsa iste cum culpa numquam amet provident eveniet pariatur, sunt repellendus quas
-									voluptate dolor cumque autem molestias. Ab quod quaerat molestias culpa eius, perferendis facere vitae commodi
-									maxime qui numquam ex voluptatem voluptate, fuga sequi, quasi! Accusantium eligendi vitae unde iure officia
-									amet molestiae velit assumenda, quidem beatae explicabo dolore laboriosam mollitia quod eos, eaque voluptas
-									enim fuga laborum, error provident labore nesciunt ad. Libero reiciendis necessitatibus voluptates ab
-									excepturi rem non, nostrum aut aperiam? Itaque, aut. Quas nulla perferendis neque eveniet ullam?</p>
-
-							</div>
- -->							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+							
+ 							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 								<h3 class="tab-title">About PG</h3>
 								<table class="table table-bordered product-table">
 									<tbody>
