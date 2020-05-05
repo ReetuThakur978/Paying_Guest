@@ -69,6 +69,7 @@ else
                         <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $room->room_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $room->room_id]) ?>
+                        <?= $this->Html->link(__('AddImage'), ['action' => 'addimage', $room->room_id]) ?>
                       <?php if($room->status==1): ?>
                         <?= $this->Form->postLink(__('Block'), ['action' => 'userStatus', $room->room_id,$room->status], ['confirm' => __('Are you sure you want to block # {0}?', $room->room_id)]) ?>
                         <?php else : ?>

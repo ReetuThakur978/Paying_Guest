@@ -196,14 +196,14 @@ public function login() {
                     ]);
 
                     $email = new TransportFactory('default');
-                    // $email->transport('mailtrap');
-                    $email
+                    $email->transport('mailtrap');
+                    // $email
                     // ->transport('mailtrap')
-                    ->emailFormat('html')
-                    ->from('reetuthakur.zapbuild@gmail.com','zapbuild2020')
-                    ->subject('Please confirm your password')
-                    ->to($myemail)
-                    ->send('Hello' .$myemail. '<br>Please click link below to reset your password<br><br><br><a href="http://localhost:8888/users/resetpassword/'.$mytoken.'">Reset Password </a>');
+                    $email->emailFormat('html');
+                    $email->from('reetuthakur.zapbuild@gmail.com','zapbuild2020');
+                    $email->subject('Please confirm your password');
+                    $email->to($myemail);
+                    $email->send('Hello' .$myemail. '<br>Please click link below to reset your password<br><br><br><a href="http://localhost:8888/users/resetpassword/'.$mytoken.'">Reset Password </a>');
             }   
         }
     }

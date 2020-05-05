@@ -72,6 +72,41 @@ class RoomsController extends AppController
         $this->set(compact('room', 'pgdetails'));
     }
 
+ public function addimage($id = null)
+    {
+        $this->set("title", "Add Room available");
+        $room = $this->Rooms->newEmptyEntity();
+        if ($this->request->is(['post', 'put'])) {
+            
+
+            $room = $this->Rooms->patchEntity($room, $this->request->getData());
+
+            if(!$room->getErrors){
+                    $image = $this->request->getData('image_file');
+
+                    $name  = $image->getClientFilename();
+
+                    if(!is_dir(WWW_ROOT.'img'.DS.'pg-img') )
+                mkdir(WWW_ROOT.'img'.DS.'pg-img',0775);
+                
+                $targetPath = WWW_ROOT.'img'.DS.'pg-img'.DS.$name;
+
+                    if($name)
+                    $image->moveTo($targetPath);
+                
+                    $room->image = 'pg-img/'.$name;
+                }
+
+            if ($this->Rooms->save($room)) {
+                $this->Flash->success(__('Image added.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('Image not added.'));
+        }
+        $pgdetails = $this->Rooms->Pgdetails->find('list', ['limit' => 200]);
+        $this->set(compact('room', 'pgdetails'));
+    }
     
     public function edit($id = null)
     {
