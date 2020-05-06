@@ -7,6 +7,9 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\Utility\Security;
+use Cake\Utility\Text;
 
 
 class UsersTable extends Table
@@ -105,7 +108,12 @@ class UsersTable extends Table
 
         //     ]) ;
     
-    
+     // $validator
+     //        ->scalar('token')
+     //        ->maxLength('token', 20)
+            
+     //        ->notEmptyString('token');
+
 
         return $validator;
     }

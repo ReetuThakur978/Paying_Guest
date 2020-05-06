@@ -5,6 +5,13 @@ namespace App\Controller;
 // use Cake\Validation\Validator;
 // use App\Controller\AppController;
 // use cake\Routing\Router;
+ use Cake\Mailer\Email;
+  use Cake\Mailer\Mailer;
+  use Cake\Mailer\Mail;
+  use Cake\Mailer\EmailTransport;
+  use Cake\Authentication\DefaultPasswordHasher;
+  use Cake\Utility\Security;
+  use Cake\ORM\TableRegistry;
 
 class WebsiteController extends AppController
 {  
@@ -153,6 +160,8 @@ class WebsiteController extends AppController
             if ($this->request->is('post')) {
             $book = $this->Bookings->newEntity($this->request->getData());
             if ($this->Bookings->save($book)) {
+
+                
                 $this->Flash->success(__('PG Booked.'));
 
                 return $this->redirect(['action' => 'payment']);

@@ -4,10 +4,14 @@ declare(strict_types=1);
 namespace App\Controller;
 // use Cake\Validation\Validator;
   use Cake\Mailer\Email;
-  use Cake\Authentication\DefaultPasswordHasher;
+  use Cake\Mailer\Mailer;
+  use Cake\Mailer\Mail;
+  use Cake\Mailer\EmailTransport;
   use Cake\Utility\Security;
   use Cake\ORM\TableRegistry;
-  use Cake\Mailer\TransportFactory;
+  use Cake\Auth\DefaultPasswordHasher;
+  
+  // use Cake\Mailer\TransportFactory;
 
 class UsersController extends AppController
 {
@@ -181,29 +185,22 @@ public function login() {
 
             $userTable= TableRegistry::get('Users');
             $user =$userTable->find('all')->where(['email'=>$myemail])->first();
-            $user->password = ' ';
+            // $user->password = ' ';
             $user->token =$mytoken;
             if($userTable->save($user))
             {
-                 $this->Flash->success('Reset password link has been sent to your ('.$myemail.').please check your email');
 
-                    TransportFactory::setConfig('mailtrap', [
-                       'host' => 'smtp.mailtrap.io',
-                       'port' => 2525,
-                       'username' => '9c96b66d9b7729',
-                       'password' => '6ed0e32cd3de74',
-                       'className' => 'Smtp'
-                    ]);
+                    $email = new Mailer();
+                    
+                   $email=$email->setTransport('gmail')
+                     ->setEmailFormat('html')
+                     ->setfrom(['reetuthakur.zapbuild@gmail.com'=>'Reetu Thakur'])
+                     ->setsubject('Please confirm your password')
+                     ->setTo($myemail);
+                    $email->deliver('Hello ' .$myemail. '<br>Please click link below to reset your password<br><br><br><a href="http://localhost:8765/users/resetpassword/'.$mytoken.'">Reset Password </a>');
 
-                    $email = new TransportFactory('default');
-                    $email->transport('mailtrap');
-                    // $email
-                    // ->transport('mailtrap')
-                    $email->emailFormat('html');
-                    $email->from('reetuthakur.zapbuild@gmail.com','zapbuild2020');
-                    $email->subject('Please confirm your password');
-                    $email->to($myemail);
-                    $email->send('Hello' .$myemail. '<br>Please click link below to reset your password<br><br><br><a href="http://localhost:8888/users/resetpassword/'.$mytoken.'">Reset Password </a>');
+                      $this->Flash->success('Reset password link has been sent to your ('.$myemail.').please check your email');
+
             }   
         }
     }

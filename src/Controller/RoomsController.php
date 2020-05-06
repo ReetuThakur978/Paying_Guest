@@ -76,7 +76,7 @@ class RoomsController extends AppController
     {
         $this->set("title", "Add Room available");
         $room = $this->Rooms->newEmptyEntity();
-        if ($this->request->is(['post', 'put'])) {
+        if ($this->request->is('post')) {
             
 
             $room = $this->Rooms->patchEntity($room, $this->request->getData());
