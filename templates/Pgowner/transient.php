@@ -5,7 +5,7 @@
 </head>
 <body>
 
- <h3><?= $this->Html->link(__('View Profile'), ['controller'=>'Pgowner','action' => 'viewprofile'], ['class' => 'side-nav-item']) ?><br><br></h3>
+ 
 <div class="row"> 
     <aside class="column">
         <div class="side-nav">

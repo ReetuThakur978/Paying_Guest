@@ -1,7 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+// namespace App\Controller;
+namespace App\Controller\Admin;
+
+use App\Controller\Admin\AppController;
+use \SplFileObject;
+
 // use Cake\Validation\Validator;
   use Cake\Mailer\Email;
   use Cake\Mailer\Mailer;
@@ -81,7 +86,7 @@ class UsersController extends AppController
             		if ($this->Users->save($user)) 
             		{
                 		$this->Flash->success(__('Thanks for registration'));
-						return $this->redirect(['action' => 'index']);
+						return $this->redirect(['controler'=>'User','action' => 'login']);
             		}
             		$this->Flash->error(__('Registration Failed. Please, try again.'));
         	}
@@ -140,14 +145,19 @@ class UsersController extends AppController
 
     
     public function logout()
-{
-    $result = $this->Authentication->getResult();
-    // regardless of POST or GET, redirect if user is logged in
-    if ($result->isValid()) {
-        $this->Authentication->logout();
-        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+
+    {
+         return $this->redirect($this->Auth->logout());
     }
-}
+// {
+//     $result = $this->Authentication->getResult();
+//     // regardless of POST or GET, redirect if user is logged in
+//     if ($result->isValid()) {
+//         $this->Authentication->logout();
+//         return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+
+//     }
+// }
 
     public function beforeFilter(\Cake\Event\EventInterface $event)
 {
@@ -159,23 +169,24 @@ class UsersController extends AppController
 
 public function login() {
      $this->set("title", "Admin Login Page");
-    $this->request->allowMethod(['get', 'post']);
-    $result = $this->Authentication->getResult();
-    // regardless of POST or GET, redirect if user is logged in
-    if ($result->isValid()) {
-        // redirect to /articles after login success
-        $redirect = $this->request->getQuery('redirect', [
-            'controller' => 'Users',
-            'action' => 'index',
-        ]);
+    if($this->request->is('post')){
+            $user = $this->Auth->identify();
+            
+            if($user){
+                $this->Auth->setUser($user);
+                
+                if($user['status'] == 0)
+                {
+                    $this->Flash->error("You have not access permission !");
+                    return $this->redirect(['controller' => 'Users', 'action' => 'logout']);
+                }
 
-        return $this->redirect($redirect);
+                return $this->redirect(['controller'=>'Users','action'=>'index']);
+            }else {
+                $this->Flash->error("Incorrect username or password !");
+            }
+        }
     }
-    // display error if user submitted and authentication failed
-    if ($this->request->is('post') && !$result->isValid()) {
-        $this->Flash->error(__('Invalid username or password'));
-    }
-}
     public function forgotpassword()
     {
         if($this->request->is('post'))

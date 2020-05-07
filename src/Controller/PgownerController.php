@@ -10,6 +10,7 @@ class PgownerController extends AppController
 	public function initialize() : void
 	{
 		parent::initialize();
+         $this->viewBuilder()->setLayout('pgownerlayout');
 		$this->loadComponent('Paginator');
 	}
 

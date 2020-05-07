@@ -1,7 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+// namespace App\Controller;
+namespace App\Controller\Admin;
+use \SplFileObject;
+use App\Controller\Admin\AppController;
+
 
 
 class PgdetailsController extends AppController

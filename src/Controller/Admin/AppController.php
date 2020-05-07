@@ -14,7 +14,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Cake\Controller\Controller;
 
@@ -45,6 +45,8 @@ class AppController extends Controller
         $this->loadComponent('Flash');
 
         $this->loadComponent('Authentication.Authentication');
+
+        $this->Auth->allow('login');
 
         $this->set('email',$this->getRequest()->getSession()->read('Auth.email'));
     }

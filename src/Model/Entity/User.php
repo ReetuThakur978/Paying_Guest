@@ -21,7 +21,7 @@ class User extends Entity
         'updated' => true,
         'phone' => true,
         'image'=>true,
-        // 'token'=>true,
+        'token'=>true,
         // 'confirm_password' => true,
     ];
 

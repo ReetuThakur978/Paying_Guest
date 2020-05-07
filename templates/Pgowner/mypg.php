@@ -17,7 +17,7 @@ $role = $this->getRequest()->getSession()->read('Auth.role');
     <div class="form-group col-md-2">
     <?= $this->Form->button('Search',['class'=>'btn btn-primary input-group-text']) ?></div>
     <?= $this->Form->end() ?>
-   <h3><?= $this->Html->link(__('View Profile'), ['controller'=>'Pgowner','action' => 'viewprofile'], ['class' => 'side-nav-item']) ?><br><br></h3>
+  
 <div class="row"> 
     <aside class="column">
         <div class="side-nav">

@@ -24,6 +24,8 @@
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
+
 
 /*
  * The default class to use for all routes
@@ -63,8 +65,8 @@ $routes->scope('/', function (RouteBuilder $builder) {
      * to use (in this case, templates/Pages/home.php)...
      */
     //$builder->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
-        $builder->connect('/', ['controller' => 'Users', 'action' => 'index']);
-        // $builder->connect('/users/add', ['controller' => 'Users', 'action' => 'add']);
+        $builder->connect('/', ['controller' => 'Website', 'action' => 'guest']);
+        $builder->connect('/website/', ['controller' => 'Website', 'action' => 'home']);
         // $builder->connect('/users/view', ['controller' => 'Users', 'action' => 'view']);
         // $builder->connect('/users/search', ['controller' => 'Users', 'action' => 'search']);
     /*  
@@ -88,6 +90,17 @@ $routes->scope('/', function (RouteBuilder $builder) {
     $builder->fallbacks();
 });
 
+
+Router::prefix('admin', function (RouteBuilder $routes) {
+    $routes->connect('/', ['controller' => 'Users', 'action' => 'index']);
+    $routes->connect('/users/login/', ['controller' => 'Users', 'action' => 'login']);
+
+
+    $routes->fallbacks(DashedRoute::class);
+});
+
+
+
 /*
  * If you need a different set of middleware or none at all,
  * open new scope and define routes there.
@@ -99,3 +112,5 @@ $routes->scope('/', function (RouteBuilder $builder) {
  * });
  * ```
  */
+
+

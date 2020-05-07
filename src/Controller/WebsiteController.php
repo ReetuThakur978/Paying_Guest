@@ -24,7 +24,7 @@ class WebsiteController extends AppController
 
     parent::initialize();
     // $this->base_url= Router::url("bookpg",true);
-    $this->viewBuilder()->setLayout('guestlayout');
+    $this->viewBuilder()->setLayout('websitelayout');
     $this->loadComponent('Paginator');
 
    }
