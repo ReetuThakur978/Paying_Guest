@@ -108,11 +108,10 @@ class UsersTable extends Table
 
         //     ]) ;
     
-     // $validator
-     //        ->scalar('token')
-     //        ->maxLength('token', 20)
-            
-     //        ->notEmptyString('token');
+     $validator
+            ->scalar('token')
+            ->maxLength('token', 20)
+            ->notEmptyString('token');
 
 
         return $validator;

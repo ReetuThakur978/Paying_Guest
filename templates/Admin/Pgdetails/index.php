@@ -5,11 +5,6 @@
      
 </head>
 <body>
-    <?php
-$id = $this->getRequest()->getSession()->read('Auth.user_id');
-$role = $this->getRequest()->getSession()->read('Auth.role');
-
-?>
 
  <?= $this->Form->create(null,['type'=>'get']) ?>
  <div class="form-group col-md-3">
@@ -17,24 +12,23 @@ $role = $this->getRequest()->getSession()->read('Auth.role');
     <div class="form-group col-md-2">
     <?= $this->Form->button('Search',['class'=>'btn btn-primary input-group-text']) ?></div>
     <?= $this->Form->end() ?>
-   
-<div class="row"> 
+    <div class="row">
     <aside class="column">
         <div class="side-nav">
             <h4 class="heading"><?= __('Menu : ') ?></h4>
 
-            <?= $this->Html->link(__('My PGs'), ['controller'=>'Pgowner','action' => 'mypg'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('PG owner'), ['controller'=>'Pgdetails','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
             <!--  -->
-            <?= $this->Html->link(__('All transient guest'), ['controller'=>'Pgowner','action' => 'transient'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Add new PG'), ['controller'=>'Pgowner','action' => 'addnewpg'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Room available'), ['controller'=>'Pgowner','action' => 'roomavailable'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Rooms available'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('New PG request'), ['controller'=>'users','action' => 'newpg'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 
 <div class="pgdetails index content">
-    
-    <h3><?= __('Results for : Room available ') ?></h3>    
+    <?= $this->Html->link(__('New Pgdetail'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Results for : PG owner') ?></h3>
     <div class="table-responsive">
         <table border="2" cellpadding="10">
             <thead>
@@ -52,10 +46,8 @@ $role = $this->getRequest()->getSession()->read('Auth.role');
             <tbody>
                 <?php $counter = 0;?>
                 <?php foreach ($pgdetails as $pgdetail): ?>
-                    <?php if($pgdetail->availability > 0 && $role==1 && $pgdetail->owner_id == $id): ?>
+                 <?php if($pgdetail->user->role ==1): ?>   
                 <tr>
-                    <!-- <td><?= $this->Number->format($pgdetail->pg_id) ?></td>
-                    <td><?= $pgdetail->has('user') ? $this->Html->link($pgdetail->user->name, ['controller' => 'Users', 'action' => 'view', $pgdetail->user->user_id]) : '' ?></td> -->
                     <td><center><?= ++$counter; ?></center></td>
                     <td><center><?= $pgdetail->has('user') ? $this->Html->link($pgdetail->user->firstname, ['controller' => 'Users', 'action' => 'view', $pgdetail->user->user_id]) : '' ?></center></td>
                     <td><center><?= h($pgdetail->location) ?></center></td>
@@ -76,12 +68,15 @@ else
 
 
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'viewroom', $pgdetail->pg_id]) ?>
-                     
-                        
+                        <?= $this->Html->link(__('View'), ['action' => 'view', $pgdetail->pg_id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pgdetail->pg_id]) ?>
+                         <?php if($pgdetail->status==1): ?>
+                        <?= $this->Form->postLink(__('Block'), ['action' => 'userStatus', $pgdetail->pg_id,$pgdetail->status], ['confirm' => __('Are you sure you want to block # {0}?', $pgdetail->pg_id)]) ?>
+                        <?php else : ?>
+                        <?= $this->Form->postLink(__('Unblock'), ['action' => 'userStatus', $pgdetail->pg_id,$pgdetail->status], ['confirm' => __('Are you sure you want to unlock # {0}?', $pgdetail->pg_id)]) ?>
+                        <?php endif; ?>
                     </td>
-                    
-                     <?php endif; ?>
+                    <?php endif; ?>
                 </tr>
                 <?php endforeach; ?>
             </tbody>

@@ -17,8 +17,8 @@ class AddTokenToUsers extends AbstractMigration
         $table = $this->table('users');
         $table->addColumn('token', 'string', [
                 'default' => null,
-                'limit' => 20,
-                'null' => false,
+                'limit' => 100,
+                'null' => true,
             ])
         ->update();
     }

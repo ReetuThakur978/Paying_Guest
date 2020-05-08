@@ -21,8 +21,8 @@
 					<h1 class="product-title">PG Detail</h1>
 					<div class="product-meta">
 						<ul class="list-inline">
-							<!-- <li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">Andrew</a></li>
-							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Category<a href="">Electronics</a></li> -->
+							<!-- <li class="list-inline-item"><i class="fa fa-user-o"></i> By <a href="">Andrew</a></li> -->
+							<li class="list-inline-item"><i class="fa fa-folder-open-o"></i> Area: <?= $room->has('pgdetail') ? h($room->pgdetail->area) : '' ?></li>
 							<li class="list-inline-item"><i class="fa fa-location-arrow"></i> Location: <?= $room->has('pgdetail') ? h($room->pgdetail->location) : '' ?></li>
 						</ul>
 					</div>
@@ -188,7 +188,8 @@ else
 						<img class="rounded-circle img-fluid mb-5 px-5" src="images/user/user-thumb.jpg" alt="">
 						<h4><a href="">Jonathon Andrew</a></h4>
 						<p class="member-time">Member Since <?= h($room->created) ?></p>
-						<a href="">See all PG</a>
+						<?= $this->Html->link(__('See all PG'), ['controller'=>'Website','action' => 'home'])?> 
+						<!-- <a href="">See all PG</a> -->
 						<!-- <ul class="list-inline mt-20">
 							<li class="list-inline-item"><a href="" class="btn btn-contact d-inline-block  btn-primary px-lg-5 my-1 px-md-3">Contact</a></li>
 							<li class="list-inline-item"><a href="" class="btn btn-offer d-inline-block btn-primary ml-n1 my-1 px-lg-4 px-md-3">Make an
@@ -206,7 +207,7 @@ else
 						<!-- Heading -->
 						<h5 class="widget-header text-center">What would you rate
 							<br>
-							this product</h5>
+							this PG</h5>
 						<!-- Rate -->
 						<div class="starrr"></div>
 					</div>
@@ -221,14 +222,20 @@ else
 						</ul>
 					</div> -->
 					<!-- Coupon Widget -->
-					<!-- <div class="widget coupon text-center">
-						Coupon description
-						<p>Have a great product to post ? Share it with
-							your fellow users.
-						</p>
-						Submii button
-						<a href="" class="btn btn-transparent-white">Submit Listing</a>
-					</div> -->
+					<div class="widget coupon text-center">
+						<?php $seates= $room->has('pgdetail') ? h($room->pgdetail->availability) : '' ?>
+
+		    	<?php
+		    	if($seates>0)
+		    	{
+		           echo $this->Html->link(__('Book PG now'), ['controller'=>'Website','action' => 'bookpg', $room->room_id],['class'=>'btn btn-transparent-white']) ; 
+		        }
+               else{
+	                  echo '<span style="color:black;">Booked</span>';
+                   }
+		    ?>
+						<!-- <a href="" class="btn btn-transparent-white">Submit Listing</a> -->
+					</div>
 
 				</div>
 			</div>

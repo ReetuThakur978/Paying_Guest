@@ -80,7 +80,7 @@ echo $name;
 
               <li class="nav-item">
                  
-<?= $this->html->link(__('Edit Profile') ,['action'=>'userprofile'],['class'=>'btn btn-primary   fa fa-user-o d-block']); ?></li>&nbsp&nbsp
+<?= $this->html->link(__('View Profile') ,['controller'=>'Pgowner','action' => 'viewprofile'],['class'=>'btn btn-primary   fa fa-user-o d-block']); ?></li>&nbsp&nbsp
                 <li>
                 <?php if($email): ?>
                 <?= $this->Html->link(__('Logout'), ['controller'=>'Website','action' => 'logout'], ['class' => 'nav-link text-white add-button']) ?>

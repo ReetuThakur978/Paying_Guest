@@ -7,30 +7,32 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-
             <h4 class="heading"><?= __('Menu : ') ?></h4>
 
-            <?= $this->Html->link(__('My PGs'), ['controller'=>'Pgowner','action' => 'mypg'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('PG owner'), ['controller'=>'Pgdetails','action' => 'index'], 
+            ['class'=> 'side-nav-item']) ?><br><br>
             <!--  -->
-            <?= $this->Html->link(__('All transient guest'), ['controller'=>'Pgowner','action' => 'transient'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Add new PG'), ['controller'=>'Pgowner','action' => 'addnewpg'], ['class' => 'side-nav-item']) ?><br><br>
-            <?= $this->Html->link(__('Room available'), ['controller'=>'Pgowner','action' => 'roomavailable'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Rooms available'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('Rooms booked'), ['controller'=>'Rooms','action' => 'index'], ['class' => 'side-nav-item']) ?><br><br>
+            <?= $this->Html->link(__('New PG request'), ['controller'=>'users','action' => 'newpg'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
-</div>
-     <section class="login py-5 border-top-1">
+    </aside>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   <center> <h3><?= __('Edit : PG owner') ?></h3></center>
+        
+       </div> 
+        <section class="login py-5 border-top-1">
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-lg-5 col-md-8 align-item-center">
 <div class="border border">
-
     <div class="column-responsive column-80">
         <div class="pgdetails form content">
+
             <?= $this->Form->create($pgdetail) ?>
             <fieldset>
-                <legend><?= __('Add Your PG') ?></legend>
+                <legend><?= __('Edit PG owner') ?></legend>
                 <?php
-                   echo $this->Form->select('owner_id',$users,['empty' => 'Select Role','class' =>'border p-3 w-100 my-2']);
+                    // echo $this->Form->control('owner_id', ['options' => $users, 'class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('room',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('location',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('address',['class' =>'border p-3 w-100 my-2']);
@@ -41,9 +43,9 @@
                     echo $this->Form->control('status',['class' =>'border p-3 w-100 my-2']);
                     echo $this->Form->control('phone',['class' =>'border p-3 w-100 my-2']);
                 ?>
-           
-            <center><?= $this->Form->button('Submit',['class'=>'btn btn-primary']) ;?></center>
-             </fieldset>
+            
+            <?= $this->Form->button('Submit',['class'=>'d-block py-3 px-4 bg-primary text-white border-0 rounded font-weight-bold']); ?>
+            </fieldset>
             <?= $this->Form->end() ?>
         </div>
     </div>

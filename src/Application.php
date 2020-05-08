@@ -107,6 +107,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         'fields' => [
             'username' => 'email',
             'password' => 'password',
+            // 'token' => 'token',
         ]
     ]);
 
@@ -117,6 +118,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         'fields' => [
             'username' => 'email',
             'password' => 'password',
+            
         ],
         'loginUrl' => '/users/login',
     ]);

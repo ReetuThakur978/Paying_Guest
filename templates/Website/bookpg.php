@@ -14,6 +14,7 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
 <section class="user-profile section">
     <div class="container">
         <div class="row">
+          <?php echo $this->Flash->render() ?>
             <div class="col-md-10 offset-md-1 col-lg-3 offset-lg-0">
                 <div class="sidebar">
                     <!-- User Widget -->
@@ -34,13 +35,13 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                 <!-- Edit Profile Welcome Text -->
                 <div class="widget welcome-message">
                     <h2>Fill your detail for PG Booking</h2> 
-                    <p>Fill only blank fields</p>  
+                   <!--  <p>Fill only blank fields</p>  --> 
                 </div>
                 
            
             <fieldset>   
-                                <input type="text" class="border p-3 w-100 my-2'"  value="<?= $name; ?>" readonly><br><br>
-                                <input type="text" class="border p-3 w-100 my-2'"  value="<?= $email; ?>" readonly>
+                                <!-- <input type="text" class="border p-3 w-100 my-2'"  value="<?= $name; ?>" readonly><br><br> -->
+                                <!-- <input type="text" class="border p-3 w-100 my-2'"  value="<?= $email; ?>" readonly> -->
                               <?= $this->Form->create($books) ?>
 <!-- <?php $get=$room->has('pgdetail') ? h($room->pgdetail->pg_id) : '' ?>
  --><?php $get=h($room->room_id) ?>

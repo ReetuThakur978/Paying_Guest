@@ -24,7 +24,7 @@ class WebsiteController extends AppController
 
     parent::initialize();
     // $this->base_url= Router::url("bookpg",true);
-    $this->viewBuilder()->setLayout('guestlayout');
+    $this->viewBuilder()->setLayout('websitelayout');
     $this->loadComponent('Paginator');
 
    }
@@ -161,6 +161,29 @@ class WebsiteController extends AppController
             $book = $this->Bookings->newEntity($this->request->getData());
             if ($this->Bookings->save($book)) {
 
+           //  $myemail = $this->request->getData($this->getRequest()->getSession()->read('Auth.email'));
+           //  // $mytoken = Security::hash(Security::randomString(25));
+
+           //  $userTable= TableRegistry::get('Users');
+           //  $user =$userTable->find('all')->where(['email'=>$myemail])->first();
+           //  // $user->password = ' ';
+           //  // $user->token =$mytoken;
+           // if($userTable->save($user))
+           //  {
+
+           //          $email = new Mailer();
+                    
+           //         $email=$email->setTransport('gmail')
+           //           ->setEmailFormat('html')
+           //           ->setfrom(['reetuthakur.zapbuild@gmail.com'=>'Reetu Thakur'])
+           //           ->setsubject('PG Booked')
+           //           ->setTo($myemail);
+           //          $email->deliver('Hello ' .$myemail. '<br>Thanks For Booking PG online');
+
+           //            $this->Flash->success(__('PG Booked.'));
+
+           //  }   
+
                 
                 $this->Flash->success(__('PG Booked.'));
 
@@ -182,6 +205,11 @@ class WebsiteController extends AppController
     public function payment()
     {
         $this->set("title", "Payment");
+         $this->loadModel('Users');
+        $this->loadModel('Bookings');
+        $this->loadModel('Pgdetails');
+        $this->loadModel('Rooms');
+        $this->loadModel('Payments');
 
     }
 

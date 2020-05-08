@@ -1,7 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+// namespace App\Controller;
+namespace App\Controller\Admin;
+
+use App\Controller\Admin\AppController;
+
 // use Cake\Validation\Validator;
   use Cake\Mailer\Email;
   use Cake\Mailer\Mailer;
@@ -11,6 +15,7 @@ namespace App\Controller;
   use Cake\ORM\TableRegistry;
   use Cake\Auth\DefaultPasswordHasher;
   
+  // use Cake\Mailer\TransportFactory;
 
 class UsersController extends AppController
 {
@@ -138,23 +143,23 @@ class UsersController extends AppController
     // }
 
     
-        public function logout()
-        {
-          $result = $this->Authentication->getResult();
-            // regardless of POST or GET, redirect if user is logged in
-             if ($result->isValid()) {
-                 $this->Authentication->logout();
-                 return $this->redirect(['controller' => 'Users', 'action' => 'login']);
-            }
-         }
+    public function logout()
+{
+    $result = $this->Authentication->getResult();
+    // regardless of POST or GET, redirect if user is logged in
+    if ($result->isValid()) {
+        $this->Authentication->logout();
+        return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+    }
+}
 
     public function beforeFilter(\Cake\Event\EventInterface $event)
-    {
+{
     parent::beforeFilter($event);
     // Configure the login action to not require authentication, preventing
     // the infinite redirect loop issue
     $this->Authentication->addUnauthenticatedActions(['login','register','forgotpassword','resetpassword']);
-    }
+}
 
 public function login() {
      $this->set("title", "Admin Login Page");

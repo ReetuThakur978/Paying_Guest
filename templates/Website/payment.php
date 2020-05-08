@@ -5,65 +5,64 @@
 </head>
 
 <body class="body-wrapper">
-<section class="section bg-gray">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="heading text-center pb-5">
-                    <h2 class="font-weight-bold">Payment options</h2>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
-                    <div class="package-content-heading border-bottom">
-                        <i class="fa fa-paper-plane"></i>
-                        <h2>By debit card</h2>
-                        <h4 class="py-3"> <span>$10.00</span> Per Month</h4>
-                    </div>
-                   <!--  <ul>
-                        <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
-                    </ul> -->
-                    <a href="#" class="btn btn-primary">Pay</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="package-content bg-light border text-center my-2 my-lg-0 p-5">
-                    <div class="package-content-heading border-bottom">
-                            <i class="fa fa-plane"></i>
-                        <h2>By credit card</h2>
-                        <h4 class="py-3"> <span>$30.00</span> Per Month</h4>
-                    </div>
-                   <!--  <ul>
-                        <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
-                    </ul> -->
-                    <a href="#" class="btn btn-primary">Pay</a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mx-sm-auto">
-                <div class="package-content bg-light border text-center p-5 my-2 my-lg-0">
-                    <div class="package-content-heading border-bottom">
-                            <i class="fa fa-rocket"></i>
-                        <h2>Google pay/Phone pay</h2>
-                        <h4 class="py-3"> <span>$50.00</span> Per Month</h4>
-                    </div>
-                   <!--  <ul>
-                        <li class="my-4"> <i class="fa fa-check"></i> Free Ad Posting</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>15 Features Ad Availability</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>For 15 Days</li>
-                        <li class="my-4"> <i class="fa fa-check"></i>100% Secure</li>
-                    </ul> -->
-                    <a href="#" class="btn btn-primary">pay</a>
+<section class="login py-5 border-top-1">
+        <!-- <div class="container"> -->
+            <div class="row justify-content-center">
+                <div class="col-lg-5 col-md-8 align-item-center">
+                    <div class="border border">
+                        <h3 class="bg-gray p-4">Fill your payment detail</h3>   
+    </aside>
+    <div class="column-responsive column-80">
+        <div class="users form content">
+
+           
+            <fieldset>   
+                                <!-- <input type="text" class="border p-3 w-100 my-2'"  value="<?= $name; ?>" readonly><br><br> -->
+                                <!-- <input type="text" class="border p-3 w-100 my-2'"  value="<?= $email; ?>" readonly> -->
+                              <?= $this->Form->create() ?>
+
+                               <?php 
+                               echo $this->Form->text('transientuser_id',['name'=>'transientuser_id','class' =>'border p-3 w-100 my-2']);
+
+                              echo $this->Form->text('pgowner_id',['name'=>'pgowner_id','class' =>'border p-3 w-100 my-2']);
+
+                               echo $this->Form->text('amount',['name' => 'amount' , 'placeholder'=>'Enter paying amount', 'class' =>'border p-3 w-100 my-2']);
+
+                                echo 'Choose Payment Option:- '.'<br>';
+                                $options = array('Creditcard' => 'Credit card', 'Debitcard' => 'Debit card','Googlepay'=>'Google Pay');
+                        
+                                echo $this->Form->select('payment_mode', $options, ['class' =>'border p-3 w-100 my-2']).'<br>';
+
+                                ?>
+                                <center>
+
+                                <?= $this->Form->button('Submit', ['controller'=>'Website','action' => 'payment','class'=>'btn btn-primary']); ?> 
+                            </center>
+                            </fieldset>
+
+                             
+                      
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 </section>
+           
+      <?= $this->Form->end() ?>
+                
+ <script>
+$("#form").submit(function(){
+  $("#form").submit(function(){
+    return false;
+});
+    return true;
+
+
+});
+</script>
+
 
 
 </body>
