@@ -11,11 +11,12 @@ class Payment extends Entity
    
     protected $_accessible = [
         'transientuser_id' => true,
-        'pgowner_id' => true,
+        
         'amount' => true,
         'payment_mode' => true,
         // 'transaction_id' => true,
         'created' => true,
+        'booking_id' => true,
         // 'user' => true,
         // 'transaction' => true,
     ];

@@ -196,20 +196,56 @@ class WebsiteController extends AppController
             'contain' => ['Pgdetails'],
         ]);
         
+        
        $this->set(compact('room'));
 
         $this->set('books',$book);
 
     }
 
-    public function payment()
+    public function payment($id = null)
     {
         $this->set("title", "Payment");
-         $this->loadModel('Users');
+        $this->loadModel('Users');
         $this->loadModel('Bookings');
         $this->loadModel('Pgdetails');
         $this->loadModel('Rooms');
         $this->loadModel('Payments');
+
+
+        $payment = $this->Payments->newEmptyEntity();
+            if ($this->request->is('post')) {
+            $payment = $this->Payments->newEntity($this->request->getData());
+            if ($this->Payments->save($payment)) {
+                $this->Flash->success(__('PG Booked.'));
+
+                return $this->redirect(['action' => 'home']);
+            }
+            $this->Flash->error(__('Not booked. Please, try again.'));
+        }
+
+        
+       $book = $this->Bookings->find('all',[
+            'contain' => ['Rooms'],
+        ]);
+
+        // $book = $this->Bookings->get($id, [
+        //     'contain' => ['Rooms'],
+        // ]);
+//        $offers = TableRegistry::get('Bookings');
+
+// $offers = $offers->find()
+//     ->select(['id', 'days'])
+//     ->select(['Rooms.id']) // list your Products field list here
+//     ->select(['Users.id']) // list your OfferBanners field list here
+//     ->contain(['Rooms', 'Users'])->hydrate(false)->toArray();
+
+      // echo $book;
+      // exit();
+        
+        $this->set(compact('book'));
+
+        $this->set('payments',$payment);
 
     }
 

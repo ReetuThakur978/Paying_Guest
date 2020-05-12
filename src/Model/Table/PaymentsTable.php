@@ -25,8 +25,8 @@ class PaymentsTable extends Table
             'foreignKey' => 'transientuser_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Users', [
-            'foreignKey' => 'pgowner_id',
+        $this->belongsTo('Bookings', [
+            'foreignKey' => 'booking_id',
             'joinType' => 'INNER',
         ]);
         // $this->belongsTo('Transactions', [
@@ -56,12 +56,12 @@ class PaymentsTable extends Table
         return $validator;
     }
 
-       public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn(['transientuser_id'], 'Users'));
-        $rules->add($rules->existsIn(['pgowner_id'], 'Users'));
-        // $rules->add($rules->existsIn(['transaction_id'], 'Transactions'));
+    //    public function buildRules(RulesChecker $rules): RulesChecker
+    // {
+    //     $rules->add($rules->existsIn(['transientuser_id'], 'Users'));
+    //     $rules->add($rules->existsIn(['booking_id'], 'Bookings'));
+    //     // $rules->add($rules->existsIn(['transaction_id'], 'Transactions'));
 
-        return $rules;
-    }
+    //     return $rules;
+    // }
 }
