@@ -9,7 +9,7 @@ $lastname= $this->getRequest()->getSession()->read('Auth.lastname');
 $adharcard = $this->getRequest()->getSession()->read('Auth.adharcard');
 $image = $this->getRequest()->getSession()->read('Auth.image');
 $id = $this->getRequest()->getSession()->read('Auth.user_id');
-// echo $id;
+// echo $books;
 ?>
 <section class="user-profile section">
     <div class="container">

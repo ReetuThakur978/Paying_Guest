@@ -4,10 +4,11 @@
   <title><?= isset($title)?$title:""; ?></title>
 </head>
 <?php
-$id = $this->getRequest()->getSession()->read('Auth.user_id');
+$userid = $this->getRequest()->getSession()->read('Auth.user_id');
+ // echo $room;
 ?>
 
-
+ 
 <body class="body-wrapper">
 <section class="login py-5 border-top-1">
         <!-- <div class="container"> -->
@@ -25,13 +26,13 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                                 <!-- <input type="text" class="border p-3 w-100 my-2'"  value="<?= $email; ?>" readonly> -->
 
                               <?= $this->Form->create($payments) ?>
-                             <!--  <?php $get=h($book->rooms->room_id)?>
- -->
-                               <?php
-                               echo $get; 
-                               echo $this->Form->text('transientuser_id',['name'=>'transientuser_id','value' => $id,'class' =>'border p-3 w-100 my-2']);
+                             <?php $get=h($room->room_id) ?>
+                             <?php $ownerid=h($room->pgdetail->owner_id) ?>
 
-                              echo $this->Form->text('booking_id',['name'=>'booking_id','class' =>'border p-3 w-100 my-2']);
+                               <?php
+                               echo $this->Form->text('transientuser_id',['name'=>'transientuser_id','value' => $userid,'class' =>'border p-3 w-100 my-2','hidden']);
+
+                              echo $this->Form->text('pgowner_id',['value' => $ownerid,'name'=>'pgowner_id','class' =>'border p-3 w-100 my-2','hidden']);
 
                                echo $this->Form->text('amount',['name' => 'amount' , 'placeholder'=>'Enter paying amount', 'class' =>'border p-3 w-100 my-2']);
 
@@ -39,6 +40,8 @@ $id = $this->getRequest()->getSession()->read('Auth.user_id');
                                 $options = array('Creditcard' => 'Credit card', 'Debitcard' => 'Debit card','Googlepay'=>'Google Pay');
                         
                                 echo $this->Form->select('payment_mode', $options, ['name'=>'payment_mode','class' =>'border p-3 w-100 my-2']).'<br>';
+
+                                 echo $this->Form->text('transaction_id',['value' => $get,'name'=>'transaction_id','class' =>'border p-3 w-100 my-2','hidden']);
 
                                 ?>
                                 <center>

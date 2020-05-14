@@ -59,7 +59,7 @@ class WebsiteController extends AppController
         $keyword = $this->request->getQueryParams('keyword');
 
         $query = $this->Rooms->find('all',[
-              'contain' => ['Pgdetails'],
+              // 'contain' => ['Pgdetails'],
               'conditions' => ['ac LIKE'=>'%'.$keyword['keyword'].'%']
               // 'order' => ['Users.user_id'=>'DESC'],
               // 'limit' => 10
@@ -155,6 +155,10 @@ class WebsiteController extends AppController
         $this->loadModel('Pgdetails');
         $this->loadModel('Rooms');
 
+ $room = $this->Rooms->get($id, [
+            'contain' => ['Pgdetails'],
+        ]);
+
 
         $book = $this->Bookings->newEmptyEntity();
             if ($this->request->is('post')) {
@@ -187,14 +191,12 @@ class WebsiteController extends AppController
                 
                 $this->Flash->success(__('PG Booked.'));
 
-                return $this->redirect(['action' => 'payment']);
+                return $this->redirect(['action' => 'payment','controller'=>'Website',$id]);
             }
             $this->Flash->error(__('Not booked. Please, try again.'));
         }
         
-       $room = $this->Rooms->get($id, [
-            'contain' => ['Pgdetails'],
-        ]);
+      
         
         
        $this->set(compact('room'));
@@ -212,12 +214,15 @@ class WebsiteController extends AppController
         $this->loadModel('Rooms');
         $this->loadModel('Payments');
 
+ $room = $this->Rooms->get($id, [
+            'contain' => ['Pgdetails'],
+        ]);
 
         $payment = $this->Payments->newEmptyEntity();
             if ($this->request->is('post')) {
             $payment = $this->Payments->newEntity($this->request->getData());
             if ($this->Payments->save($payment)) {
-                $this->Flash->success(__('PG Booked.'));
+                $this->Flash->success(__('Your PG  is Booked now.'));
 
                 return $this->redirect(['action' => 'home']);
             }
@@ -225,13 +230,11 @@ class WebsiteController extends AppController
         }
 
         
-       $book = $this->Bookings->find('all',[
-            'contain' => ['Rooms'],
-        ]);
+       // $book = $this->Bookings->find('all',[
+       //      'contain' => ['Rooms'],
+       //  ]);
 
-        // $book = $this->Bookings->get($id, [
-        //     'contain' => ['Rooms'],
-        // ]);
+       
 //        $offers = TableRegistry::get('Bookings');
 
 // $offers = $offers->find()
@@ -243,7 +246,7 @@ class WebsiteController extends AppController
       // echo $book;
       // exit();
         
-        $this->set(compact('book'));
+        $this->set(compact('room'));
 
         $this->set('payments',$payment);
 

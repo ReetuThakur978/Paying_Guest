@@ -8,6 +8,7 @@ use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
 
+
 class PaymentsTable extends Table
 {
     
@@ -25,17 +26,17 @@ class PaymentsTable extends Table
             'foreignKey' => 'transientuser_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('Bookings', [
-            'foreignKey' => 'booking_id',
+        $this->belongsTo('Users', [
+            'foreignKey' => 'pgowner_id',
             'joinType' => 'INNER',
         ]);
-        // $this->belongsTo('Transactions', [
+        // $this->belongsTo('Rooms', [
         //     'foreignKey' => 'transaction_id',
         //     'joinType' => 'INNER',
         // ]);
     }
 
-   
+    
     public function validationDefault(Validator $validator): Validator
     {
         $validator
@@ -56,11 +57,12 @@ class PaymentsTable extends Table
         return $validator;
     }
 
-    //    public function buildRules(RulesChecker $rules): RulesChecker
+    
+    // public function buildRules(RulesChecker $rules): RulesChecker
     // {
     //     $rules->add($rules->existsIn(['transientuser_id'], 'Users'));
-    //     $rules->add($rules->existsIn(['booking_id'], 'Bookings'));
-    //     // $rules->add($rules->existsIn(['transaction_id'], 'Transactions'));
+    //     $rules->add($rules->existsIn(['pgowner_id'], 'Users'));
+    //     $rules->add($rules->existsIn(['transaction_id'], 'Transactions'));
 
     //     return $rules;
     // }

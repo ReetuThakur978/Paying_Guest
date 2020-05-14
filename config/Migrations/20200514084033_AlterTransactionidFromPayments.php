@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
-class AddBookingidToPayments extends AbstractMigration
+class AlterTransactionidFromPayments extends AbstractMigration
 {
     /**
      * Change Method.
@@ -14,13 +14,9 @@ class AddBookingidToPayments extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('payments');
-       $table->addColumn('booking_id', 'integer', [
-                'default' => null,
-                'limit' => 10,
-                'null' => false,
-            ])
-    ->addForeignKey('booking_id' , 'bookings' , 'id')
+        $table = $this->table('payments')
+        ->changeColumn('transaction_id','integer',['limit' => 10])
+        ->addForeignKey('transaction_id' , 'rooms' , 'room_id')
         ->update();
     }
 }

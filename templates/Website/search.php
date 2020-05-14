@@ -1,5 +1,5 @@
-<!-- <div class="product-grid-list">
-					<div class="row mt-30">	 -->			
+<div class="product-grid-list">
+					<div class="row mt-30">				
 				  <?php foreach ($rooms as $room ): ?> 
 						<div class="col-sm-12 col-lg-4 col-md-6">
 							<!-- product card -->
@@ -34,7 +34,6 @@
 		    		<li class="list-inline-item"><i class="fa fa-star"></i></li>
 		    	</ul>
 		    </div>
-		<!-- </div>
+		</div>
 
 	</div>
- -->
