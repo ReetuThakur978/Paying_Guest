@@ -5,13 +5,15 @@ namespace App\Controller;
 // use Cake\Validation\Validator;
 // use App\Controller\AppController;
 // use cake\Routing\Router;
- use Cake\Mailer\Email;
+  use Cake\Mailer\Email;
   use Cake\Mailer\Mailer;
   use Cake\Mailer\Mail;
   use Cake\Mailer\EmailTransport;
   use Cake\Authentication\DefaultPasswordHasher;
   use Cake\Utility\Security;
   use Cake\ORM\TableRegistry;
+  use Cake\View\Helper\UrlHelper;
+  use Cake\Http\ServerRequest;
 
 class WebsiteController extends AppController
 {  
@@ -53,6 +55,9 @@ class WebsiteController extends AppController
         $this->loadModel('Pgdetails');
         $this->loadModel('Rooms');
         $this->loadModel('Users');
+        // $room = $this->Rooms->get($id,[
+        //     'contain' => [],
+        // ]);
 
         $this->request->allowMethod('ajax');
    
