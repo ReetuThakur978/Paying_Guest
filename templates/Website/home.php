@@ -83,7 +83,7 @@
 						<input class="range-track w-100" type="text" data-slider-min="0" data-slider-max="5000" data-slider-step="5"
 						data-slider-value="[0,5000]">
 				<div class="d-flex justify-content-between mt-2">
-						<span class="value">$10 - $5000</span>
+						<span class="value">Rs2000 - Rs.9000</span>
 				</div>
 	</div>
 </div>

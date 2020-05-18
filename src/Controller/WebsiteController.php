@@ -9,7 +9,7 @@ namespace App\Controller;
   use Cake\Mailer\Mailer;
   use Cake\Mailer\Mail;
   use Cake\Mailer\EmailTransport;
-  use Cake\Authentication\DefaultPasswordHasher;
+  use Cake\Auth\DefaultPasswordHasher;
   use Cake\Utility\Security;
   use Cake\ORM\TableRegistry;
   use Cake\View\Helper\UrlHelper;
@@ -163,37 +163,37 @@ class WebsiteController extends AppController
  $room = $this->Rooms->get($id, [
             'contain' => ['Pgdetails'],
         ]);
-
-
         $book = $this->Bookings->newEmptyEntity();
             if ($this->request->is('post')) {
             $book = $this->Bookings->newEntity($this->request->getData());
+              // if(!$book->getErrors){
+              //       $myemail = $this->request->getData($this->getRequest()->getSession()->read('Auth.email'));
+
+              //       $email = new Mailer();
+                    
+              //      $email=$email->setTransport('gmail')
+              //        ->setEmailFormat('html')
+              //        ->setfrom(['reetuthakur.zapbuild@gmail.com'=>'Reetu Thakur'])
+              //        ->setsubject('PG Booked')
+              //        ->setTo($myemail);
+              //       $email->deliver('Hello <br>Your PG id Booked<br>');
+
+              //       }
             if ($this->Bookings->save($book)) {
 
-           //  $myemail = $this->request->getData($this->getRequest()->getSession()->read('Auth.email'));
-           //  // $mytoken = Security::hash(Security::randomString(25));
 
-           //  $userTable= TableRegistry::get('Users');
-           //  $user =$userTable->find('all')->where(['email'=>$myemail])->first();
-           //  // $user->password = ' ';
-           //  // $user->token =$mytoken;
-           // if($userTable->save($user))
-           //  {
+// $userTable= TableRegistry::get('Users');
+//             $user =$userTable->find('all')->where(['email'=>$myemail])->first();
+//             // $user->password = ' ';
+//             $user->token =$mytoken;
+//             if($userTable->save($user))
+//             {
 
-           //          $email = new Mailer();
                     
-           //         $email=$email->setTransport('gmail')
-           //           ->setEmailFormat('html')
-           //           ->setfrom(['reetuthakur.zapbuild@gmail.com'=>'Reetu Thakur'])
-           //           ->setsubject('PG Booked')
-           //           ->setTo($myemail);
-           //          $email->deliver('Hello ' .$myemail. '<br>Thanks For Booking PG online');
+                      // $this->Flash->success('Reset password link has been sent to your ('.$myemail.').please check your email');
 
-           //            $this->Flash->success(__('PG Booked.'));
-
-           //  }   
-
-                
+               
+        // }
                 $this->Flash->success(__('PG Booked.'));
 
                 return $this->redirect(['action' => 'payment','controller'=>'Website',$id]);
