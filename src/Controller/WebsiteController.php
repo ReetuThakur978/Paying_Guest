@@ -75,6 +75,58 @@ class WebsiteController extends AppController
 
     }
 
+     public function register()
+    {
+     $this->loadModel('Users');
+     $this->loadModel('Userroles');
+
+        # Set Page Title
+        // $this->set('title', 'User Registration');
+
+        $users = $this->Users->newEntity($this->request->getData());
+        if ($this->request->is('post'))
+        {
+            if (empty($users->getErrors()))
+            {
+                $users = $this->Users->patchEntity($users, $this->request->getData());
+                
+                # Set Data in Table
+                // $users->is_active = 1;
+    
+                # Save Data
+
+                $image = $this->request->getData('image_file');
+
+                    $name  = $image->getClientFilename();
+
+                    if( !is_dir(WWW_ROOT.'img'.DS.'user-img') )
+                    mkdir(WWW_ROOT.'img'.DS.'user-img',0775);
+                
+                     $targetPath = WWW_ROOT.'img'.DS.$name;
+
+                    if($name)
+                    $image->moveTo($targetPath);
+                
+                    $users->image = 'user-img/'.$name;
+
+                if ($this->Users->save($users)) {
+                    $this->Flash->success(__('User has been saved.'));
+                    return $this->redirect(['controller'=>'Website','action' => 'login']);
+                }
+                $this->Flash->error(__('Unable to add your user.'));
+            }
+
+        }
+        $roles = $this->Userroles->find('list', [ 
+              'keyField' => 'id',
+              'valueField' => 'user_rolename'
+            ]);
+          $this->set('roles', $roles);
+        // Set this errors in fields
+        $this->set('users', $users);
+     }
+
+
      public function viewpg($id = null)
     {
         $this->set("title", "View PG Rooms");

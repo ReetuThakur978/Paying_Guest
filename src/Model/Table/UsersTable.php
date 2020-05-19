@@ -41,6 +41,7 @@ class UsersTable extends Table
         $validator
             ->scalar('firstname')
             ->maxLength('firstname', 20)
+            // ->requirePresence('firstname', 'create')
             ->notEmptyString('firstname');
 
         $validator
@@ -56,7 +57,7 @@ class UsersTable extends Table
         $validator
             ->scalar('password')
             ->maxLength('password', 20)
-            ->requirePresence('password', 'create')
+            // ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
         $validator
@@ -64,12 +65,12 @@ class UsersTable extends Table
 
         $validator
             ->integer('adharcard')
-            ->requirePresence('adharcard', 'create')
+            // ->requirePresence('adharcard', 'create')
             ->notEmptyString('adharcard');
 
         $validator
             ->integer('role')
-            ->requirePresence('role', 'create')
+            // ->requirePresence('role', 'create')
             ->notEmptyString('role');
 
         $validator
@@ -79,7 +80,7 @@ class UsersTable extends Table
 
         $validator
             ->integer('phone')
-            ->requirePresence('phone', 'create')
+            // ->requirePresence('phone', 'create')
             ->notEmptyString('phone');
 
         $validator
