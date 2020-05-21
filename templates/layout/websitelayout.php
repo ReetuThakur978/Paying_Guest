@@ -67,7 +67,7 @@
               <li class="nav-item">
                 <!-- <a class="nav-link text-white add-button" href="register.php">Registeration Page</a> -->
                 <?php if(!$email): ?>
-                <?= $this->Html->link(__('Registeration Page'), ['controller'=>'Users','action' => 'register'], ['class' => 'nav-link text-white add-button']) ?>
+                <?= $this->Html->link(__('Registeration Page'), ['controller'=>'Website','action' => 'register'], ['class' => 'nav-link text-white add-button']) ?>
               <?php endif; ?> 
               </li>
               <?php if($email): ?>

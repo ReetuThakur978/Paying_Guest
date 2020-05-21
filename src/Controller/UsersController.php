@@ -163,6 +163,7 @@ public function login() {
     // regardless of POST or GET, redirect if user is logged in
     if ($result->isValid()) {
         // redirect to /articles after login success
+    
         $redirect = $this->request->getQuery('redirect', [
             'controller' => 'Users',
             'action' => 'index',
@@ -193,8 +194,8 @@ public function login() {
                     
                    $email=$email->setTransport('gmail')
                      ->setEmailFormat('html')
-                     ->setfrom(['reetuthakur.zapbuild@gmail.com'=>'Reetu Thakur'])
-                     ->setsubject('Please confirm your password')
+                     ->setFrom(['reetuthakur.zapbuild@gmail.com'=>'Reetu Thakur'])
+                     ->setSubject('Please confirm your password')
                      ->setTo($myemail);
                     $email->deliver('Hello ' .$myemail. '<br>Please click link below to reset your password<br><br><br><a href="http://localhost:8765/users/resetpassword/'.$mytoken.'">Reset Password </a>');
 

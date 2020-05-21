@@ -42,30 +42,43 @@ class UsersTable extends Table
             ->scalar('firstname')
             ->maxLength('firstname', 20)
             // ->requirePresence('firstname', 'create')
+            ->lengthBetween('firstname', [3,12], 'Please enter a firstname minimum 3 letter')
             ->notEmptyString('firstname');
+
 
         $validator
             ->scalar('lastname')
-            ->maxLength('lastname', 20)           
+            ->maxLength('lastname', 20) 
+             ->lengthBetween('lastname', [3,12], 'Please enter a lastname minimum 3 letter')          
             ->notEmptyString('lastname');
 
         $validator
             ->email('email')
             ->requirePresence('email', 'create')
-            ->notEmptyString('email');
+            ->notEmptyString('email')
+            ->add('email', 'valid', [
+                'rule' => 'email',
+                'message' => 'Please enter valid email',
+            ]);
 
         $validator
             ->scalar('password')
             ->maxLength('password', 20)
             // ->requirePresence('password', 'create')
+            ->lengthBetween('password', [6,12], 'Please enter a password between 6 & 12')
             ->notEmptyString('password');
 
         $validator
-            ->sameAs('password_match','password','Password Match failed');    
+            ->sameAs('password_match','password','Password Match failed');
+            // ->add('password_match', 'no-misspelling', [
+            //     'rule' => ['compareWith', 'password'],
+            //     'message' => 'Passwords are not equal',
+            // ]);    
 
         $validator
             ->integer('adharcard')
             // ->requirePresence('adharcard', 'create')
+             ->lengthBetween('adharcard', [12,12], 'Please enter the correct adharcard number')
             ->notEmptyString('adharcard');
 
         $validator
@@ -81,6 +94,7 @@ class UsersTable extends Table
         $validator
             ->integer('phone')
             // ->requirePresence('phone', 'create')
+             ->lengthBetween('phone', [10,12], 'Please enter the correct phone number')
             ->notEmptyString('phone');
 
         $validator

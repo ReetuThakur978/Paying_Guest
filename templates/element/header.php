@@ -61,11 +61,15 @@
 							<li class="nav-item">
 								<!-- <a class="nav-link text-white add-button" href="register.php">Registeration Page</a> -->
 								<?php if(!$email): ?>
-								<?= $this->Html->link(__('Registeration Page'), ['controller'=>'Users','action' => 'register'], ['class' => 'nav-link text-white add-button']) ?>
+								<?= $this->Html->link(__('Registeration Page'), ['controller'=>'Website','action' => 'register'], ['class' => 'nav-link text-white add-button']) ?>
 							<?php endif; ?>	
 							</li>
 							<li class="nav-item">
-								<!-- <a class="nav-link text-white add-button" href="register.php">Registeration Page</a> -->
+								<?php if($email): ?>
+									<?= $this->Html->link(__('Visit Website'), ['controller'=>'Website','action' => 'home'], ['class' => 'nav-link login-button']) ?>
+									<?php endif; ?>	
+							</li>
+							<li class="nav-item">
 								<?php if($email): ?>
 								<?= $this->Html->link(__('Logout'), ['controller'=>'Users','action' => 'logout'], ['class' => 'nav-link text-white add-button']) ?>
 							<?php endif; ?>	

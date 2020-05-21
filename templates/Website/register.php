@@ -3,7 +3,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5 col-md-8 align-item-center">
                     <div class="border border">
-                        <h3 class="bg-gray p-4">Register Now</h3>
+                      <h3 class="bg-gray p-4">Registration Page</h3>
 
         
     </aside>
@@ -86,8 +86,8 @@
             ],
             ['legend' => ' ']
         );
-        echo $this->Form->select('role',$roles,['empty' => 'Select Role','class' =>'border p-3 w-100 my-2']);
-        ?>
+        echo $this->Form->select('role',$roles,['empty' => 'Select Role','class' =>($this->Form->isFieldError('role')) ? 'form-control is-invalid' : 'form-control','required' => false]);
+        ?><br>
       <center> <?= $this->Form->submit('Registration', ['class' => 'btn btn-primary']);?></center>
         
 </fieldset>

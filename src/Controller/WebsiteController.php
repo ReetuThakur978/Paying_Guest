@@ -111,7 +111,7 @@ class WebsiteController extends AppController
 
                 if ($this->Users->save($users)) {
                     $this->Flash->success(__('User has been saved.'));
-                    return $this->redirect(['controller'=>'Website','action' => 'login']);
+                    return $this->redirect(['controller'=>'Users','action' => 'login']);
                 }
                 $this->Flash->error(__('Unable to add your user.'));
             }
@@ -218,34 +218,19 @@ class WebsiteController extends AppController
         $book = $this->Bookings->newEmptyEntity();
             if ($this->request->is('post')) {
             $book = $this->Bookings->newEntity($this->request->getData());
-              // if(!$book->getErrors){
-              //       $myemail = $this->request->getData($this->getRequest()->getSession()->read('Auth.email'));
+              
+            $myemail = $this->getRequest()->getSession()->read('Auth.email');
+            $mailer = new Mailer('default');
 
-              //       $email = new Mailer();
-                    
-              //      $email=$email->setTransport('gmail')
-              //        ->setEmailFormat('html')
-              //        ->setfrom(['reetuthakur.zapbuild@gmail.com'=>'Reetu Thakur'])
-              //        ->setsubject('PG Booked')
-              //        ->setTo($myemail);
-              //       $email->deliver('Hello <br>Your PG id Booked<br>');
+$mailer=$mailer->setTransport('gmail')
+               ->setEmailFormat('html')
+               ->setFrom(['reetuthakur.zapbuild@gmail.com' => 'PG Booking'])
+               ->setTo($myemail)
+               ->setSubject('PG Booked')
+               ->deliver('Thanks for PG booking....Your Pg has been booked');
 
-              //       }
             if ($this->Bookings->save($book)) {
 
-
-// $userTable= TableRegistry::get('Users');
-//             $user =$userTable->find('all')->where(['email'=>$myemail])->first();
-//             // $user->password = ' ';
-//             $user->token =$mytoken;
-//             if($userTable->save($user))
-//             {
-
-                    
-                      // $this->Flash->success('Reset password link has been sent to your ('.$myemail.').please check your email');
-
-               
-        // }
                 $this->Flash->success(__('PG Booked.'));
 
                 return $this->redirect(['action' => 'payment','controller'=>'Website',$id]);
@@ -253,12 +238,8 @@ class WebsiteController extends AppController
             $this->Flash->error(__('Not booked. Please, try again.'));
         }
         
-      
-        
-        
        $this->set(compact('room'));
-
-        $this->set('books',$book);
+       $this->set('books',$book);
 
     }
 
