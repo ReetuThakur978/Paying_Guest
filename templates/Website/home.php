@@ -115,8 +115,13 @@
 		<div class="thumb-content">
 			<div class="price">Rs: <?= $this->Number->format($room->rent) ?></div> 
 			
-				<?= $this->Html->image($room->image,['class'=>'card-img-top img-fluid','controller' => 'Website', 'action' => 'viewpg']) ?>
-			
+			<?= $this->Html->link( 
+				$this->Html->image($room->image,
+				array('class'=>'card-img-top img-fluid')),
+				array('controller' => 'Website', 'action' => 'viewpg', $room->room_id),
+				array('escape' => false)
+			);
+			?>
 		</div>
 		<div class="card-body">
 

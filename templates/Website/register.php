@@ -73,7 +73,7 @@
                     // 'placeholder' => "Confirm Password", 
                     'type'=>'file',
                     'required' => false,
-                    'class' => ($this->Form->isFieldError('password')) ? 'form-control is-invalid' : 'form-control'
+                    'class' => ($this->Form->isFieldError('image')) ? 'form-control is-invalid' : 'form-control'
                 ],
                 // 'role',$roles => [
                 //     'placeholder' => "role", 

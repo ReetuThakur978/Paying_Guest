@@ -179,14 +179,14 @@ else
 			<div class="col-md-4">
 				<div class="sidebar">
 					<div class="widget price text-center">
-						<h4>Price</h4>
-
-						<p><?= $this->Number->format($room->rent) ?></p>
+		<h4>Price</h4>
+			
+		<p><?= $this->Number->format($room->rent) ?></p>
 					</div>
 					<!-- User Profile widget -->
 					<div class="widget user text-center">
 						<img class="rounded-circle img-fluid mb-5 px-5" src="images/user/user-thumb.jpg" alt="">
-						<h4><a href="">Jonathon Andrew</a></h4>
+						<h4><?= $room->has('pgdetail') ? h($room->pgdetail->owner_id) : '' ?></h4>
 						<p class="member-time">Member Since <?= h($room->created) ?></p>
 						<?= $this->Html->link(__('See all PG'), ['controller'=>'Website','action' => 'home'])?> 
 						<!-- <a href="">See all PG</a> -->

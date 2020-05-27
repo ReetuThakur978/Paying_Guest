@@ -137,7 +137,14 @@ class WebsiteController extends AppController
         $room = $this->Rooms->get($id,[
             'contain' => ['Pgdetails'],
         ]);
+
+         $pgdetail = $this->Pgdetails->find('all',[
+            'contain' => ['Users'],
+        ]);
+         
         $this->set('room', $room);
+        $this->set('pgdetail', $pgdetail);
+
     }
 
 
@@ -266,23 +273,6 @@ $mailer=$mailer->setTransport('gmail')
             }
             $this->Flash->error(__('Not booked. Please, try again.'));
         }
-
-        
-       // $book = $this->Bookings->find('all',[
-       //      'contain' => ['Rooms'],
-       //  ]);
-
-       
-//        $offers = TableRegistry::get('Bookings');
-
-// $offers = $offers->find()
-//     ->select(['id', 'days'])
-//     ->select(['Rooms.id']) // list your Products field list here
-//     ->select(['Users.id']) // list your OfferBanners field list here
-//     ->contain(['Rooms', 'Users'])->hydrate(false)->toArray();
-
-      // echo $book;
-      // exit();
         
         $this->set(compact('room'));
 
@@ -315,6 +305,13 @@ $mailer=$mailer->setTransport('gmail')
 
     }
     
+     public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+    parent::beforeFilter($event);
+    // Configure the login action to not require authentication, preventing
+    // the infinite redirect loop issue
+    $this->Authentication->addUnauthenticatedActions(['login','register','guest','forgotpassword','resetpassword']);
+    }
 	   
 	   public function logout()
 		{
